@@ -45,7 +45,8 @@ For more details, please read our CONTRIBUTING.md file.
 
 
 ## Authors: 
+- Christopher Alba
 - Trinh Vo
 - Xiaoqi
 - Yu Chen
-- Christopher Alba
+

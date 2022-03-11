@@ -18,10 +18,7 @@ https://www.newline.co/@Adele/how-to-install-nodejs-and-npm-on-macos--22782681
 #### Linux
 https://linuxize.com/post/how-to-install-node-js-on-ubuntu-18.04/
 
-### Deployment
-Frontend repo's main branch will be automatically deployed to Netlify 
-
-### Contributions
+### Contribute
 To get started to contributing, please create a new issue in the "Issues" tab describing the new bug or feature you want to add, and add it to the "Projects" Kanban board. 
 
 Afterwards: 
@@ -30,7 +27,7 @@ Afterwards:
   
   --> clone it on your computer 
   
-  --> in the terminal of your IDE run "npm install"
+  --> run ```npm install```
   
   --> create a new branch
   
@@ -40,13 +37,13 @@ Afterwards:
   
 For more details, please read our CONTRIBUTING.md file.
 
-### Starting up react app
-To start viewing the frontend run 
-```
-  npm start
-```
-in the IDE's terminal. This should start up the frontend and open a browser automatically. View the site on http
-## Authors: 
+### Run
+To start viewing the frontend run ```npm start```. This should start up the frontend and open a browser automatically. View the site on http://localhost:3000/.
+
+### Deployment
+Frontend repo's main branch will be automatically deployed to Netlify.
+
+## Frontend Contributors: 
 - Christopher Alba
 - Trinh Vo
 - Xiaoqi

@@ -1,0 +1,1 @@
+This folder will contain all the different redux actions. One category of actions per file only please. 

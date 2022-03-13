@@ -1,4 +1,4 @@
-# How to contribute to the Team 5 Project
+# How to contribute to UniForum
 
 ## Contribution Workflow
 
@@ -31,6 +31,7 @@ Collaborative task management is conducted in the main project repository using
 * for development guidelines see [Development](#development)
 * add completed development changes to remote main repository
   * push changes to the development branch in the forked repository
+    * _**DO NOT**_ use ```push --force```
   * create a new [Pull Request](#pull-requests) to the main repository
 
 ## Issues (tasks)
@@ -49,6 +50,7 @@ Collaborative task management is conducted in the main project repository using
       * stating what it is and why it is needed if a _feature_
       * stating as much information as possible if a _bug_
     * have a _Label_ **_IFF_**
+      * _enhancement_
       * _bug_
       * _documentation_
     * have a _Project_ (linked to it)
@@ -123,6 +125,7 @@ Pull requests are required for merging task contributions to the main repository
     * a _Project_ (linked to it)
     * a _Milestone_ (linked to it)
     * a _Label_ **_IFF_**
+      * _enhancement_
       * _bug_
       * _documentation_
   * at least one _Reviewer_ assigned for [code review](#code-review) - can be added by a reviewer
@@ -172,6 +175,3 @@ To merge a pull request
 
 * Follow the [contribution workflow](#contribution-workflow) for team documentation contributions
 * The [Pull Request](#pull-requests) must be approved by team members before merging
-
-
-

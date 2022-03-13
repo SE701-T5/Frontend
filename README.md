@@ -9,42 +9,40 @@ The frontend will be hooked to Netlify for continuous deployment on the main bra
 ### Pre-requisites
 - install git: https://git-scm.com/downloads
 - install node and npm using node version manager (NVM): 
-#### Windows
-https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
+    * Windows: https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
 
-#### MacOS
-https://www.newline.co/@Adele/how-to-install-nodejs-and-npm-on-macos--22782681
+    * MacOS: https://www.newline.co/@Adele/how-to-install-nodejs-and-npm-on-macos--22782681
 
-#### Linux
-https://linuxize.com/post/how-to-install-node-js-on-ubuntu-18.04/
+    * Linux: https://linuxize.com/post/how-to-install-node-js-on-ubuntu-18.04/
 
 ### Contribute
-To get started to contributing, please create a new issue in the "Issues" tab describing the new bug or feature you want to add, and add it to the "Projects" Kanban board. 
+Refer to [CONTRIBUTING.md]().
 
-Afterwards: 
+### Install
+Inside the project, to install dependencies
 
-  --> fork the repository 
-  
-  --> clone it on your computer 
-  
-  --> run ```npm install```
-  
-  --> create a new branch
-  
-  --> proceed to add your contributions
-  
-  --> create a pull request on the SE701-T5/Frontend repository from your forked repo. 
-  
-For more details, please read our CONTRIBUTING.md file.
+```npm install```
+
+### Test
+Inside the project, to run automated testing
+
+```npm test```
 
 ### Run
-To start viewing the frontend run ```npm start```. This should start up the frontend and open a browser automatically. View the site on http://localhost:3000/.
+Inside the project, to run in development mode
+
+```npm start``` 
+
+View browser in development mode
+
+```http://localhost:3000/```
 
 ### Deployment
 Frontend repo's main branch will be automatically deployed to Netlify.
 
 ## Frontend Contributors: 
 - Christopher Alba
+- Hyung
 - Trinh Vo
 - Xiaoqi
 - Yu Chen

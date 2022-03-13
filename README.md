@@ -16,7 +16,7 @@ The frontend will be hooked to Netlify for continuous deployment on the main bra
     * Linux: https://linuxize.com/post/how-to-install-node-js-on-ubuntu-18.04/
 
 ### Contribute
-Refer to [CONTRIBUTING.md]().
+Refer to [CONTRIBUTING.md](../../contribution-guidelines/.github/CONTRIBUTING.md).
 
 ### Install
 Inside the project, to install dependencies

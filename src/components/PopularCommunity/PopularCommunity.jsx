@@ -1,7 +1,6 @@
 import React from "react";
 import Card from '@mui/material/Card';
 import { CardActionArea } from '@mui/material';
-import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
@@ -17,13 +16,13 @@ const PopularCommunity = (props) => {
           <CardMedia
             component="img"
             height="140"
-            image={props.image}
-            alt={props.alt}
+            image={image}
+            alt={alt}
           />
         </Grid>
         <Grid item>
           <Typography variant="body">
-            {props.name}
+            {name}
           </Typography>
         </Grid>
         <Grid item></Grid>

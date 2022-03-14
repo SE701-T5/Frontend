@@ -1,3 +1,10 @@
+body {
+  background-color: #F5F5F5;
+}
 h1 {
-  color: blue;
+  color: #19467B;
+}
+
+.MuiContainer-maxWidthMd {
+  text-align: center;
 }

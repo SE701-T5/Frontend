@@ -8,3 +8,11 @@ h1 {
 .MuiContainer-maxWidthMd {
   text-align: center;
 }
+
+.MuiDivider-root {
+  background-color: black;
+}
+.divide {
+  margin-top: -1%;
+  padding-bottom: 1%;
+}

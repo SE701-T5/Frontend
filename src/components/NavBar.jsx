@@ -3,6 +3,8 @@ import {
   AppBar,
   Button,
   InputBase,
+  Menu,
+  MenuItem,
   styled,
   Toolbar,
   Typography,
@@ -97,23 +99,106 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 function NavBar() {
+  const isLoggedIn = false;
+
+  const communitiesMenu = ["SOFTENG 352", "SOFTENG 125"];
+  const pagesMenu = ["Posts", "Communities"];
+  const profileMenu = isLoggedIn
+    ? ["Login / Create Account"]
+    : ["Profile", "Settings", "Logout"];
+
+  const [anchorElCommunities, setAnchorElCommunities] = React.useState(null);
+  const [anchorElPages, setAnchorElPages] = React.useState(null);
+  const [anchorElProfile, setAnchorElProfile] = React.useState(null);
+
+  const handleOpenCommunitiesMenu = (event) => {
+    setAnchorElCommunities(event.currentTarget);
+  };
+
+  const handleCloseCommunitiesMenu = () => {
+    setAnchorElCommunities(null);
+  };
+
+  const handleOpenPagesMenu = (event) => {
+    setAnchorElPages(event.currentTarget);
+  };
+
+  const handleClosePagesMenu = () => {
+    setAnchorElPages(null);
+  };
+
+  const handleOpenProfileMenu = (event) => {
+    setAnchorElProfile(event.currentTarget);
+  };
+
+  const handleCloseProfileMenu = () => {
+    setAnchorElProfile(null);
+  };
+
   return (
     <AppBar position="static" sx={styles.appBar}>
       <Toolbar sx={styles.headerContainer}>
         <div style={styles.headerSection}>
           <img src="logo.svg" alt="" style={styles.logo} />
-          <HeaderButton>
+
+          <HeaderButton onClick={handleOpenCommunitiesMenu}>
             <Typography variant="body1" sx={{ marginRight: "5px" }}>
               Communities
             </Typography>
             <ArrowDownwardIcon sx={{ height: "50%" }} />
           </HeaderButton>
-          <HeaderButton>
+          <Menu
+            sx={{ mt: 1 }}
+            id="communities-menu"
+            anchorEl={anchorElCommunities}
+            keepMounted
+            open={Boolean(anchorElCommunities)}
+            onClose={handleCloseCommunitiesMenu}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+          >
+            {communitiesMenu.map((community) => (
+              <MenuItem key={community} onClick={handleCloseCommunitiesMenu}>
+                {community}
+              </MenuItem>
+            ))}
+          </Menu>
+
+          <HeaderButton onClick={handleOpenPagesMenu}>
             <Typography variant="body1" sx={{ marginRight: "5px" }}>
               Pages
             </Typography>
             <ArrowDownwardIcon sx={{ height: "50%" }} />
           </HeaderButton>
+          <Menu
+            sx={{ mt: 1 }}
+            id="profile-menu"
+            anchorEl={anchorElPages}
+            keepMounted
+            open={Boolean(anchorElPages)}
+            onClose={handleClosePagesMenu}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+          >
+            {pagesMenu.map((item) => (
+              <MenuItem key={item} onClick={handleClosePagesMenu}>
+                {item}
+              </MenuItem>
+            ))}
+          </Menu>
+
           <HeaderButton>
             <HeaderButtonLabel>Filter</HeaderButtonLabel>
             <FilterAltIcon sx={{ height: "50%" }} />
@@ -134,12 +219,35 @@ function NavBar() {
         <div style={styles.headerSection}>
           <HeaderButton>
             <AddIcon sx={{ height: "50%" }} />
-            <HeaderButtonLabel sx={{ ["md"]: {} }}>New</HeaderButtonLabel>
+            <HeaderButtonLabel>New</HeaderButtonLabel>
           </HeaderButton>
-          <HeaderButton>
+
+          <HeaderButton onClick={handleOpenProfileMenu}>
             <PersonIcon sx={{ height: "50%" }} />
             <HeaderButtonLabel>Profile</HeaderButtonLabel>
           </HeaderButton>
+          <Menu
+            sx={{ mt: 1 }}
+            id="profile-menu"
+            anchorEl={anchorElProfile}
+            keepMounted
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+            open={Boolean(anchorElProfile)}
+            onClose={handleCloseProfileMenu}
+          >
+            {profileMenu.map((option) => (
+              <MenuItem key={option} onClick={handleCloseProfileMenu}>
+                {option}
+              </MenuItem>
+            ))}
+          </Menu>
         </div>
       </Toolbar>
     </AppBar>

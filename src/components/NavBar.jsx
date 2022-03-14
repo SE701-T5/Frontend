@@ -110,6 +110,11 @@ function NavBar() {
   const [anchorElCommunities, setAnchorElCommunities] = React.useState(null);
   const [anchorElPages, setAnchorElPages] = React.useState(null);
   const [anchorElProfile, setAnchorElProfile] = React.useState(null);
+  const [searchValue, setSearchValue] = React.useState("");
+
+  React.useEffect(() => {
+    console.log("searchValue", searchValue);
+  }, [searchValue]);
 
   const handleOpenCommunitiesMenu = (event) => {
     setAnchorElCommunities(event.currentTarget);
@@ -210,6 +215,8 @@ function NavBar() {
             fullWidth
             placeholder="Search…"
             inputProps={{ "aria-label": "search" }}
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
           />
           <SearchIconWrapper>
             <SearchIcon />

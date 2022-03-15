@@ -6,7 +6,7 @@ import AuthContext from "../../context/AuthProvider";
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const [errors, setErrors] = useState("");
+  const [errors] = useState("");
   /*testing array
   const adminUser = {
     email: "admin@123",
@@ -15,7 +15,7 @@ export default function LoginPage() {
   };*/
   const { userDetails } = useContext(AuthContext);
 
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [isSuccess] = useState(false);
 
   const Login = (details) => {
     console.log(details);

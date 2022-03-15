@@ -10,26 +10,26 @@ const PopularCommunity = (props) => {
     const {name,alt,image}=props
   
     return (
-    <Card sx={{ maxWidth: 345 }} raised='true'>
-      <CardActionArea>
-      <Grid container spacing={1} direction='column'>
-        <Grid item>
-          <CardMedia
-            component="img"
-            height="140"
-            image={image}
-            alt={alt}
-          />
-        </Grid>
-        <Grid item>
-          <Typography variant="body">
-            <div className="prTitle">{name}</div>
-          </Typography>
-        </Grid>
-        <Grid item></Grid>
-      </Grid>
-      </CardActionArea>
-    </Card>
+      <Card sx={{ maxWidth: 345 }} raised='true'>
+        <CardActionArea>
+          <Grid container spacing={1} direction='column'>
+            <Grid item>
+              <CardMedia
+                component="img"
+                height="140"
+                image={image}
+                alt={alt}
+              />
+            </Grid>
+            <Grid item>
+              <Typography variant="body">
+                <div className="prTitle">{name}</div>
+              </Typography>
+            </Grid>
+            <Grid item></Grid>
+          </Grid>
+        </CardActionArea>
+      </Card>
     );
   };
   

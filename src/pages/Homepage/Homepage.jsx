@@ -36,11 +36,7 @@ const Homepage = () => {
           Popular posts feed in this container
         </Container>
       </Container>
-      
-      
     </>
-    
-  
   );
 };
 

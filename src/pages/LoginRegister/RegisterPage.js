@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 export default function RegisterPage() {
   const navigate = useNavigate();
-  const [errors, setErrors] = useState("");
-  const { userDetails, setUserDetails } = useContext(AuthContext);
+  const [errors] = useState("");
+  const { userDetails } = useContext(AuthContext);
   /*testing array
   const Users = [
     {
@@ -18,7 +18,7 @@ export default function RegisterPage() {
     { email: "aa@123", username: "scsf", password: "12ABqwer" },
   ];*/
 
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [isSuccess] = useState(false);
 
   const Register = (details) => {
     console.log(userDetails);

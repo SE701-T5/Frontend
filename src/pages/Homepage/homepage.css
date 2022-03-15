@@ -1,16 +1,15 @@
-body {
+.hpHomePage {
   background-color: #F5F5F5;
-  color: #0080A7;
+  height: 100%;
+  width: 100%;
+  position: fixed;
 }
-h1 {
+
+.hpTitle {
   color: #19467B;
 }
 
-.MuiContainer-maxWidthSm {
-  text-align: center;
-}
-
-.divide {
+.hpDivide {
   margin-top: -2%;
   padding-bottom: 2%;
 }

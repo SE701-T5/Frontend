@@ -7,7 +7,6 @@ import Grid from '@mui/material/Grid';
 const Homepage = () => {
   return (
     <div className="hpHomePage">
-      <h1 className="hpTitle">NavBar</h1> {/* Placeholder for Navbar component - to be replaced */}
       <Container maxWidth="md">
         <h1 className="hpTitle">Popular Communities</h1>
         <div className="hpDivide">

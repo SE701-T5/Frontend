@@ -3,19 +3,18 @@ import "./homepage.css";
 import Container from '@mui/material/Container';
 import PopularCommunity from "../../components/PopularCommunity/PopularCommunity.jsx";
 import Grid from '@mui/material/Grid';
-import Divider from '@mui/material/Divider';
 
 const Homepage = () => {
   return (
     <>
       <h1>NavBar</h1>
-      <Container maxWidth="lg">
+      <Container maxWidth="md">
         <h1>Popular Communities</h1>
         <div className="divide">
-          <Divider/>
+          <hr className="hpDivider"></hr>
         </div>
         <Container maxWidth="md">
-          <Grid container spacing={4} justify="center">
+          <Grid container spacing={5} justify="center">
             <Grid item xs={12} sm={6} md={4}>
               <PopularCommunity name="SOFTENG 701" alt="SOFTENG 701" image={require("./SOFTENG701.png")}/>
             </Grid>
@@ -31,7 +30,7 @@ const Homepage = () => {
         <br></br>
         <h1>Popular Posts</h1>
         <div className="divide">
-          <Divider/>
+          <hr className="hpDivider"></hr>
         </div>
         <Container maxWidth="md">
           Popular posts feed in this container

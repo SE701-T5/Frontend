@@ -4,6 +4,7 @@ import { CardActionArea } from '@mui/material';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
+import "./PopularCommunity.css";
 
 const PopularCommunity = (props) => {
     const {name,alt,image}=props
@@ -22,7 +23,7 @@ const PopularCommunity = (props) => {
         </Grid>
         <Grid item>
           <Typography variant="body">
-            {name}
+            <div className="prTitle">{name}</div>
           </Typography>
         </Grid>
         <Grid item></Grid>

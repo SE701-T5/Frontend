@@ -1,18 +1,20 @@
 body {
   background-color: #F5F5F5;
+  color: #0080A7;
 }
 h1 {
   color: #19467B;
 }
 
-.MuiContainer-maxWidthMd {
+.MuiContainer-maxWidthSm {
   text-align: center;
 }
 
-.MuiDivider-root {
-  background-color: black;
-}
 .divide {
-  margin-top: -1%;
-  padding-bottom: 1%;
+  margin-top: -2%;
+  padding-bottom: 2%;
+}
+
+.hpDivider {
+  border: 3px solid #FFFFFF;
 }

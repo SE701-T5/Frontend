@@ -10,10 +10,11 @@ import {
   Typography,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import AddIcon from "@mui/icons-material/Add";
 import PersonIcon from "@mui/icons-material/Person";
+import PeopleIcon from "@mui/icons-material/People";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
 import React from "react";
 
 const styles = {
@@ -38,6 +39,9 @@ const styles = {
     display: "flex",
     alignItems: "center",
     height: "100%",
+  },
+  headerElementIcon: {
+    height: "50%",
   },
 };
 
@@ -76,7 +80,7 @@ const SearchContainer = styled("div")(({ theme }) => ({
   "&:hover": {
     backgroundColor: alpha(theme.palette.common.black, 0.1),
   },
-  width: 400,
+  width: 600,
   color: "black",
 }));
 
@@ -99,8 +103,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 function NavBar() {
+  // Change isLoggedIn, communitiesMenu to a context variable.
   const isLoggedIn = false;
-
   const communitiesMenu = ["SOFTENG 352", "SOFTENG 125"];
   const pagesMenu = ["Posts", "Communities"];
   const profileMenu = isLoggedIn
@@ -147,10 +151,8 @@ function NavBar() {
           <img src="logo.svg" alt="" style={styles.logo} />
 
           <HeaderButton onClick={handleOpenCommunitiesMenu}>
-            <Typography variant="body1" sx={{ marginRight: "5px" }}>
-              Communities
-            </Typography>
-            <ArrowDownwardIcon sx={{ height: "50%" }} />
+            <HeaderButtonLabel>Communities</HeaderButtonLabel>
+            <PeopleIcon sx={styles.headerElementIcon} />
           </HeaderButton>
           <Menu
             sx={{ mt: 1 }}
@@ -168,18 +170,22 @@ function NavBar() {
               horizontal: "left",
             }}
           >
-            {communitiesMenu.map((community) => (
-              <MenuItem key={community} onClick={handleCloseCommunitiesMenu}>
-                {community}
+            {communitiesMenu.length > 0 ? (
+              communitiesMenu.map((community) => (
+                <MenuItem key={community} onClick={handleCloseCommunitiesMenu}>
+                  {community}
+                </MenuItem>
+              ))
+            ) : (
+              <MenuItem onClick={handleCloseCommunitiesMenu}>
+                No Communities
               </MenuItem>
-            ))}
+            )}
           </Menu>
 
           <HeaderButton onClick={handleOpenPagesMenu}>
-            <Typography variant="body1" sx={{ marginRight: "5px" }}>
-              Pages
-            </Typography>
-            <ArrowDownwardIcon sx={{ height: "50%" }} />
+            <HeaderButtonLabel>Pages</HeaderButtonLabel>
+            <BookmarkIcon sx={styles.headerElementIcon} />
           </HeaderButton>
           <Menu
             sx={{ mt: 1 }}
@@ -206,7 +212,7 @@ function NavBar() {
 
           <HeaderButton>
             <HeaderButtonLabel>Filter</HeaderButtonLabel>
-            <FilterAltIcon sx={{ height: "50%" }} />
+            <FilterAltIcon sx={styles.headerElementIcon} />
           </HeaderButton>
         </div>
 
@@ -225,12 +231,12 @@ function NavBar() {
 
         <div style={styles.headerSection}>
           <HeaderButton>
-            <AddIcon sx={{ height: "50%" }} />
+            <AddIcon sx={styles.headerElementIcon} />
             <HeaderButtonLabel>New</HeaderButtonLabel>
           </HeaderButton>
 
           <HeaderButton onClick={handleOpenProfileMenu}>
-            <PersonIcon sx={{ height: "50%" }} />
+            <PersonIcon sx={styles.headerElementIcon} />
             <HeaderButtonLabel>Profile</HeaderButtonLabel>
           </HeaderButton>
           <Menu

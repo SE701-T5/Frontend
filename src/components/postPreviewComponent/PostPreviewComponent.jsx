@@ -2,65 +2,82 @@ import React from "react";
 import "./postPreviewComponent.css";
 import { ArrowUpward, ArrowDownward } from '@mui/icons-material';
 import { Box, Button, IconButton } from '@mui/material';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 
 const PostPreviewComponent = ({ post }) => {
     const { title, community, upi, time, text, upvotes, downvotes } = post;
-
+    
     return (
         <Box className="postArea">
-            <Box>
-                <Box className="row1">
+            
+                <Box>
+                    <Box className="row1">
+
+                        <Box>
+                            <h5 class="course">{community}</h5>
+                        </Box>
+
+                        <Box className="right">
+                            <Box>
+                                <p className="upi">{upi}</p>
+                            </Box>
+
+                            <Box>
+                                <p className="timeposted">{time}</p>
+                            </Box>
+                        </Box>
+
+                    </Box>
+
+
+                    <Box className="row2">
+                        <h2 className="title">{title}</h2>
+                        <Box >
+                            <p class="text">{text}</p>
+                        </Box>
+                    </Box>
+                </Box>
+
+                <Carousel dynamicHeight showThumbs={false}>
+                <Box>
+                    <img alt="uoaimage" src="./uoa.jpg" />
+                    
+                </Box>
+                <Box>
+                    <img alt="uoaimage" src="./uoa.jpg" />
+                    
+                </Box>
+                <Box>
+                    <img alt="uoaimage" src="./uoa.jpg" />
+                    
+                </Box>
+            </Carousel>
+
+
+                <Box className="row3">
+
+                    <Box className="votes">
+                        <IconButton>
+                            <ArrowUpward sx={{ color: "rgba(0,128,167,0.35)", "&:hover": { color: "#0080A7" } }} />
+                        </IconButton>
+
+                        <p className="numofvotes">{upvotes - downvotes}</p>
+
+                        <IconButton>
+                            <ArrowDownward sx={{ color: "rgba(0,128,167,0.35)", "&:hover": { color: "#0080A7" } }} />
+                        </IconButton>
+
+                    </Box>
 
                     <Box>
-                        <h5 class="course">{community}</h5>
-                    </Box>
-
-                    <Box className="right">
-                        <Box>
-                            <p className="upi">{upi}</p>
-                        </Box>
-
-                        <Box>
-                            <p className="timeposted">{time}</p>
-                        </Box>
-                    </Box>
-
-                </Box>
-
-
-                <Box className="row2">
-                    <h2 className="title">{title}</h2>
-                    <Box >
-                        <p class="text">{text}</p>
+                        <Button variant="text">Comments</Button>
                     </Box>
                 </Box>
-            </Box>
 
 
-
-            <Box className="row3">
-
-                <Box className="votes">
-                    <IconButton>
-                        <ArrowUpward sx={{ color: "rgba(0,128,167,0.35)", "&:hover": { color: "#0080A7" } }} />
-                    </IconButton>
-
-                    <p className="numofvotes">{upvotes - downvotes}</p>
-
-                    <IconButton>
-                        <ArrowDownward sx={{ color: "rgba(0,128,167,0.35)", "&:hover": { color: "#0080A7" } }} />
-                    </IconButton>
-
-                </Box>
-
-                <Box>
-                    <Button variant="text">Comments</Button>
-                </Box>
-            </Box>
-
-
-
+            
         </Box>);
 };
 

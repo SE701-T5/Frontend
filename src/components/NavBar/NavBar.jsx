@@ -15,35 +15,8 @@ import AddIcon from "@mui/icons-material/Add";
 import PersonIcon from "@mui/icons-material/Person";
 import PeopleIcon from "@mui/icons-material/People";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
+import styles from "./NavBar-styles";
 import React from "react";
-
-const styles = {
-  appBar: {
-    backgroundColor: "#ffffff",
-    height: 70,
-    display: "flex",
-    justifyContent: "center",
-  },
-  headerContainer: {
-    display: "flex",
-    justifyContent: "space-between",
-  },
-  title: {
-    color: "black",
-  },
-  logo: {
-    height: 32,
-    marginRight: 30,
-  },
-  headerSection: {
-    display: "flex",
-    alignItems: "center",
-    height: "100%",
-  },
-  headerElementIcon: {
-    height: "50%",
-  },
-};
 
 const HeaderButton = styled(Button)(({ theme }) => ({
   display: "flex",

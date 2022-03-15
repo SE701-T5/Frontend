@@ -1,6 +1,6 @@
 import React from "react";
-import { createContext, useState, useEffect } from "react";
-const LOCAL_STORAGE_KEY = "authApp";
+import { createContext, useState } from "react";
+
 
 const AuthContext = createContext({});
 export const AuthProvider = ({ children }) => {

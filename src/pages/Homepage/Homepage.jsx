@@ -7,13 +7,14 @@ import Grid from '@mui/material/Grid';
 const Homepage = () => {
   return (
     <>
-      <h1>NavBar</h1>
+      <h1>NavBar</h1> {/* Placeholder for Navbar component - to be replaced */}
       <Container maxWidth="md">
         <h1>Popular Communities</h1>
         <div className="divide">
           <hr className="hpDivider"></hr>
         </div>
         <Container maxWidth="md">
+          {/* Placeholder for Scrollable Popular Communities components - grid to be replaced*/}
           <Grid container spacing={5} justify="center">
             <Grid item xs={12} sm={6} md={4}>
               <PopularCommunity name="SOFTENG 701" alt="SOFTENG 701" image={require("./SOFTENG701.png")}/>
@@ -33,7 +34,7 @@ const Homepage = () => {
           <hr className="hpDivider"></hr>
         </div>
         <Container maxWidth="md">
-          Popular posts feed in this container
+          Popular posts feed in this container {/* Placeholder for Popular Posts card components - to be replaced */}
         </Container>
       </Container>
     </>

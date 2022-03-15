@@ -6,11 +6,12 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import "./PopularCommunity.css";
 
+// Reusable card component to populate the "Popular Communities" section
 const PopularCommunity = (props) => {
     const {name,alt,image}=props
   
     return (
-      <Card sx={{ maxWidth: 345 }} raised='true'>
+      <Card sx={{ maxWidth: 345 }}>
         <CardActionArea>
           <Grid container spacing={1} direction='column'>
             <Grid item>

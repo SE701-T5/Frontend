@@ -1,8 +1,7 @@
-import React, { useState, useContext } from "react";
-import AuthContext from "../../context/AuthProvider";
+import React, { useState} from "react";
+
 import "./LoginPage.css";
-import GoogleIcon from "@mui/icons-material/Google";
-import FacebookIcon from "@mui/icons-material/Facebook";
+
 
 export default function RegisterForm({ errors, Register }) {
   const [userDetails, setUserDetails] = useState({

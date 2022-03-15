@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import Alert from "@mui/material/Alert";
 import "./LoginPage.css";
-import GoogleIcon from "@mui/icons-material/Google";
-import FacebookIcon from "@mui/icons-material/Facebook";
+
 
 export default function LoginForm({ errors, Login }) {
   const [userDetails, setUserDetails] = useState({
@@ -10,7 +8,7 @@ export default function LoginForm({ errors, Login }) {
     email: "",
     password: "",
   });
-  const { username, email, password } = userDetails;
+  const { email, password } = userDetails;
 
   const handleChange = (e) => {
     setUserDetails({

@@ -1,4 +1,4 @@
-.postArea{
+.ppc-postArea{
     border-radius: 8px;
     padding: 20px;
     background-color: #F5F5F5;
@@ -7,51 +7,51 @@
     flex-direction: column;
 }
 
-.row1{
+.ppc-row1{
     display: flex;
     justify-content: space-between;
 }
-.course{
+.ppc-course{
     color: #0080A7;
     margin-top: 0;
    
 }
-.upi{
+.ppc-upi{
     color: #0080A7;
     margin-right: 50px;
     margin-top: 0;
 
 
 }
-.timeposted{
+.ppc-timeposted{
     color: #0080A7;
     margin-top: 0;
 
 }
 
-.title{
+.ppc-title{
     margin-top: 0;
     margin-bottom: 0;
 }
-.text{
+.ppc-text{
     display: -webkit-box;
   overflow: hidden;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 
-.right{
+.ppc-right{
     display: flex;
     text-align: center;
 }
 
-.row3{
+.ppc-row3{
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
   
 }
-.votes{
+.ppc-votes{
     color: #0080A7;
     display: flex;
     text-align: center; 
@@ -59,14 +59,14 @@
     
 
 }
-.numofvotes{
+.ppc-numofvotes{
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 10px;
     margin-right: 10px;
 
 }
-.comment{
+.ppc-comment{
     color: #0080A7;
     margin-top: 0;
     margin-bottom: 0;

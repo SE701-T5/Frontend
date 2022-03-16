@@ -34,7 +34,7 @@ const NewPost = () => {
                 <Select
                   labelId="npForumSelectionLabel"
                   // value={forum}
-                  label="Forum"
+                  label="Select the forum of your post"
                   // onChange={handleChange}
                 >
                   <MenuItem value={'todo'}>SOFTENG 701</MenuItem>

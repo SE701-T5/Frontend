@@ -12,6 +12,7 @@
 .npFormContainer {
   background-color: #FFFFFF;
   padding-bottom: 2%;
+  border-radius: 8px;
 }
 
 .npTableElementTitleForum {

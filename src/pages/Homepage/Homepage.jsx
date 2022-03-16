@@ -58,32 +58,30 @@ const Homepage = () => {
           <hr className="hpDivider"></hr>
         </div>
         <div className="hpContainer">
-          <Container maxWidth="md">
-            {/* Placeholder for Scrollable Popular Communities components - grid to be replaced*/}
-            <Grid container spacing={5} justify="center">
-              <Grid item xs={12} sm={6} md={4}>
-                <PopularCommunity
-                  name="SOFTENG 701"
-                  alt="SOFTENG 701"
-                  image={require("./SOFTENG701.png")}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6} md={4}>
-                <PopularCommunity
-                  name="SOFTENG 754"
-                  alt="SOFTENG 754"
-                  image={require("./SOFTENG754.png")}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6} md={4}>
-                <PopularCommunity
-                  name="COMPSYS 726"
-                  alt="COMPSYS 726"
-                  image={require("./COMPSYS726.png")}
-                />
-              </Grid>
+          {/* Placeholder for Scrollable Popular Communities components - grid to be replaced*/}
+          <Grid container spacing={5} justifyContent="center">
+            <Grid item xs={12} sm={6} md={4}>
+              <PopularCommunity
+                name="SOFTENG 701"
+                alt="SOFTENG 701"
+                image={require("./SOFTENG701.png")}
+              />
             </Grid>
-          </Container>
+            <Grid item xs={12} sm={6} md={4}>
+              <PopularCommunity
+                name="SOFTENG 754"
+                alt="SOFTENG 754"
+                image={require("./SOFTENG754.png")}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <PopularCommunity
+                name="COMPSYS 726"
+                alt="COMPSYS 726"
+                image={require("./COMPSYS726.png")}
+              />
+            </Grid>
+          </Grid>
         </div>
         <br></br>
         <h1 className="hpTitle">Popular Posts</h1>

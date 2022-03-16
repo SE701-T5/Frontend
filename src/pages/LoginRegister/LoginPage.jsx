@@ -1,30 +1,21 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import "./LoginPage.css";
 import { useNavigate } from "react-router-dom";
-import LoginForm from "./LoginForm";
 import AuthContext from "../../context/AuthProvider";
-
+import LoginForm from "./LoginForm";
+import Homepage from "../Homepage";
 export default function LoginPage() {
   const navigate = useNavigate();
-  const [errors] = useState("");
-  /*testing array
-  const adminUser = {
-    email: "admin@123",
-    username: "admin",
-    password: "12ABqwer",
-  };*/
-  const { userDetails } = useContext(AuthContext);
 
-  const [isSuccess] = useState(false);
+  const { userDetails, login, authorized } = useContext(AuthContext);
 
-  const Login = (details) => {
-    console.log(details);
+  const LoginFormDetail = (details) => {
     const founduser = userDetails.find((user) => user.email === details.email);
     if (founduser) {
-      console.log(founduser);
-      if (details.password === founduser.password1) {
+      if (details.password === founduser.password) {
         console.log("loged in");
         alert("Logged in!");
+        login();
         navigate("/homepage");
       } else {
         console.log("Your password is wrong!");
@@ -37,10 +28,13 @@ export default function LoginPage() {
   };
   return (
     <>
-      {isSuccess ? (
-        <div> Welcome</div>
+      {authorized ? (
+        <div>
+          {" "}
+          <Homepage />
+        </div>
       ) : (
-        <LoginForm Login={Login} errors={errors} />
+        <LoginForm LoginFormDetail={LoginFormDetail} />
       )}
     </>
   );

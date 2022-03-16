@@ -18,8 +18,8 @@ const styles = {
 
 const NewPost = () => {
   return (
-    // main div to set background colour spanning the screen
-    <div className="npPage">
+    <div className="npTitleWrapper">
+      <h1 className="npTitle">New Post</h1>
       <div className="npFormContainer">
         <Grid container spacing={2} justify="space-around" md>
           <Grid item xs={12}>

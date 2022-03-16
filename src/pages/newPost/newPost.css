@@ -1,17 +1,17 @@
-.npPage {
-  background-color: #F5F5F5;
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  overflow: scroll;
+.npTitle {
+  color: #19467B;
+  margin-top: 0;
+}
+
+.npTitleWrapper {
+  margin-top: 2%;
+  margin-left: 27%;
+  margin-right: 27%;
 }
 
 .npFormContainer {
   background-color: #FFFFFF;
-  margin-top: 5%;
-  margin-left: 27%;
-  margin-right: 27%;
-  padding-bottom: 1%;
+  padding-bottom: 2%;
 }
 
 .npTableElementTitleForum {

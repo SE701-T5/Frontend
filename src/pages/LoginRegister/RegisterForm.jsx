@@ -23,7 +23,7 @@ export default function RegisterForm({ Register }) {
     Register(Details);
   };
   return (
-    <>
+    <div className="LoginRegisterForm_body">
       <div className="LoginRegister_container" id="LoginRegister_container">
         <div className="LoginRegisterForm_container sign-up-container">
           <form className="LoginRegisterForm_form" onSubmit={handleSubmit}>
@@ -98,6 +98,6 @@ export default function RegisterForm({ Register }) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

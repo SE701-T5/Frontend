@@ -1,3 +1,21 @@
-h1 {
-  color: blue;
+.hpHomePage {
+  background-color: #F5F5F5;
+  width: 100%;
+  padding: 20px 0;
 }
+
+.hpTitle {
+  color: #19467B;
+  margin-top: 0;
+}
+
+.hpDivide {
+  margin-top: -2%;
+  padding-bottom: 2%;
+}
+
+.hpDivider {
+  border: 3px solid #FFFFFF;
+}
+
+

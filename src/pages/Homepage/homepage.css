@@ -1,12 +1,12 @@
 .hpHomePage {
   background-color: #F5F5F5;
-  height: 100%;
   width: 100%;
-  position: fixed;
+  padding: 20px 0;
 }
 
 .hpTitle {
   color: #19467B;
+  margin-top: 0;
 }
 
 .hpDivide {

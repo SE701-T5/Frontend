@@ -17,6 +17,7 @@ import PeopleIcon from "@mui/icons-material/People";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import styles from "./NavBar-styles";
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const HeaderButton = styled(Button)(({ theme }) => ({
   display: "flex",
@@ -79,7 +80,11 @@ function NavBar() {
   // Change isLoggedIn, communitiesMenu to a context variable.
   const isLoggedIn = false;
   const communitiesMenu = ["SOFTENG 352", "SOFTENG 125"];
-  const pagesMenu = ["Posts", "Communities"];
+  const pagesMenu = [
+    { label: "Home", link: "/" },
+    { label: "Posts", link: "/posts" },
+    { label: "Communities", link: "/communities" },
+  ];
   const profileMenu = isLoggedIn
     ? ["Login / Create Account"]
     : ["Profile", "Settings", "Logout"];
@@ -88,6 +93,8 @@ function NavBar() {
   const [anchorElPages, setAnchorElPages] = React.useState(null);
   const [anchorElProfile, setAnchorElProfile] = React.useState(null);
   const [searchValue, setSearchValue] = React.useState("");
+
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     console.log("searchValue", searchValue);
@@ -121,8 +128,9 @@ function NavBar() {
     <AppBar position="static" sx={styles.appBar}>
       <Toolbar sx={styles.headerContainer}>
         <div style={styles.headerSection}>
-          <img src="logo.svg" alt="" style={styles.logo} />
-
+          <Link to="">
+            <img src="logo.svg" alt="" style={styles.logo} />
+          </Link>
           <HeaderButton onClick={handleOpenCommunitiesMenu}>
             <HeaderButtonLabel>Communities</HeaderButtonLabel>
             <PeopleIcon sx={styles.headerElementIcon} />
@@ -176,9 +184,15 @@ function NavBar() {
               horizontal: "left",
             }}
           >
-            {pagesMenu.map((item) => (
-              <MenuItem key={item} onClick={handleClosePagesMenu}>
-                {item}
+            {pagesMenu.map(({ label, link }, index) => (
+              <MenuItem
+                key={String(index)}
+                onClick={() => {
+                  handleClosePagesMenu();
+                  navigate(link);
+                }}
+              >
+                {label}
               </MenuItem>
             ))}
           </Menu>

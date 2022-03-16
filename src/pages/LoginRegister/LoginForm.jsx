@@ -21,8 +21,8 @@ export default function LoginForm({ LoginFormDetail }) {
     LoginFormDetail(Details);
   };
   return (
-    <>
-      <div className="LoginRegister_container" id="LoginRegister_container">
+    <div className="LoginRegisterForm_body">
+      <div className="LoginRegister_container " id="LoginRegister_container">
         <div className="LoginRegisterForm_container sign-in-container">
           <form className="LoginRegisterForm_form" onSubmit={handleSubmit}>
             <h2 className="LoginRegisterForm_h2">Log in</h2>
@@ -80,6 +80,6 @@ export default function LoginForm({ LoginFormDetail }) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

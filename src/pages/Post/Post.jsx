@@ -1,13 +1,14 @@
 import React from "react";
 import "./post.css";
 import Container from "@mui/material/Container";
-import { ArrowUpward, ArrowDownward, Reply } from "@mui/icons-material";
+import { ArrowUpward, ArrowDownward, Reply, Close } from "@mui/icons-material";
 import { Box, Button, IconButton, Avatar } from "@mui/material";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
+import ReplyComponent from "./Reply"
 
 
-const PostPreviewComponent = ({ style }) => {
+const Post = ({ style }) => {
     let community = "SOFTENG701";
     let upi = "shr23456";
     let time = "23:57";
@@ -23,6 +24,13 @@ const PostPreviewComponent = ({ style }) => {
     let commenttime = "23:57";
 
 
+
+
+    const [isShow, setIsShow] = React.useState(false);
+
+    const handleClick = () => {
+        setIsShow(!isShow);
+    };
 
     return (
         <Container maxWidth="md">
@@ -129,12 +137,25 @@ const PostPreviewComponent = ({ style }) => {
                     </Box>
 
                     <Box>
-                        <Button variant="outlined" startIcon={<Reply />}>
-                            Reply
+                        <Button onClick={handleClick} variant="outlined" startIcon={isShow ?
+                            <Close/>:<Reply/> }>
+                            {isShow ?
+                                "Hide Reply":"Reply"    
+                            }
                         </Button>
+
                     </Box>
 
                 </Box>
+
+
+                {isShow &&
+                    <ReplyComponent />
+                }
+
+
+
+
             </Box>
 
         </Container>
@@ -144,5 +165,5 @@ const PostPreviewComponent = ({ style }) => {
     );
 };
 
-export default PostPreviewComponent;
+export default Post;
 

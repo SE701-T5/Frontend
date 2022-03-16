@@ -1,0 +1,31 @@
+.npPage {
+  background-color: #F5F5F5;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  overflow: scroll;
+}
+
+.npFormContainer {
+  background-color: #FFFFFF;
+  margin-top: 5%;
+  margin-left: 27%;
+  margin-right: 27%;
+  padding-bottom: 1%;
+}
+
+.npTableElementTitleForum {
+  margin-left: 2%;
+}
+
+.npMainEditor {
+  margin-left: 2%;
+}
+
+.npUploadMedia {
+  margin-left: 4.1%;
+} 
+
+.npSubmitButton {
+  float: right;
+}

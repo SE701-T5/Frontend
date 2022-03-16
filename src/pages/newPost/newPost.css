@@ -1,0 +1,32 @@
+.npTitle {
+  color: #19467B;
+  margin-top: 0;
+}
+
+.npTitleWrapper {
+  margin-top: 2%;
+  margin-left: 27%;
+  margin-right: 27%;
+}
+
+.npFormContainer {
+  background-color: #FFFFFF;
+  padding-bottom: 2%;
+  border-radius: 8px;
+}
+
+.npTableElementTitleForum {
+  margin-left: 2%;
+}
+
+.npMainEditor {
+  margin-left: 2%;
+}
+
+.npUploadMedia {
+  margin-left: 4.1%;
+} 
+
+.npSubmitButton {
+  float: right;
+}

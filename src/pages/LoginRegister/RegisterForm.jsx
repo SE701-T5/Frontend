@@ -1,46 +1,40 @@
-import React, { useState} from "react";
-
+import React, { useState } from "react";
 import "./LoginPage.css";
 
-
-export default function RegisterForm({ errors, Register }) {
-  const [userDetails, setUserDetails] = useState({
+export default function RegisterForm({ Register }) {
+  const [Details, setDetails] = useState({
     username: "",
     email: "",
     password1: "",
     password2: "",
   });
 
-  const { username, email, password1, password2 } = userDetails;
+  const { username, email, password1, password2 } = Details;
 
   const handleChange = (e) => {
-    setUserDetails({
-      ...userDetails,
+    setDetails({
+      ...Details,
       [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    Register(userDetails);
+    Register(Details);
   };
   return (
     <>
-      <div className="container" id="container">
-        <div className="form-container sign-up-container">
-          <form onSubmit={handleSubmit}>
+      <div className="LoginRegister_container" id="LoginRegister_container">
+        <div className="LoginRegisterForm_container sign-up-container">
+          <form className="LoginRegisterForm_form" onSubmit={handleSubmit}>
             <h2 className="h1 text-center mb-4">Create Account</h2>
-            <div className="social-container">
-              {/*<a href="#" className="social">
-                <GoogleIcon />
-              </a>
-              <a href="#" className="social">
-                <FacebookIcon />
-              </a>*/}
-            </div>
 
-            <span> use your email for registration</span>
+            <span className="LoginRegisterForm_span">
+              {" "}
+              use your email for registration
+            </span>
             <input
+              className="LoginRegisterForm_input"
               type="email"
               placeholder="Email"
               name="email"
@@ -49,6 +43,7 @@ export default function RegisterForm({ errors, Register }) {
               required
             />
             <input
+              className="LoginRegisterForm_input"
               type="username"
               placeholder="Username"
               name="username"
@@ -57,6 +52,7 @@ export default function RegisterForm({ errors, Register }) {
               required
             />
             <input
+              className="LoginRegisterForm_input"
               type="password"
               placeholder="Password"
               name="password1"
@@ -67,6 +63,7 @@ export default function RegisterForm({ errors, Register }) {
               required
             />
             <input
+              className="LoginRegisterForm_input"
               type="password"
               placeholder="Confirm Password"
               name="password2"
@@ -76,22 +73,24 @@ export default function RegisterForm({ errors, Register }) {
               title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
               required
             />
-            <a href="/homepage">
-              <button type="submit">Sign Up</button>
+            <a className="LoginRegisterForm_a" href="/homepage">
+              <button className="LoginRegisterForm_button" type="submit">
+                Sign Up
+              </button>
             </a>
           </form>
         </div>
 
-        <div className="overlay-container-left">
-          <div className="overlay-ll">
-            <div className="overlay-panel overlay-left">
-              <h1>Welcome Back!</h1>
-              <p>
+        <div className="LoginRegisterForm_overlay-container-left">
+          <div className="LoginRegisterForm_overlay-ll">
+            <div className="LoginRegisterForm_overlay-panel LoginRegisterForm_overlay-left">
+              <h1 className="LoginRegisterForm_h1">Welcome Back!</h1>
+              <p className="LoginRegisterForm_p">
                 Please login with your personal details and start journey with
                 us
               </p>
-              <a href="/login">
-                <button className="ghost" id="login">
+              <a className="LoginRegisterForm_a" href="/login">
+                <button className="LoginRegisterForm_button ghost" id="login">
                   Log in
                 </button>
               </a>

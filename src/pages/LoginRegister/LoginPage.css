@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-body {
+.LoginRegisterForm_body {
   background: #e5e5e5;
   display: flex;
   justify-content: center;

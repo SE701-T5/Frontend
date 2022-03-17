@@ -1,5 +1,5 @@
 .npTitle {
-  color: #19467B;
+  color: #19467b;
   margin-top: 0;
 }
 
@@ -10,9 +10,10 @@
 }
 
 .npFormContainer {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding-bottom: 2%;
   border-radius: 8px;
+  margin-bottom: 50px;
 }
 
 .npTableElementTitleForum {
@@ -25,8 +26,14 @@
 
 .npUploadMedia {
   margin-left: 4.1%;
-} 
+}
 
 .npSubmitButton {
   float: right;
+}
+
+.npCarouselWrapper {
+  margin-left: 2%;
+  border-radius: 4px;
+  overflow: hidden;
 }

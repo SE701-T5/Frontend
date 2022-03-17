@@ -4,33 +4,11 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { Carousel } from "react-responsive-carousel";
+import { Box } from "@mui/system";
 const NewCommunity = () => {
-  const [selectedFile, setSelectedFile] = useState();
-  const [preview, setPreview] = useState();
-
-  // create a preview as a side effect, whenever selected file is changed
-  useEffect(() => {
-    if (!selectedFile) {
-      setPreview(undefined);
-      return;
-    }
-
-    const objectUrl = URL.createObjectURL(selectedFile);
-    setPreview(objectUrl);
-
-    // free memory when ever this component is unmounted
-    return () => URL.revokeObjectURL(objectUrl);
-  }, [selectedFile]);
-
-  const onSelectFile = (e) => {
-    if (!e.target.files || e.target.files.length === 0) {
-      setSelectedFile(undefined);
-      return;
-    }
-
-    setSelectedFile(e.target.files[0]);
-  };
+  const [images, setImages] = useState([]);
 
   return (
     <div className="ncContent">
@@ -64,8 +42,28 @@ const NewCommunity = () => {
             </div>
           </Grid>
           <Grid item xs={12}>
-            <div className="ncTextBox">
-              {selectedFile && <img width="100%" height="100%" src={preview} />}
+            <div className="npCarouselWrapper">
+              <Carousel dynamicHeight showThumbs={false} autoPlay infiniteLoop>
+                {images.map((image) => {
+                  return (
+                    <Box>
+                      <img alt="uoaimage" src={image} />
+                      <Button
+                        className="legend"
+                        color="primary"
+                        style={{ top: "20px", bottom: "auto" }}
+                        onClick={() => {
+                          setImages(
+                            images.filter((imageMain) => imageMain !== image)
+                          );
+                        }}
+                      >
+                        Delete
+                      </Button>
+                    </Box>
+                  );
+                })}
+              </Carousel>
             </div>
           </Grid>
           <Grid item xs={6}>
@@ -77,7 +75,26 @@ const NewCommunity = () => {
                 endIcon={<AddPhotoAlternateIcon />}
               >
                 Upload Background Image
-                <input type="file" hidden onChange={onSelectFile} />
+                <input
+                  type="file"
+                  hidden
+                  onChange={(evt) => {
+                    const file = evt.target.files[0];
+
+                    var imageType = /image.*/;
+
+                    if (file && file.type.match(imageType)) {
+                      var reader = new FileReader();
+                      reader.onload = function (e) {
+                        const imageString = reader.result;
+                        const newImagesArray = [...images, imageString];
+                        setImages(newImagesArray);
+                      };
+
+                      reader.readAsDataURL(file);
+                    }
+                  }}
+                />
               </Button>
             </div>
           </Grid>

@@ -1,8 +1,8 @@
 import React from "react";
 import "./post.css";
 import Container from "@mui/material/Container";
-import { ArrowUpward, ArrowDownward, Reply, Close } from "@mui/icons-material";
-import { Box, Button, IconButton, Avatar } from "@mui/material";
+import { ArrowUpward, ArrowDownward } from "@mui/icons-material";
+import { Box, IconButton, Avatar } from "@mui/material";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import ReplyComponent from "./Reply"
@@ -17,20 +17,43 @@ const Post = ({ style }) => {
     let images = ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXsGYUdnO7UWSuZV_wMfyq-ChTkvfHjMMUcA&usqp=CAU", "https://nz3.architecturemedia.net/site_media/media/cache/52/47/5247e80bab99158eecfb84da220fe7b1.jpg", "https://www.rcp.co.nz/wp-content/uploads/2019/09/LFGX4403E-1024x683.jpg"];
     let upvotes = 534;
     let downvotes = 352;
-    let comment = "I love react and react libraries but I have never used Semantic UI...  I heard from a teammate  that it’s pretty easy to use and has a lot of documentation so hopefully I’ll be fine. Any tips for using this new frontend framework?";
-    let commentupvotes = 456;
-    let commentdownvotes = 352;
-    let commentupi = "shr23456";
-    let commenttime = "23:57";
 
+    const commentsArray = [{
+        comment: "I love react and react libraries but I have never used Semantic UI...  I heard from a teammate  that it’s pretty easy to use and has a lot of documentation so hopefully I’ll be fine. Any tips for using this new frontend framework?",
+        commentupvotes: 456,
+        commentdownvotes: 352,
+        commentupi: "shr23456",
+        commenttime: "23:57",
+    },
+    {
+        comment: "I love react and react libraries but I have never used Semantic UI...  I heard from a teammate  that it’s pretty easy to use and has a lot of documentation so hopefully I’ll be fine. Any tips for using this new frontend framework?",
+        commentupvotes: 456,
+        commentdownvotes: 352,
+        commentupi: "shr23456",
+        commenttime: "23:57",
+    },
+    {
+        comment: "I love react and react libraries but I have never used Semantic UI...  I heard from a teammate  that it’s pretty easy to use and has a lot of documentation so hopefully I’ll be fine. Any tips for using this new frontend framework?",
+        commentupvotes: 456,
+        commentdownvotes: 352,
+        commentupi: "shr23456",
+        commenttime: "23:57",
+    },
+    {
+        comment: "I love react and react libraries but I have never used Semantic UI...  I heard from a teammate  that it’s pretty easy to use and has a lot of documentation so hopefully I’ll be fine. Any tips for using this new frontend framework?",
+        commentupvotes: 456,
+        commentdownvotes: 352,
+        commentupi: "shr23456",
+        commenttime: "23:57",
+    },
+    {
+        comment: "I love react and react libraries but I have never used Semantic UI...  I heard from a teammate  that it’s pretty easy to use and has a lot of documentation so hopefully I’ll be fine. Any tips for using this new frontend framework?",
+        commentupvotes: 456,
+        commentdownvotes: 352,
+        commentupi: "shr23456",
+        commenttime: "23:57",
+    }]
 
-
-
-    const [isShow, setIsShow] = React.useState(false);
-
-    const handleClick = () => {
-        setIsShow(!isShow);
-    };
 
     return (
         <Container maxWidth="md">
@@ -94,67 +117,55 @@ const Post = ({ style }) => {
                     </Box>
                 </Box>
             </Box>
-
+            
             <Box className="post-commentArea">
-                <Box className="post-TopRow">
-                    <Box className="post-avatar">
-                        <Avatar alt="name" src="https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png" />
-                    </Box>
-                    <Box className="post-details">
-                        <p className="post-commentupi">{commentupi}</p>
-                        <p className="post-commenttime">{commenttime}</p>
-                    </Box>
-                </Box>
-
-                <Box className="post-MiddleRow">
-                    <Box className="post-comment">
-                        <p className="post-text">{comment}</p>
+                <h3 className="post-comment">Comments</h3>
+                {commentsArray.map(comment => (
+                <>
+                    <Box className="post-TopRow">
+                        <Box className="post-avatar">
+                            <Avatar alt="name" src="https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png" />
+                        </Box>
+                        <Box className="post-details">
+                            <p className="post-commentupi">{comment.commentupi}</p>
+                            <p className="post-commenttime">{comment.commenttime}</p>
+                        </Box>
                     </Box>
 
-                </Box>
-
-                <Box className="post-LastRow">
-                    <Box className="post-votes">
-                        <IconButton>
-                            <ArrowUpward
-                                sx={{
-                                    color: "rgba(0,128,167,0.35)",
-                                    "&:hover": { color: "#0080A7" },
-                                }}
-                            />
-                        </IconButton>
-
-                        <p className="post-numofvotes">{commentupvotes - commentdownvotes}</p>
-
-                        <IconButton>
-                            <ArrowDownward
-                                sx={{
-                                    color: "rgba(0,128,167,0.35)",
-                                    "&:hover": { color: "#0080A7" },
-                                }}
-                            />
-                        </IconButton>
-                    </Box>
-
-                    <Box>
-                        <Button onClick={handleClick} variant="outlined" startIcon={isShow ?
-                            <Close/>:<Reply/> }>
-                            {isShow ?
-                                "Hide Reply":"Reply"    
-                            }
-                        </Button>
+                    <Box className="post-MiddleRow">
+                        <Box className="post-comment">
+                            <p className="post-text">{comment.comment}</p>
+                        </Box>
 
                     </Box>
 
-                </Box>
+                    <Box className="post-LastRow">
+                        <Box className="post-votes">
+                            <IconButton>
+                                <ArrowUpward
+                                    sx={{
+                                        color: "rgba(0,128,167,0.35)",
+                                        "&:hover": { color: "#0080A7" },
+                                    }}
+                                />
+                            </IconButton>
 
+                            <p className="post-numofvotes">{comment.commentupvotes - comment.commentdownvotes}</p>
 
-                {isShow &&
-                    <ReplyComponent />
-                }
+                            <IconButton>
+                                <ArrowDownward
+                                    sx={{
+                                        color: "rgba(0,128,167,0.35)",
+                                        "&:hover": { color: "#0080A7" },
+                                    }}
+                                />
+                            </IconButton>
+                        </Box>
+                    </Box>
+                    </>
+                ))}
 
-
-
+                <ReplyComponent />
 
             </Box>
 

@@ -8,20 +8,20 @@ const ReplyComponent = () => {
     return (
         <Box className="reply-replybox">
             <Box className="reply-avatar">
-                <Avatar alt="name" src="https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png" />
+                <Avatar alt="name" src="https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png" />
             </Box>
 
             <TextField 
             
                 fullWidth
                 id="outlined-textarea"
-                label="Your Reply"
-                placeholder="Reply..."
+                label="Comment..."
+                placeholder=""
                 multiline
             />
             <Box className="reply-button">
                 <Button variant="outlined" startIcon={<Reply />}>
-                    Reply
+                    Comment
                 </Button>
             </Box>
 

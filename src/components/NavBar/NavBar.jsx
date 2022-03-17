@@ -217,7 +217,11 @@ function NavBar() {
         </SearchContainer>
 
         <div style={styles.headerSection}>
-          <HeaderButton>
+          <HeaderButton
+            onClick={() => {
+              navigate("/newpost");
+            }}
+          >
             <AddIcon sx={styles.headerElementIcon} />
             <HeaderButtonLabel>New</HeaderButtonLabel>
           </HeaderButton>

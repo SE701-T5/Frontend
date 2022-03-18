@@ -121,7 +121,7 @@ const Posts = () => {
       </Box>
       {searchQuery.length > 0 && (
         <p>
-          <b>Based on search query "{searchQuery}"</b>
+          <b>{filteredResults.length} results found based on search query "{searchQuery}"</b>
         </p>
       )}
       {filteredResults &&

@@ -16,8 +16,9 @@ import PersonIcon from "@mui/icons-material/Person";
 import PeopleIcon from "@mui/icons-material/People";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import styles from "./NavBar-styles";
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import AuthContext from "context/AuthProvider";
 
 const HeaderButton = styled(Button)(({ theme }) => ({
   display: "flex",
@@ -77,17 +78,22 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 function NavBar() {
-  // Change isLoggedIn, communitiesMenu to a context variable.
-  const isLoggedIn = false;
+  const { logout, authorized } = useContext(AuthContext);
+  
+  // Change communitiesMenu to a context variable.
   const communitiesMenu = ["SOFTENG 352", "SOFTENG 125"];
   const pagesMenu = [
     { label: "Home", link: "/" },
     { label: "Posts", link: "/posts" },
     { label: "Communities", link: "/communities" },
   ];
-  const profileMenu = isLoggedIn
-    ? ["Login / Create Account"]
-    : ["Profile", "Settings", "Logout"];
+  const profileMenu = authorized
+    ? [
+        { label: "Profile", link: "/profile" },
+        { label: "Settings", link: "/settings" },
+        { label: "Logout", link: "/logout" },
+      ]
+    : [{ label: "Login / Create Account", link: "/login" }];
 
   const [anchorElCommunities, setAnchorElCommunities] = React.useState(null);
   const [anchorElPages, setAnchorElPages] = React.useState(null);
@@ -246,9 +252,15 @@ function NavBar() {
             open={Boolean(anchorElProfile)}
             onClose={handleCloseProfileMenu}
           >
-            {profileMenu.map((option) => (
-              <MenuItem key={option} onClick={handleCloseProfileMenu}>
-                {option}
+            {profileMenu.map(({ label, link }, index) => (
+              <MenuItem
+                key={index}
+                onClick={() => {
+                  handleCloseProfileMenu();
+                  link === "/logout" ? logout() : navigate(link);
+                }}
+              >
+                {label}
               </MenuItem>
             ))}
           </Menu>

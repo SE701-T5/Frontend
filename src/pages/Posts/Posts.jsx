@@ -71,8 +71,12 @@ const Posts = () => {
   //creating a state for filtered results
   const [filteredResults, setFilteredResults] = useState(posts);
 
+  //creating a state for search query in searchbar
+  const [searchQuery, setSearchQuery] = useState("");
+
   //Function for filtering posts by title, community, text, or upi when user inputs text in the search bar, else all posts will be shown
   const searchItem = (searchValue) => {
+    setSearchQuery(searchValue);
     if (searchValue !== "") {
       const filteredSearch = posts.filter((item) => {
         return (
@@ -115,7 +119,11 @@ const Posts = () => {
           />
         </FormControl>
       </Box>
-
+      {searchQuery.length > 0 && (
+        <p>
+          <b>Based on search query "{searchQuery}"</b>
+        </p>
+      )}
       {filteredResults &&
         filteredResults.map((post) => (
           <Box className="p-post">

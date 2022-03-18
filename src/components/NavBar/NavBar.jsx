@@ -18,7 +18,7 @@ import BookmarkIcon from "@mui/icons-material/Bookmark";
 import styles from "./NavBar-styles";
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import AuthContext from "context/AuthProvider";
+import AuthContext from "../../context/AuthProvider";
 import logo from "../../assets/logo.svg";
 
 const HeaderButton = styled(Button)(({ theme }) => ({

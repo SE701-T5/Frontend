@@ -10,6 +10,7 @@ import LoginPage from "./pages/LoginRegister/LoginPage";
 import RegisterPage from "./pages/LoginRegister/RegisterPage";
 import NavBar from "./components/NavBar/NavBar";
 import CommunitiesPage from "./pages/Communities/CommunitiesPage";
+import Posts from "./pages/Posts/Posts";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route exact path="/NewPost" element={<NewPost />} />
         <Route exact path="/NewCommunity" element={<NewCommunity />} />
         <Route exact path="/Communities" element={<CommunitiesPage />} />
+        <Route exact path="/Posts" element={<Posts />} />
       </Routes>
     </>
   );

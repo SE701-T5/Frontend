@@ -19,6 +19,7 @@ import styles from "./NavBar-styles";
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "context/AuthProvider";
+import logo from "../../assets/logo.svg";
 
 const HeaderButton = styled(Button)(({ theme }) => ({
   display: "flex",
@@ -134,8 +135,8 @@ function NavBar() {
     <AppBar position="static" sx={styles.appBar}>
       <Toolbar sx={styles.headerContainer}>
         <div style={styles.headerSection}>
-          <Link to="">
-            <img src="logo.svg" alt="" style={styles.logo} />
+          <Link to=".">
+            <img src={logo} alt="" style={styles.logo} />
           </Link>
           <HeaderButton onClick={handleOpenCommunitiesMenu}>
             <HeaderButtonLabel>Communities</HeaderButtonLabel>

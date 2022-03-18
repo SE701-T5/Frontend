@@ -1,0 +1,85 @@
+import React from "react";
+import "./posts.css";
+import Container from "@mui/material/Container";
+import { Search } from "@mui/icons-material";
+import { Box, IconButton, Avatar, Button, FormControl,InputLabel, OutlinedInput } from "@mui/material";
+import PostPreviewComponent from "../../components/postPreviewComponent";
+
+const Posts = () => {
+
+    const posts = [{
+        title: "sjngosnhpmre",
+        community: "Softeng701",
+        upi: "shfdj364",
+        time: "12:12",
+        text: "I love react and react libraries but I have never used Semantic UI...  I heard from a teammate  that it’s pretty easy to use and has a lot of documentation so hopefully I’ll be fine. Any tips...",
+        upvotes: 24,
+        downvotes: 23,
+        images: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXsGYUdnO7UWSuZV_wMfyq-ChTkvfHjMMUcA&usqp=CAU", "https://nz3.architecturemedia.net/site_media/media/cache/52/47/5247e80bab99158eecfb84da220fe7b1.jpg"]
+    },
+    {
+        title: "sjngosnhpmre",
+        community: "Softeng701",
+        upi: "shfdj364",
+        time: "12:12",
+        text: "I love react and react libraries but I have never used Semantic UI...  I heard from a teammate  that it’s pretty easy to use and has a lot of documentation so hopefully I’ll be fine. Any tips...",
+        upvotes: 24,
+        downvotes: 23,
+        images: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXsGYUdnO7UWSuZV_wMfyq-ChTkvfHjMMUcA&usqp=CAU", "https://nz3.architecturemedia.net/site_media/media/cache/52/47/5247e80bab99158eecfb84da220fe7b1.jpg"]
+    },
+    {
+        title: "sjngosnhpmre",
+        community: "Softeng701",
+        upi: "shfdj364",
+        time: "12:12",
+        text: "I love react and react libraries but I have never used Semantic UI...  I heard from a teammate  that it’s pretty easy to use and has a lot of documentation so hopefully I’ll be fine. Any tips...",
+        upvotes: 24,
+        downvotes: 23,
+        images: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXsGYUdnO7UWSuZV_wMfyq-ChTkvfHjMMUcA&usqp=CAU", "https://nz3.architecturemedia.net/site_media/media/cache/52/47/5247e80bab99158eecfb84da220fe7b1.jpg"]
+    },
+    {
+        title: "sjngosnhpmre",
+        community: "Softeng701",
+        upi: "shfdj364",
+        time: "12:12",
+        text: "I love react and react libraries but I have never used Semantic UI...  I heard from a teammate  that it’s pretty easy to use and has a lot of documentation so hopefully I’ll be fine. Any tips...",
+        upvotes: 24,
+        downvotes: 23,
+        images: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXsGYUdnO7UWSuZV_wMfyq-ChTkvfHjMMUcA&usqp=CAU", "https://nz3.architecturemedia.net/site_media/media/cache/52/47/5247e80bab99158eecfb84da220fe7b1.jpg"]
+    }
+    ]
+    return (
+        <Container maxWidth="md">
+            <Box className="p-toprow">
+                <h1 className="p-title">Posts</h1>
+                <Box className="p-postbutton">
+                    <Button variant="contained">New Post</Button>
+
+                </Box>
+            </Box>
+            <hr style={{ border: "3px solid white" }} />
+            <Box className="p-search">
+                <FormControl className="p-searchbar" variant="filled">
+                    <InputLabel htmlFor="search">Search Posts</InputLabel>
+                    <OutlinedInput
+                        id="search"
+                        endAdornment={
+                            <inputAdornment position="end">
+                                <Search />
+                            </inputAdornment>
+
+                        }
+                    />
+                </FormControl>
+            </Box>
+     
+            {posts.map(post =>
+                <Box className="p-post">
+                    <PostPreviewComponent post={post} />
+
+                </Box>)}
+        </Container>
+    )
+};
+
+export default Posts;

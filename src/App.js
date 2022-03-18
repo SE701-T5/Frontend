@@ -8,7 +8,7 @@ import ForgotPasswordPage from "./pages/LoginRegister/ForgotPasswordPage";
 import LoginPage from "./pages/LoginRegister/LoginPage";
 import RegisterPage from "./pages/LoginRegister/RegisterPage";
 import NavBar from "./components/NavBar/NavBar";
-
+import Posts from "./pages/Posts/Posts";
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       <Route exact path="/ComponentsTesting" element={<ComponentsTesting />} />
       <Route exact path="/NewPost" element={<NewPost />} />
+      <Route exact path="/Posts" element={<Posts />} />
     </Routes>
    </>
   );

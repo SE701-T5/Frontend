@@ -1,0 +1,22 @@
+.p-toprow{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+.p-title{
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #19467B;
+}
+.p-searchbar{
+
+    width: 100%;
+    background-color: white;
+    border-radius: 6px;
+}
+
+.p-post{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}

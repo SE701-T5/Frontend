@@ -28,10 +28,10 @@ const posts = [
   },
   {
     title: "no",
-    community: "Softeng701",
+    community: "Softeng751",
     upi: "shfdj364",
     time: "12:12",
-    text: "I love react and react libraries but I have never used Semantic UI...  I heard from a teammate  that it’s pretty easy to use and has a lot of documentation so hopefully I’ll be fine. Any tips...",
+    text: "High performance computing seems pretty interesting, but also difficult to learn. Also how do you even pronounce parallelisation",
     upvotes: 24,
     downvotes: 23,
     images: [
@@ -41,7 +41,7 @@ const posts = [
   },
   {
     title: "hi",
-    community: "Softeng701",
+    community: "Compsys701",
     upi: "shfdj364",
     time: "12:12",
     text: "I love react and react libraries but I have never used Semantic UI...  I heard from a teammate  that it’s pretty easy to use and has a lot of documentation so hopefully I’ll be fine. Any tips...",
@@ -75,7 +75,11 @@ const Posts = () => {
   const searchItem = (searchValue) => {
     if (searchValue !== "") {
       const filteredSearch = posts.filter((item) => {
-        return item.title.toLowerCase().includes(searchValue.toLowerCase());
+        return (
+          item.title.toLowerCase().includes(searchValue.toLowerCase()) ||
+          item.community.toLowerCase().includes(searchValue.toLowerCase()) ||
+          item.text.toLowerCase().includes(searchValue.toLowerCase())
+        );
       });
       setFilteredResults(filteredSearch);
     } else {

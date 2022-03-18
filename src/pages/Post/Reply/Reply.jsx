@@ -11,8 +11,8 @@ const ReplyComponent = () => {
                 <Avatar alt="name" src="https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png" />
             </Box>
 
-            <TextField 
-            
+            <TextField
+
                 fullWidth
                 id="outlined-textarea"
                 label="Comment..."
@@ -26,13 +26,7 @@ const ReplyComponent = () => {
             </Box>
 
         </Box>
-
-
-
-
     );
-
-
 };
 
 export default ReplyComponent;

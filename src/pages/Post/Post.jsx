@@ -117,51 +117,51 @@ const Post = ({ style }) => {
                     </Box>
                 </Box>
             </Box>
-            
+
             <Box className="post-commentArea">
                 <h3 className="post-comment">Comments</h3>
                 {commentsArray.map(comment => (
-                <>
-                    <Box className="post-TopRow">
-                        <Box className="post-avatar">
-                            <Avatar alt="name" src="https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png" />
-                        </Box>
-                        <Box className="post-details">
-                            <p className="post-commentupi">{comment.commentupi}</p>
-                            <p className="post-commenttime">{comment.commenttime}</p>
-                        </Box>
-                    </Box>
-
-                    <Box className="post-MiddleRow">
-                        <Box className="post-comment">
-                            <p className="post-text">{comment.comment}</p>
+                    <>
+                        <Box className="post-TopRow">
+                            <Box className="post-avatar">
+                                <Avatar alt="name" src="https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png" />
+                            </Box>
+                            <Box className="post-details">
+                                <p className="post-commentupi">{comment.commentupi}</p>
+                                <p className="post-commenttime">{comment.commenttime}</p>
+                            </Box>
                         </Box>
 
-                    </Box>
+                        <Box className="post-MiddleRow">
+                            <Box className="post-comment">
+                                <p className="post-text">{comment.comment}</p>
+                            </Box>
 
-                    <Box className="post-LastRow">
-                        <Box className="post-votes">
-                            <IconButton>
-                                <ArrowUpward
-                                    sx={{
-                                        color: "rgba(0,128,167,0.35)",
-                                        "&:hover": { color: "#0080A7" },
-                                    }}
-                                />
-                            </IconButton>
-
-                            <p className="post-numofvotes">{comment.commentupvotes - comment.commentdownvotes}</p>
-
-                            <IconButton>
-                                <ArrowDownward
-                                    sx={{
-                                        color: "rgba(0,128,167,0.35)",
-                                        "&:hover": { color: "#0080A7" },
-                                    }}
-                                />
-                            </IconButton>
                         </Box>
-                    </Box>
+
+                        <Box className="post-LastRow">
+                            <Box className="post-votes">
+                                <IconButton>
+                                    <ArrowUpward
+                                        sx={{
+                                            color: "rgba(0,128,167,0.35)",
+                                            "&:hover": { color: "#0080A7" },
+                                        }}
+                                    />
+                                </IconButton>
+
+                                <p className="post-numofvotes">{comment.commentupvotes - comment.commentdownvotes}</p>
+
+                                <IconButton>
+                                    <ArrowDownward
+                                        sx={{
+                                            color: "rgba(0,128,167,0.35)",
+                                            "&:hover": { color: "#0080A7" },
+                                        }}
+                                    />
+                                </IconButton>
+                            </Box>
+                        </Box>
                     </>
                 ))}
 
@@ -170,9 +170,6 @@ const Post = ({ style }) => {
             </Box>
 
         </Container>
-
-
-
     );
 };
 

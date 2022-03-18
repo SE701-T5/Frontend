@@ -7,6 +7,7 @@ import NewPost from "./pages/newPost/NewPost.jsx";
 import ForgotPasswordPage from "./pages/LoginRegister/ForgotPasswordPage";
 import LoginPage from "./pages/LoginRegister/LoginPage";
 import RegisterPage from "./pages/LoginRegister/RegisterPage";
+import Communities from "./pages/Communities/Communities";
 import NavBar from "./components/NavBar/NavBar";
 
 
@@ -22,6 +23,7 @@ function App() {
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       <Route exact path="/ComponentsTesting" element={<ComponentsTesting />} />
       <Route exact path="/NewPost" element={<NewPost />} />
+      <Route exact path="/communities" element={<Communities />} />
     </Routes>
    </>
   );

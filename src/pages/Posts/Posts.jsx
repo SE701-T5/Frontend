@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./posts.css";
 import Container from "@mui/material/Container";
 import { Search } from "@mui/icons-material";
-import { Box, IconButton, Avatar, Button, FormControl, InputLabel, OutlinedInput, InputAdornment } from "@mui/material";
+import { Box, Button, FormControl, InputLabel, OutlinedInput, InputAdornment } from "@mui/material";
 import PostPreviewComponent from "../../components/postPreviewComponent";
 const posts = [{
     title: "yes",
@@ -88,7 +88,7 @@ const Posts = () => {
                     />
                 </FormControl>
             </Box>
-                        
+
             {filteredResults && filteredResults.map(post =>
                 <Box className="p-post">
                     <PostPreviewComponent post={post} />

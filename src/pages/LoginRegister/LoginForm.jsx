@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 
 export default function LoginForm({ LoginFormDetail }) {
@@ -8,7 +9,7 @@ export default function LoginForm({ LoginFormDetail }) {
     password: "",
   });
   const { email, password } = Details;
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setDetails({
       ...Details,
@@ -50,12 +51,12 @@ export default function LoginForm({ LoginFormDetail }) {
               required
             />
 
-            <a
-              href="/forgot-password"
+            <Link
+              to="/forgot-password"
               className="LoginRegisterForm_a text-body"
             >
               Forgot your password?
-            </a>
+            </Link>
 
             <button className="LoginRegisterForm_button" type="submit">
               Sign In
@@ -71,11 +72,15 @@ export default function LoginForm({ LoginFormDetail }) {
               <p className="LoginRegisterForm_p">
                 Enter your personal details and start journey with us
               </p>
-              <a href="/register">
-                <button className="LoginRegisterForm_button ghost" id="signUp">
-                  Sign Up
-                </button>
-              </a>
+              <button
+                className="LoginRegisterForm_button ghost"
+                id="signUp"
+                onClick={() => {
+                  navigate("/register");
+                }}
+              >
+                Sign Up
+              </button>
             </div>
           </div>
         </div>

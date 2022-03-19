@@ -1,5 +1,6 @@
-.post-postArea{
+.post-commentArea{
     margin-top: 50px;
+    margin-bottom: 50px;
     border-radius: 8px;
     padding: 20px;
     background-color: #FFFFFF;
@@ -8,57 +9,50 @@
     flex-direction: column;
 }
 
-.post-row1{
-    display: flex;
-    justify-content: space-between;
-}
-.post-course{
-    color: #0080A7;
-    margin-top: 0;
-   
-}
-.post-upi{
-    color: #0080A7;
-    margin-right: 50px;
-    margin-top: 0;
-
-
-}
-.post-timeposted{
-    color: #0080A7;
-    margin-top: 0;
-
-}
-
-.post-title{
+.post-comment{
     margin-top: 0;
     margin-bottom: 0;
 }
+
+.post-TopRow{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+}
+.post-avatar{
+    margin-right: 20px;
+}
+.post-details{
+    display: flex;
+}
+.post-commentupi{
+    color: #0080A7;
+    margin-right: 50px;
+    margin-top: 0;
+    margin-bottom: 0;
+
+
+}
+.post-commenttime{
+    color: #0080A7;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 .post-text{
     display: -webkit-box;
     overflow: hidden;
     -webkit-box-orient: vertical;
 }
 
-.post-right{
-    display: flex;
-    text-align: center;
-}
-
-.post-row3{
+.post-LastRow{
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
-  
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgb(224, 224, 224);
 }
-.post-votes{
-    color: #0080A7;
-    display: flex;
-    text-align: center; 
-    align-items: center;
-    
 
-}
 .post-numofvotes{
     margin-top: 0;
     margin-bottom: 0;
@@ -67,4 +61,11 @@
 
 }
 
+.post-votes{
+    color: #0080A7;
+    display: flex;
+    text-align: center; 
+    align-items: center;
+    
 
+}

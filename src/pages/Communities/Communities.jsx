@@ -1,9 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import "./communities.css";
 import Container from "@mui/material/Container";
-import {alpha, styled, InputBase, Button} from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
+import {Box, FormControl, InputLabel, OutlinedInput, InputAdornment, alpha, styled, InputBase, Button} from "@mui/material";
 import CommunityPreviewComponent from "../../components/communityPreviewComponent/CommunityPreviewComponent.jsx";
+import { Search } from "@mui/icons-material";
 
 const buttonStyle = {
   backgroundColor: '#059EF4',
@@ -85,18 +85,20 @@ const Communities = () => {
       </div>
       <br></br>
       <div className="com-bodyContainer">
-        <div className = "com-search">
-          <SearchContainer>
-            <StyledInputBase
-              fullWidth
-              placeholder="Search Communities"
-              inputProps={{ "aria-label": "search" }}
+        <Box className="com-search">
+          <FormControl className="com-searchbar" variant="filled">
+            <InputLabel htmlFor="search">Search Posts</InputLabel>
+            <OutlinedInput
+                id="search"
+                endAdornment={
+                    <InputAdornment position="end">
+                        <Search />
+                    </InputAdornment>
+
+                }
             />
-            <SearchIconWrapper>
-              <SearchIcon />
-              </SearchIconWrapper>
-          </SearchContainer>
-        </div>
+          </FormControl>
+        </Box>
         <div className="com-result">
           <b>Based on search query "SOFTENG"</b>
         </div>

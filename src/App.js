@@ -30,7 +30,8 @@ function App() {
         />
         <Route exact path="/NewPost" element={<NewPost />} />
         <Route exact path="/NewCommunity" element={<NewCommunity />} />
-        <Route exact path="/Communities" element={<CommunitiesPage />} />
+        <Route exact path="/Communities" element={<Communities />} />
+        <Route exact path="/CommunitiesPage" element={<CommunitiesPage />} />
         <Route exact path="/Posts" element={<Posts />} />
       </Routes>
     </>

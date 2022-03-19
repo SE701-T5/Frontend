@@ -40,10 +40,12 @@ View browser in development mode
 ### Deployment
 Frontend repo's main branch will be automatically deployed to Netlify.
 
+https://uniforum.netlify.app/
+
 ## Frontend Contributors: 
 - Christopher Alba
 - Hyung
 - Trinh Vo
 - Xiaoqi
 - Yu Chen
-
+- Qunzhi Zhou

@@ -1,13 +1,30 @@
 import React from "react";
 import "./postPreviewComponent.css";
-import { ArrowUpward, ArrowDownward, AddComment } from "@mui/icons-material";
+import {
+  ArrowUpward,
+  ArrowDownward,
+  AddComment,
+  Link,
+} from "@mui/icons-material";
 import { Box, Button, IconButton } from "@mui/material";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
+import { useNavigate } from "react-router-dom";
 
 const PostPreviewComponent = ({ post, style }) => {
-  const { title, community, upi, time, text, upvotes, downvotes, images } =
-    post;
+  const {
+    title,
+    community,
+    upi,
+    time,
+    text,
+    upvotes,
+    downvotes,
+    images,
+    postID,
+  } = post;
+
+  const navigate = useNavigate();
 
   return (
     <Box className="ppc-postArea" style={style}>
@@ -29,7 +46,14 @@ const PostPreviewComponent = ({ post, style }) => {
         </Box>
 
         <Box className="ppc-row2">
-          <h2 className="ppc-title">{title}</h2>
+          <h2
+            className="ppc-title"
+            onClick={() => {
+              navigate(`/post/${postID}`);
+            }}
+          >
+            {title} <Link className="ppc-link-icon" />
+          </h2>
           <Box>
             <p className="ppc-text">{text}</p>
           </Box>
@@ -70,7 +94,13 @@ const PostPreviewComponent = ({ post, style }) => {
         </Box>
 
         <Box>
-          <Button variant="outlined" startIcon={<AddComment />}>
+          <Button
+            variant="outlined"
+            startIcon={<AddComment />}
+            onClick={() => {
+              navigate(`/post/${postID}`);
+            }}
+          >
             Comment
           </Button>
         </Box>

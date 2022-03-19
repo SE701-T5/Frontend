@@ -5,7 +5,6 @@
 }
 
 .LoginRegisterForm_body {
- 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,6 +53,7 @@
   padding: 12px 45px;
   letter-spacing: 1px;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .LoginRegisterForm_button:active {

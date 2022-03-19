@@ -1,6 +1,5 @@
 import { Button } from '@mui/material';
 import './index.css';
-import NavBar from '../../components/NavBar/NavBar';
 import PostPreview from '../../components/postPreviewComponent/index'
 
 function Community() {

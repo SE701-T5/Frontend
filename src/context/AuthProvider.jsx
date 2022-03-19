@@ -2,7 +2,19 @@ import React from "react";
 import { createContext, useState, useEffect } from "react";
 const LOCAL_STORAGE_KEY = "authUsers";
 
-const AuthContext = createContext({});
+const AuthContext = createContext({
+  userDetails: [
+    {
+      email: "",
+      username: "",
+      password: "",
+    },
+  ],
+  setUserDetails: (newUserDetails) => {},
+  login: () => {},
+  logout: () => {},
+  authorized: false,
+});
 export const AuthProvider = ({ children }) => {
   const [authorized, setAuthorized] = useState(false);
   const [userDetails, setUserDetails] = useState([

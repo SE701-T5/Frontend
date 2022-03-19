@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import CommunityPreviewComponent from "../../components/communityPreviewComponent/CommunityPreviewComponent.jsx";
 import { Search } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 const buttonStyle = {
   backgroundColor: "#059EF4",
@@ -22,6 +23,7 @@ const buttonStyle = {
 };
 
 const Communities = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -52,7 +54,13 @@ const Communities = () => {
     <Container maxWidth="md">
       <div className="com-titleContainer">
         <h1 className="com-Title">Communities</h1>
-        <Button variant="contained" style={buttonStyle}>
+        <Button
+          variant="contained"
+          style={buttonStyle}
+          onClick={() => {
+            navigate("/newcommunity");
+          }}
+        >
           New Community
         </Button>
         <div className="com-Divide">

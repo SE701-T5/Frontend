@@ -10,7 +10,10 @@ import LoginPage from "./pages/LoginRegister/LoginPage";
 import RegisterPage from "./pages/LoginRegister/RegisterPage";
 import NavBar from "./components/NavBar/NavBar";
 import Post from "./pages/Post";
+<<<<<<< HEAD
 import CommunitiesPage from "./pages/Communities/CommunitiesPage";
+=======
+>>>>>>> d8276efc2e061a212686df66f6f8a539d18732d7
 import Posts from "./pages/Posts/Posts";
 
 function App() {

@@ -1,0 +1,70 @@
+.post-postArea{
+    margin-top: 50px;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-row1{
+    display: flex;
+    justify-content: space-between;
+}
+.post-course{
+    color: #0080A7;
+    margin-top: 0;
+   
+}
+.post-upi{
+    color: #0080A7;
+    margin-right: 50px;
+    margin-top: 0;
+
+
+}
+.post-timeposted{
+    color: #0080A7;
+    margin-top: 0;
+
+}
+
+.post-title{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.post-text{
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+}
+
+.post-right{
+    display: flex;
+    text-align: center;
+}
+
+.post-row3{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  
+}
+.post-votes{
+    color: #0080A7;
+    display: flex;
+    text-align: center; 
+    align-items: center;
+    
+
+}
+.post-numofvotes{
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+
+

@@ -13,7 +13,8 @@ import Post from "./pages/Post";
 import CommunitiesPage from "./pages/Communities/CommunitiesPage";
 import Posts from "./pages/Posts/Posts";
 import Community from './pages/Community'
-
+import CommunitiesPage from "./pages/Communities/CommunitiesPage";
+import NewCommunity from "./pages/newCommunity/NewCommunity.jsx";
 function App() {
   return (
     <>

@@ -11,7 +11,7 @@ function Community() {
                     <div className='image' style={{ "backgroundImage": "url(https://img1.baidu.com/it/u=1407750889,3441968730&fm=253&fmt=auto&app=120&f=JPEG?w=1200&h=799)" }}>
                         <div>
                             <p>SOFTENG</p>
-                            <Button type='primary'>Join</Button>
+                            <Button variant="filled">Join</Button>
                         </div>
                     </div>
                     <div className='info'>

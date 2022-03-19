@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React from "react";
 import "./communities.css";
 import Container from "@mui/material/Container";
-import {Box, FormControl, InputLabel, OutlinedInput, InputAdornment, alpha, styled, InputBase, Button} from "@mui/material";
+import {Box, FormControl, InputLabel, OutlinedInput, InputAdornment, Button} from "@mui/material";
 import CommunityPreviewComponent from "../../components/communityPreviewComponent/CommunityPreviewComponent.jsx";
 import { Search } from "@mui/icons-material";
 
@@ -13,38 +13,6 @@ const buttonStyle = {
   top:'0',
   right:'0'
 }
-
-const SearchContainer = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center",
-  justifyContent: "space-between",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha("#BBB8B8", 0.2),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.black, 0.1),
-  },
-  width: 600,
-  color: "black",
-}));
-
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  marginRight: theme.spacing(1),
-  height: "100%",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  margin: "0 5px",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 0, 1, 1),
-    width: "100%",
-  },
-}));
 
 const Communities = () => {
   const communityPreviews = [

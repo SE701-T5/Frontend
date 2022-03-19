@@ -30,3 +30,9 @@
   margin-right: 4%;
   float: right;
 }
+.ncCarouselWrapper {
+  border-radius: 4px;
+  margin-left: 2%;
+  margin-right: 2%;
+  overflow: hidden;
+}

@@ -9,6 +9,7 @@ import ForgotPasswordPage from "./pages/LoginRegister/ForgotPasswordPage";
 import LoginPage from "./pages/LoginRegister/LoginPage";
 import RegisterPage from "./pages/LoginRegister/RegisterPage";
 import NavBar from "./components/NavBar/NavBar";
+
 import CommunitiesPage from "./pages/Communities/CommunitiesPage";
 
 function App() {

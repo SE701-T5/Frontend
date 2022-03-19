@@ -42,7 +42,7 @@ const NewCommunity = () => {
             </div>
           </Grid>
           <Grid item xs={12}>
-            <div className="npCarouselWrapper">
+            <div className="ncCarouselWrapper">
               <Carousel dynamicHeight showThumbs={false} autoPlay infiniteLoop>
                 {images.map((image) => {
                   return (
@@ -106,8 +106,6 @@ const NewCommunity = () => {
           </Grid>
         </Grid>
       </form>
-
-      <div></div>
     </div>
   );
 };

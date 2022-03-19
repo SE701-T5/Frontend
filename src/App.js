@@ -10,6 +10,7 @@ import LoginPage from "./pages/LoginRegister/LoginPage";
 import RegisterPage from "./pages/LoginRegister/RegisterPage";
 import Communities from "./pages/Communities/Communities";
 import NavBar from "./components/NavBar/NavBar";
+import Post from "./pages/Post";
 import CommunitiesPage from "./pages/Communities/CommunitiesPage";
 import Posts from "./pages/Posts/Posts";
 
@@ -33,6 +34,7 @@ function App() {
         <Route exact path="/Communities" element={<Communities />} />
         <Route exact path="/CommunitiesPage" element={<CommunitiesPage />} />
         <Route exact path="/Posts" element={<Posts />} />
+        <Route exact path="/post/:id" element={<Post />} />
       </Routes>
     </>
   );

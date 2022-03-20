@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./posts.css";
 import Container from "@mui/material/Container";
 import { Search } from "@mui/icons-material";
@@ -18,6 +18,7 @@ const posts = [
     community: "Softeng701",
     upi: "abcd123",
     time: "12:12",
+    postID: "randomID1",
     text: "I love react and react libraries but I have never used Semantic UI...  I heard from a teammate  that it’s pretty easy to use and has a lot of documentation so hopefully I’ll be fine. Any tips...",
     upvotes: 24,
     downvotes: 23,
@@ -31,6 +32,7 @@ const posts = [
     community: "Softeng751",
     upi: "shfdj364",
     time: "12:12",
+    postID: "randomID2",
     text: "High performance computing seems pretty interesting, but also difficult to learn. Also how do you even pronounce parallelisation",
     upvotes: 24,
     downvotes: 23,
@@ -44,6 +46,7 @@ const posts = [
     community: "Compsys701",
     upi: "das8089",
     time: "12:12",
+    postID: "randomID3",
     text: "I love react and react libraries but I have never used Semantic UI...  I heard from a teammate  that it’s pretty easy to use and has a lot of documentation so hopefully I’ll be fine. Any tips...",
     upvotes: 24,
     downvotes: 23,
@@ -57,6 +60,7 @@ const posts = [
     community: "Softeng701",
     upi: "sass2364",
     time: "12:12",
+    postID: "randomID4",
     text: "I love react and react libraries but I have never used Semantic UI...  I heard from a teammate  that it’s pretty easy to use and has a lot of documentation so hopefully I’ll be fine. Any tips...",
     upvotes: 24,
     downvotes: 23,
@@ -67,6 +71,10 @@ const posts = [
   },
 ];
 const Posts = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const navigate = useNavigate();
   //creating a state for filtered results
   const [filteredResults, setFilteredResults] = useState(posts);
@@ -121,7 +129,10 @@ const Posts = () => {
       </Box>
       {searchQuery.length > 0 && (
         <p>
-          <b>{filteredResults.length} results found based on search query "{searchQuery}"</b>
+          <b>
+            {filteredResults.length} results found based on search query "
+            {searchQuery}"
+          </b>
         </p>
       )}
       {filteredResults &&

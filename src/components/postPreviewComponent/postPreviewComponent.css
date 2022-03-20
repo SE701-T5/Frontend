@@ -1,74 +1,78 @@
-.ppc-postArea{
-    border-radius: 8px;
-    padding: 20px;
-    background-color: #FFFFFF;
-    justify-content: space-between;
-    display: flex;
-    flex-direction: column;
+.ppc-postArea {
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #ffffff;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
 }
 
-.ppc-row1{
-    display: flex;
-    justify-content: space-between;
+.ppc-row1 {
+  display: flex;
+  justify-content: space-between;
 }
-.ppc-course{
-    color: #0080A7;
-    margin-top: 0;
-   
+.ppc-course {
+  color: #0080a7;
+  margin-top: 0;
 }
-.ppc-upi{
-    color: #0080A7;
-    margin-right: 50px;
-    margin-top: 0;
-
-
+.ppc-upi {
+  color: #0080a7;
+  margin-right: 50px;
+  margin-top: 0;
 }
-.ppc-timeposted{
-    color: #0080A7;
-    margin-top: 0;
-
+.ppc-timeposted {
+  color: #0080a7;
+  margin-top: 0;
 }
 
-.ppc-title{
-    margin-top: 0;
-    margin-bottom: 0;
+.ppc-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
-.ppc-text{
-    display: -webkit-box;
+
+.ppc-title:hover {
+  color: #0080a7;
+  text-decoration: underline;
+}
+
+.ppc-link-icon {
+  margin-left: 20px;
+}
+
+.ppc-text {
+  display: -webkit-box;
   overflow: hidden;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 
-.ppc-right{
-    display: flex;
-    text-align: center;
+.ppc-right {
+  display: flex;
+  text-align: center;
 }
 
-.ppc-row3{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-  
+.ppc-row3 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
 }
-.ppc-votes{
-    color: #0080A7;
-    display: flex;
-    text-align: center; 
-    align-items: center;
-    
-
+.ppc-votes {
+  color: #0080a7;
+  display: flex;
+  text-align: center;
+  align-items: center;
 }
-.ppc-numofvotes{
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: 10px;
-    margin-right: 10px;
-
+.ppc-numofvotes {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 10px;
+  margin-right: 10px;
 }
-.ppc-comment{
-    color: #0080A7;
-    margin-top: 0;
-    margin-bottom: 0;
-
+.ppc-comment {
+  color: #0080a7;
+  margin-top: 0;
+  margin-bottom: 0;
 }

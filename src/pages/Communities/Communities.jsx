@@ -1,49 +1,55 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./communities.css";
 import Container from "@mui/material/Container";
-import {Box, FormControl, InputLabel, OutlinedInput, InputAdornment, Button} from "@mui/material";
+import {
+  Box,
+  FormControl,
+  InputLabel,
+  OutlinedInput,
+  InputAdornment,
+  Button,
+} from "@mui/material";
 import CommunityPreviewComponent from "../../components/communityPreviewComponent/CommunityPreviewComponent.jsx";
 import { Search } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
 const buttonStyle = {
-  backgroundColor: '#059EF4',
-  display: 'inline-block',
-  float:'right',
-  position: 'absolute',
-  top:'0',
-  right:'0'
-}
+  backgroundColor: "#059EF4",
+  display: "inline-block",
+  float: "right",
+  position: "absolute",
+  top: "0",
+  right: "0",
+};
 
 const Communities = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const communityPreviews = [
     {
       community: "SOFTENG 701",
       members: "150",
-      description: "A fun project-driven course emphasising teamwork. This is a very cool course where you can learn lots of things from peers and lecturers.",
-      image: [
-        "https://picsum.photos/400/300"
-      ],
+      description:
+        "A fun project-driven course emphasising teamwork. This is a very cool course where you can learn lots of things from peers and lecturers.",
+      image: ["https://picsum.photos/400/300"],
     },
     {
       community: "SOFTENG 754",
       members: "28",
       description: "Advanced software requirements",
-      image: [
-        "https://picsum.photos/400/300"
-      ],
+      image: ["https://picsum.photos/400/300"],
     },
     {
       community: "SOFTENG 750",
       members: "115",
-      description: "React coding, what else can you want in life? Nothing much.",
-      image: [
-        "https://picsum.photos/400/300"
-      ],
-    }
+      description:
+        "React coding, what else can you want in life? Nothing much.",
+      image: ["https://picsum.photos/400/300"],
+    },
   ];
 
-  const navigate = useNavigate();
   //creating a state for filtered results
   const [filteredResults, setFilteredResults] = useState(communityPreviews);
 

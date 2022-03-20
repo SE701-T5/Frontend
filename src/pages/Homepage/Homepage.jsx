@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./homepage.css";
 import Container from "@mui/material/Container";
 import PopularCommunity from "../../components/PopularCommunity/PopularCommunity.jsx";
@@ -6,12 +6,17 @@ import Grid from "@mui/material/Grid";
 import PostPreviewComponent from "../../components/postPreviewComponent/PostPreviewComponent.jsx";
 
 const Homepage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const postPreviews = [
     {
       title: "How to make a website",
       community: "UofA",
       upi: "UofA-12345",
       time: "1 hour ago",
+      postID: "randomID1",
       text: "Aliquam eget ligula ac velit pellentesque malesuada ut in dolor. Nullam tempus enim non laoreet molestie. Phasellus ac lorem diam. Fusce congue lectus in mattis sodales. Sed at interdum nibh",
       upvotes: "12",
       downvotes: "3",
@@ -25,6 +30,7 @@ const Homepage = () => {
       community: "SOFTENG 352",
       upi: "khar193",
       time: "2 hours ago",
+      postID: "randomID2",
       text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius placerat elementum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean non metus sapien. Nunc aliquet eget ipsum quis rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hac habitasse platea dictumst. Sed rutrum auctor libero ac tincidunt.",
       upvotes: "53",
       downvotes: "2",
@@ -39,6 +45,7 @@ const Homepage = () => {
       community: "RAND 363",
       upi: "rand420",
       time: "12 hours ago",
+      postID: "randomID3",
       text: "Morbi sed imperdiet enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam sit amet semper turpis. Donec condimentum tempus rhoncus. Curabitur sodales urna a diam condimentum, at hendrerit nulla cursus. Praesent fermentum ullamcorper facilisis.",
       upvotes: "1",
       downvotes: "13",

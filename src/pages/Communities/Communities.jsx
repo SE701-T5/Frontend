@@ -50,7 +50,6 @@ const Communities = () => {
     },
   ];
 
-  const navigate = useNavigate();
   //creating a state for filtered results
   const [filteredResults, setFilteredResults] = useState(communityPreviews);
 

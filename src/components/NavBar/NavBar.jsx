@@ -132,7 +132,7 @@ function NavBar() {
   };
 
   return (
-    <AppBar position="static" sx={styles.appBar}>
+    <AppBar position="static" sx={styles.appBar} elevation={0}>
       <Toolbar sx={styles.headerContainer}>
         <div style={styles.headerSection}>
           <Link to=".">

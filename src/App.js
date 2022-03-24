@@ -12,7 +12,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Post from "./pages/Post";
 import CommunitiesPage from "./pages/Communities/CommunitiesPage";
 import Posts from "./pages/Posts/Posts";
-import Community from './pages/Community'
+import Community from "./pages/Community";
 import NewCommunity from "./pages/newCommunity/NewCommunity.jsx";
 function App() {
   return (

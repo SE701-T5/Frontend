@@ -80,7 +80,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 function NavBar() {
   const { logout, authorized } = useContext(AuthContext);
-  
+
   // Change communitiesMenu to a context variable.
   const communitiesMenu = ["SOFTENG 352", "SOFTENG 125"];
   const pagesMenu = [

@@ -76,7 +76,13 @@ const Communities = () => {
     <Container maxWidth="md">
       <div className="com-titleContainer">
         <h1 className="com-Title">Communities</h1>
-        <Button variant="contained" style={buttonStyle} onClick={() => navigate("/NewCommunity")}>New Community</Button>
+        <Button
+          variant="contained"
+          style={buttonStyle}
+          onClick={() => navigate("/NewCommunity")}
+        >
+          New Community
+        </Button>
         <div className="com-Divide">
           <hr className="com-Divider"></hr>
         </div>
@@ -87,24 +93,28 @@ const Communities = () => {
           <FormControl className="com-searchbar" variant="filled">
             <InputLabel htmlFor="search">Search Posts</InputLabel>
             <OutlinedInput
-                id="search"
-                endAdornment={
-                    <InputAdornment position="end">
-                        <Search />
-                    </InputAdornment>
-                }
-                onChange={(e) => searchItem(e.target.value)}
+              id="search"
+              endAdornment={
+                <InputAdornment position="end">
+                  <Search />
+                </InputAdornment>
+              }
+              onChange={(e) => searchItem(e.target.value)}
             />
           </FormControl>
         </Box>
         {searchQuery.length > 0 && (
-        <p>
-          <b>{filteredResults.length} results found based on search query "{searchQuery}"</b>
-        </p>
+          <p>
+            <b>
+              {filteredResults.length} results found based on search query "
+              {searchQuery}"
+            </b>
+          </p>
         )}
-        {filteredResults && filteredResults.map((communityEntry) => (
-          <CommunityPreviewComponent communityEntry={communityEntry}/>
-        ))} 
+        {filteredResults &&
+          filteredResults.map((communityEntry) => (
+            <CommunityPreviewComponent communityEntry={communityEntry} />
+          ))}
       </div>
     </Container>
   );

@@ -24,10 +24,10 @@ export const useMutation = (url, options) => {
     /**
      * @param {import("axios").AxiosRequestConfig} overrideOptions
      */
-    (overrideOptions) => {
+    (overrideOptions, newUrl = url) => {
       return fetcher({
         ...{ ...options, ...overrideOptions },
-      })(getUrl(url));
+      })(getUrl(newUrl));
     },
     [options, url]
   );

@@ -1,71 +1,66 @@
-.post-commentArea{
-    margin-top: 50px;
-    margin-bottom: 50px;
-    border-radius: 8px;
-    padding: 20px;
-    background-color: #FFFFFF;
-    justify-content: space-between;
-    display: flex;
-    flex-direction: column;
+.post-commentArea {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #ffffff;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
 }
 
-.post-comment{
-    margin-top: 0;
-    margin-bottom: 0;
+.post-comment {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
-.post-TopRow{
-    margin-top: 30px;
-    display: flex;
-    align-items: center;
+.post-TopRow {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
 }
-.post-avatar{
-    margin-right: 20px;
+.post-avatar {
+  margin-right: 20px;
 }
-.post-details{
-    display: flex;
+.post-details {
+  display: flex;
 }
-.post-commentupi{
-    color: #0080A7;
-    margin-right: 50px;
-    margin-top: 0;
-    margin-bottom: 0;
-
-
+.post-commentupi {
+  color: #0080a7;
+  margin-right: 50px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
-.post-commenttime{
-    color: #0080A7;
-    margin-top: 0;
-    margin-bottom: 0;
+.post-commenttime {
+  color: #0080a7;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
-.post-text{
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
+.post-text {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
 }
 
-.post-LastRow{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-    padding-bottom: 30px;
-    border-bottom: 1px solid rgb(224, 224, 224);
+.post-LastRow {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgb(224, 224, 224);
 }
 
-.post-numofvotes{
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: 10px;
-    margin-right: 10px;
-
+.post-numofvotes {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-.post-votes{
-    color: #0080A7;
-    display: flex;
-    text-align: center; 
-    align-items: center;
-    
-
+.post-votes {
+  color: #0080a7;
+  display: flex;
+  text-align: center;
+  align-items: center;
 }

@@ -1,5 +1,5 @@
-const ProfilePage = () =>{
-    return <>Hello</>
-}
+const ProfilePage = () => {
+  return <>Hello Hi</>;
+};
 
 export default ProfilePage;

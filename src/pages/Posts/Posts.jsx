@@ -11,6 +11,7 @@ import {
   InputAdornment,
 } from "@mui/material";
 import PostPreviewComponent from "../../components/postPreviewComponent";
+import { searchItem } from "../../util/searchUtil";
 import { useNavigate } from "react-router-dom";
 const posts = [
   {
@@ -82,24 +83,6 @@ const Posts = () => {
   //creating a state for search query in searchbar
   const [searchQuery, setSearchQuery] = useState("");
 
-  //Function for filtering posts by title, community, text, or upi when user inputs text in the search bar, else all posts will be shown
-  const searchItem = (searchValue) => {
-    setSearchQuery(searchValue);
-    if (searchValue !== "") {
-      const filteredSearch = posts.filter((item) => {
-        return (
-          item.title.toLowerCase().includes(searchValue.toLowerCase()) ||
-          item.community.toLowerCase().includes(searchValue.toLowerCase()) ||
-          item.text.toLowerCase().includes(searchValue.toLowerCase()) ||
-          item.upi.toLowerCase().includes(searchValue.toLowerCase())
-        );
-      });
-      setFilteredResults(filteredSearch);
-    } else {
-      setFilteredResults(posts);
-    }
-  };
-
   return (
     <Container maxWidth="md">
       <Box className="p-toprow">
@@ -123,7 +106,14 @@ const Posts = () => {
             }
             //when user inputs something into the search bar this calls the searchItem function to filter out the posts
             //based on the input
-            onChange={(e) => searchItem(e.target.value)}
+            onChange={(e) =>
+              searchItem(
+                e.target.value,
+                posts,
+                setSearchQuery,
+                setFilteredResults
+              )
+            }
           />
         </FormControl>
       </Box>

@@ -8,7 +8,7 @@ import useSWR from "swr";
  * @returns
  */
 export const useApi = (url, options) => {
-  const { data, error, ...rest } = useSWR(url, fetcher(options));
+  const { data, error, ...rest } = useSWR(getUrl(url), fetcher(options));
   const loading = !data && !error;
 
   return { data, error, ...rest, loading };
@@ -27,7 +27,7 @@ export const useMutation = (url, options) => {
     (overrideOptions) => {
       return fetcher({
         ...{ ...options, ...overrideOptions },
-      })(url);
+      })(getUrl(url));
     },
     [options, url]
   );
@@ -57,7 +57,7 @@ export const getUrl = (url) => {
 
   const base =
     process.env.NODE_ENV === "development"
-      ? "http://localhost:5000/api/v1"
+      ? "http://localhost:4200/api/v1"
       : "https://uni-forum.herokuapp.com/api/v1";
 
   return base + url;

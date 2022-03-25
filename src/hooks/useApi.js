@@ -62,26 +62,3 @@ export const getUrl = (url) => {
 
   return base + url;
 };
-
-/**
- *
- * @param {string} url
- * @param {Record<string, string | number>} params
- * @returns {string}
- */
-export const substitutePathParams = (url, params = {}) => {
-  const regex = /\{.*?\}/g;
-  let urlCopy = url;
-
-  let match = regex.exec(url);
-  while (match !== null) {
-    const sub = params?.[match[0].slice(1, -1)];
-    if (!sub) {
-      throw new Error(`No path parameter found for ${match[0]}`);
-    }
-    urlCopy = urlCopy.replace(match[0], sub.toString());
-    match = regex.exec(url);
-  }
-
-  return urlCopy;
-};

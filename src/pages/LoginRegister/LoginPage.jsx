@@ -22,7 +22,7 @@ export default function LoginPage() {
         alert("Your password is wrong!");
       }
     } else {
-      console.log("No such account, Please register first!");
+      //console.log("No such account, Please register first!");
       alert("No such account, Please register first!");
     }
   };

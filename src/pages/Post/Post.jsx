@@ -7,8 +7,11 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import ReplyComponent from "./Reply";
 import Comment from "../../components/comment/Comment";
+import { useParams } from "react-router-dom";
 
 const Post = ({ style }) => {
+  const {id} = useParams();
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
 import "../../App.css";
+import { useMutation } from "../../hooks/useApi";
 
 export default function ForgotPasswordPage() {
+  
+  const id = localStorage.getItem('id');
+  const email = localStorage.getItem('email');
+
+  const createRestPassword = useMutation('/api/v1/users/', {
+    method: 'patch',
+    pathParams: { id: id ?? '' },
+  })
+
+  async function handleResetPassword(email) {
+    await createRestPassword({
+      body: {
+        email: 'admin@123',
+      }
+    });
+  }
+
   return (
     <div className="text-center m-5-auto ">
       <h2>Reset your password</h2>
@@ -16,7 +33,8 @@ export default function ForgotPasswordPage() {
           <label id="reset_pass_lbl">Email address</label>
           <br />
           <input
-            className="LoginRegisterForm_input"
+            className="EmailInput"
+            id='userEmail'
             type="email"
             name="email"
             required
@@ -27,7 +45,10 @@ export default function ForgotPasswordPage() {
             className="LoginRegisterForm_button"
             id="sub_btn"
             type="submit"
-          >
+            onClick = { () => {
+              const email = document.getElementsByClassName('userEmail').value
+              handleResetPassword(email);
+            }}>
             Send password reset email
           </button>
         </p>

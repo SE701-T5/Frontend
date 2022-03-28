@@ -8,10 +8,19 @@ import { Carousel } from "react-responsive-carousel";
 import ReplyComponent from "./Reply";
 import Comment from "../../components/comment/Comment";
 import { useParams } from "react-router-dom";
+import { useApi } from "../../hooks/useApi";
 
 const Post = ({ style }) => {
   const {id} = useParams();
-  
+  console.log(id);
+
+  const { data } = useApi("/api/v1/posts/:id",{
+    params:{
+      id:id
+    }
+  });
+
+  console.log(data);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

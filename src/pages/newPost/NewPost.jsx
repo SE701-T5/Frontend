@@ -10,6 +10,7 @@ import Button from "@mui/material/Button";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import { Carousel } from "react-responsive-carousel";
 import { Box } from "@mui/system";
+import { useMutation } from "../../hooks/useApi";
 
 const styles = {
   "&.MuiButton-outlined": {
@@ -20,6 +21,26 @@ const styles = {
 
 const NewPost = () => {
   const [images, setImages] = useState([]);
+  
+  const postCreateApiCall = useMutation(
+    '/posts',
+    {
+      method:"post"
+    }
+  );
+  
+  const CreatePostClick = async ()=>{
+    console.log("post click")
+    await postCreateApiCall({
+      data: {
+        userID: "62418471d46c4b40d459ed86",
+        title:"Super agent",
+        communityID: "communityID",
+        text:"nnd geiwowangyingdeshiba",
+      },
+    })
+  } 
+  
   return (
     <div className="npTitleWrapper">
       <h1 className="npTitle">New Post</h1>
@@ -129,7 +150,7 @@ const NewPost = () => {
           </Grid>
           <Grid item xs={6}>
             <div className="npSubmitButton">
-              <Button sx={styles} label="Post" variant="outlined">
+              <Button sx={styles} label="Post" variant="outlined" onClick={CreatePostClick}>
                 Post
               </Button>
             </div>

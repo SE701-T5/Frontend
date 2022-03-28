@@ -21,6 +21,8 @@ const styles = {
 
 const NewPost = () => {
   const [images, setImages] = useState([]);
+  const [title, setTitle] = useState("");
+  const [text, setText] = useState("");
   
   const postCreateApiCall = useMutation(
     '/posts',
@@ -29,15 +31,19 @@ const NewPost = () => {
     }
   );
   
-  const CreatePostClick = async ()=>{
+  const CreatePostClick = ()=>{
     console.log("post click")
-    await postCreateApiCall({
+    postCreateApiCall({
       data: {
         userID: "62418471d46c4b40d459ed86",
-        title:"Super agent",
-        communityID: "communityID",
-        text:"nnd geiwowangyingdeshiba",
+        title:title,
+        communityID: "SOFTENG 701",
+        text: text,
       },
+    }).then(function(success){
+      alert("successfully create a post")
+    }).catch(function(error){
+      alert("fail to create a post")
     })
   } 
   
@@ -54,6 +60,7 @@ const NewPost = () => {
                 id="outlined-basic"
                 label="Title"
                 variant="outlined"
+                onChange={(e)=>setTitle(e.target.value)}
               />
             </div>
           </Grid>
@@ -87,6 +94,7 @@ const NewPost = () => {
                 minRows={12}
                 maxRows={12}
                 fullWidth
+                onChange={(e)=>setText(e.target.value)}
               />
             </div>
           </Grid>

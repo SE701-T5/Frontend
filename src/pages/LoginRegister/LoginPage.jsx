@@ -30,21 +30,6 @@ export default function LoginPage() {
     } catch (error) {
       console.log("failed to login");
     }
-    // const foundUser = userDetails.find((user) => user.email === details.email);
-    // if (foundUser) {
-    //   if (details.password === foundUser.password) {
-    //     console.log("loged in");
-    //     alert("Logged in!");
-    //     login();
-    //     navigate("/homepage");
-    //   } else {
-    //     console.log("Your password is wrong!");
-    //     alert("Your password is wrong!");
-    //   }
-    // } else {
-    //   //console.log("No such account, Please register first!");
-    //   alert("No such account, Please register first!");
-    // }
   };
   return (
     <>

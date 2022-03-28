@@ -41,7 +41,13 @@ export const useMutation = (url, options) => {
 export const fetcher = (axiosConfig) => {
   /** @param {string} url */
   return async (url) => {
-    const request = await axios(url, axiosConfig);
+    const request = await axios(url, {
+      ...axiosConfig,
+      headers: {
+        "X-Authorization": "7c2324e11aa0e9ab",
+        "Content-Type": "application/json",
+      },
+    });
     return request.data;
   };
 };

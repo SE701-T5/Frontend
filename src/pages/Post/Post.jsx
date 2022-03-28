@@ -152,7 +152,7 @@ const Post = ({ style }) => {
             <Comment comment={comment} />
           </Box>
         ))}
-        <ReplyComponent />
+        <ReplyComponent postId='62422d19fccdf1bf1000efc9'/>
       </Box>
     </Container>
   );

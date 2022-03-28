@@ -138,7 +138,7 @@ function NavBar() {
     setAnchorElProfile(null);
 
     const userId = {body: {
-      userId: ''
+      userID: ''
     }};
   
     await createLogout(userId);

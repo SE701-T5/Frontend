@@ -14,8 +14,13 @@ const Post = ({ style }) => {
   let { id } = useParams();
   id = '62422d19fccdf1bf1000efc9'
 
-  const { data } = useApi(`/posts/${id}`, {});
-  const postData = data.forumPost;
+  const { data, loading } = useApi(`/posts/${id}`, {});
+
+  
+  let postData = {};
+  if (!loading){
+    postData = data.forumPost;
+  }
 
   useEffect(() => {
     window.scrollTo(0, 0);

@@ -96,8 +96,12 @@ const Homepage = () => {
           <hr className="hpDivider"></hr>
         </div>
         <div className="hpContainer">
-          {postPreviews.map((post) => (
-            <PostPreviewComponent post={post} style={{ margin: "20px 0" }} />
+          {postPreviews.map((post, idx) => (
+            <PostPreviewComponent
+              post={post}
+              style={{ margin: "20px 0" }}
+              key={idx}
+            />
           ))}
         </div>
       </Container>

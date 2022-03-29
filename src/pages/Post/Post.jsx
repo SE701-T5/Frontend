@@ -11,34 +11,26 @@ import { useParams } from "react-router-dom";
 import { useApi } from "../../hooks/useApi";
 
 const Post = ({ style }) => {
-  const {id} = useParams();
-  console.log(id);
+  let { id } = useParams();
+  id = '62422d19fccdf1bf1000efc9'
 
-  const { data } = useApi("/api/v1/posts/:id",{
-    params:{
-      id:id
-    }
-  });
+  const { data } = useApi(`/posts/${id}`, {});
+  const postData = data.forumPost;
 
-  console.log(data);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  let community = "SOFTENG701";
-  let upi = "shr23456";
-  let time = "23:57";
-  let title = "sjngosnhpmre";
-  let text =
-    "I love react and react libraries but I have never used Semantic UI...  I heard from a teammate  that it’s pretty easy to use and has a lot of documentation so hopefully I’ll be fine. Any tips...";
+  const upi = "shr23456"; //where to get this?
+  const time = new Date(postData.updatedAt);
+  const postTime = time.toLocaleTimeString();
   let images = [
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXsGYUdnO7UWSuZV_wMfyq-ChTkvfHjMMUcA&usqp=CAU",
     "https://nz3.architecturemedia.net/site_media/media/cache/52/47/5247e80bab99158eecfb84da220fe7b1.jpg",
     "https://www.rcp.co.nz/wp-content/uploads/2019/09/LFGX4403E-1024x683.jpg",
   ];
-  let upvotes = 534;
-  let downvotes = 352;
 
+  //cannot get the comments data, as the GET comments enpoint currently only return list of comment ids
   const commentsArray = [
     {
       comment:
@@ -88,7 +80,7 @@ const Post = ({ style }) => {
         <Box>
           <Box className="post-row1">
             <Box>
-              <h5 className="post-course">{community}</h5>
+              <h5 className="post-course">{postData.communityID}</h5>
             </Box>
 
             <Box className="post-right">
@@ -97,15 +89,15 @@ const Post = ({ style }) => {
               </Box>
 
               <Box>
-                <p className="post-timeposted">{time}</p>
+                <p className="post-timeposted">{postTime}</p>
               </Box>
             </Box>
           </Box>
 
           <Box className="post-row2">
-            <h2 className="post-title">{title}</h2>
+            <h2 className="post-title">{postData.title}</h2>
             <Box>
-              <p className="post-text">{text}</p>
+              <p className="post-text">{postData.bodyText}</p>
             </Box>
           </Box>
         </Box>
@@ -131,7 +123,7 @@ const Post = ({ style }) => {
               />
             </IconButton>
 
-            <p className="post-numofvotes">{upvotes - downvotes}</p>
+            <p className="post-numofvotes">{postData.upVotes - postData.downVotes}</p>
 
             <IconButton>
               <ArrowDownward
@@ -152,7 +144,7 @@ const Post = ({ style }) => {
             <Comment comment={comment} />
           </Box>
         ))}
-        <ReplyComponent postId='62422d19fccdf1bf1000efc9'/>
+        <ReplyComponent postId={id} />
       </Box>
     </Container>
   );

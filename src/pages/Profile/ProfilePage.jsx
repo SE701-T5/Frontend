@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./profilePage.css";
-import { Container, Modal } from "@mui/material";
+import { Container, Modal, Grid } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import {
   Box,
@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import PostPreviewComponent from "../../components/postPreviewComponent";
 import { searchItem } from "../../util/searchUtil";
+import ProfileSection from "./profileSection";
 const posts = [
   {
     title: "yes",
@@ -69,6 +70,17 @@ const posts = [
     ],
   },
 ];
+
+// change to api call
+const getProfileDetails = () => {
+  return {
+    username: "catcat",
+    name: "Cat Cat",
+    image: "base64",
+  };
+};
+const { username: username, name: name, image: image } = getProfileDetails();
+
 const ProfilePage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -84,54 +96,67 @@ const ProfilePage = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <Container maxWidth="sm">
-      {/* Just a ad-hoc button, feel free to change */}
-      <button onClick={() => setOpen(true)}>Change Email/Password</button>
-      <ChangeModal open={open} handleClose={() => setOpen(false)} />
-      <Box className="p-toprow" style={{ marginBottom: "20px" }}>
-        <h1 className="p-title">Post Search</h1>
-      </Box>
-      <Box className="p-search">
-        <FormControl className="p-searchbar" variant="filled">
-          <InputLabel htmlFor="search">Search Posts</InputLabel>
-          <OutlinedInput
-            id="search"
-            endAdornment={
-              <InputAdornment position="end">
-                <Search />
-              </InputAdornment>
-            }
-            //when user inputs something into the search bar this calls the searchItem function to filter out the posts
-            //based on the input
-            onChange={(e) =>
-              searchItem(
-                e.target.value,
-                posts,
-                setSearchQuery,
-                setFilteredResults
-              )
-            }
-          />
-        </FormControl>
-      </Box>
-      <Box className="p-toprow">
-        <h1 className="p-title">Post History</h1>
-      </Box>
-      {searchQuery.length > 0 && (
-        <p>
-          <b>
-            {filteredResults.length} results found based on search query "
-            {searchQuery}"
-          </b>
-        </p>
-      )}
-      {filteredResults &&
-        filteredResults.map((post) => (
-          <Box className="p-post">
-            <PostPreviewComponent post={post} />
-          </Box>
-        ))}
-    </Container>
+    <div className="min-h-screen flex flex-col">
+      <div className="flex flex-col md:flex-row flex-1">
+        <ProfileSection
+          setOpen={setOpen}
+          username={username}
+          name={name}
+          image={image}
+        />
+        <div>
+          <main className="flex h-full flex-col">
+            {/* Just a ad-hoc button, feel free to change */}
+            <Container fixed>
+              <ChangeModal open={open} handleClose={() => setOpen(false)} />
+              <Box className="p-toprow" style={{ marginBottom: "20px" }}>
+                <h1 className="p-title">Post Search</h1>
+              </Box>
+              <Box className="p-search">
+                <FormControl className="p-searchbar" variant="filled">
+                  <InputLabel htmlFor="search">Search Posts</InputLabel>
+                  <OutlinedInput
+                    id="search"
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <Search />
+                      </InputAdornment>
+                    }
+                    //when user inputs something into the search bar this calls the searchItem function to filter out the posts
+                    //based on the input
+                    onChange={(e) =>
+                      searchItem(
+                        e.target.value,
+                        posts,
+                        setSearchQuery,
+                        setFilteredResults
+                      )
+                    }
+                  />
+                </FormControl>
+              </Box>
+              <Box className="p-toprow">
+                <h1 className="p-title">Post History</h1>
+              </Box>
+              {searchQuery.length > 0 && (
+                <p>
+                  <b>
+                    {filteredResults.length} results found based on search query
+                    "{searchQuery}"
+                  </b>
+                </p>
+              )}
+              {filteredResults &&
+                filteredResults.map((post) => (
+                  <Box className="p-post">
+                    <PostPreviewComponent post={post} />
+                  </Box>
+                ))}
+            </Container>
+          </main>
+        </div>
+      </div>
+    </div>
   );
 };
 

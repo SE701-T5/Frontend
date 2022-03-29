@@ -44,7 +44,8 @@ export const fetcher = (axiosConfig) => {
     const request = await axios(url, {
       ...axiosConfig,
       headers: {
-        "X-Authorization": "1ad2ebceabed51f3", //TODO use the actual auth or your own auth
+        "X-Authorization": "7c2324e11aa0e9ab",
+        "Content-Type": "application/json",
       },
     });
     return request.data;

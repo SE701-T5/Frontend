@@ -2,8 +2,24 @@ import React from "react";
 import "./reply.css";
 import { Reply } from "@mui/icons-material";
 import { Box, Button, Avatar, TextField } from "@mui/material";
+import { useMutation } from "../../../hooks/useApi";
 
-const ReplyComponent = () => {
+const ReplyComponent = (postId) => {
+  const createNewComment = useMutation(`posts/${postId.postId}/comments`, {
+    method: "post",
+  });
+
+  const handleCommentClick = async () => {
+    console.log("button clicked");
+    await createNewComment({
+      data: {
+        authorID: "624228c69eca9f5b98790089",
+        username: "newUser",
+        bodyText: "vffrfrff defwffwef",
+      },
+    });
+  };
+
   return (
     <Box className="reply-replybox">
       <Box className="reply-avatar">
@@ -21,7 +37,11 @@ const ReplyComponent = () => {
         multiline
       />
       <Box className="reply-button">
-        <Button variant="outlined" startIcon={<Reply />}>
+        <Button
+          variant="outlined"
+          startIcon={<Reply />}
+          onClick={handleCommentClick}
+        >
           Comment
         </Button>
       </Box>

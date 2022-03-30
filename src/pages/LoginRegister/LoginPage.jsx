@@ -14,11 +14,11 @@ export default function LoginPage() {
   });
   const { userDetails, login, authorized } = useContext(AuthContext);
 
-  const LoginFormDetail = async (details) => {
+  const LoginFormDetail = async ({ email, password: plaintextPassword }) => {
     const loginDetails = {
       data: {
-        email: details.email,
-        plaintextPassword: details.password,
+        email,
+        plaintextPassword,
       },
     };
     try {
@@ -27,7 +27,7 @@ export default function LoginPage() {
         "userDetails",
         JSON.stringify({
           id: response.userID,
-          email: details.email,
+          email,
           authToken: response.authToken,
         })
       );

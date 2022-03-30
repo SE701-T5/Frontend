@@ -4,9 +4,11 @@ import AuthContext from "../../context/AuthProvider";
 import RegisterForm from "./RegisterForm";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "../../hooks/useApi";
+import { useToast, Box } from "@chakra-ui/react";
 
 export default function RegisterPage() {
   const navigate = useNavigate();
+  const toast = useToast();
 
   const { userDetails, setUserDetails } = useContext(AuthContext);
   const userSignUp = useMutation("/users", {
@@ -36,18 +38,47 @@ export default function RegisterPage() {
                 password: details.password1,
               },
             ]);
-            alert("Registered successfully! Please Log in!");
+            toast({
+              position: "bottom-left",
+              render: () => (
+                <Box color="white" p={9} bg="#19467bf7" borderRadius={9}>
+                  We've created your account for you
+                </Box>
+              ),
+            });
           }
         } catch (error) {
           console.log("failed to sign up");
+          toast({
+            position: "bottom-left",
+            render: () => (
+              <Box color="white" p={9} bg="#19467bf7" borderRadius={9}>
+                Failed to sign up
+              </Box>
+            ),
+          });
         }
       } else {
         console.log("Your password doesn't match!");
-        alert("Your password doesn't match!");
+        toast({
+          position: "bottom-left",
+          render: () => (
+            <Box color="white" p={9} bg="#19467bf7" borderRadius={9}>
+              Your password doesn't match
+            </Box>
+          ),
+        });
       }
     } else {
       console.log("This email has been registered!");
-      alert("This email has been registered!");
+      toast({
+        position: "bottom-left",
+        render: () => (
+          <Box color="white" p={9} bg="#19467bf7" borderRadius={9}>
+            This email has been registered
+          </Box>
+        ),
+      });
     }
   };
 

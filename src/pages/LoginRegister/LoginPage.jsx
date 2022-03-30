@@ -5,8 +5,10 @@ import AuthContext from "../../context/AuthProvider";
 import LoginForm from "./LoginForm";
 import Homepage from "../Homepage";
 import { useMutation } from "../../hooks/useApi";
+import { Box, useToast } from "@chakra-ui/react";
 export default function LoginPage() {
   const navigate = useNavigate();
+  const toast = useToast();
   const userLogin = useMutation("/users/login", {
     method: "post",
   });
@@ -28,7 +30,14 @@ export default function LoginPage() {
       login();
       navigate("/homepage");
     } catch (error) {
-      console.log("failed to login");
+      toast({
+        position: "bottom-left",
+        render: () => (
+          <Box color="white" p={9} bg="#19467bf7" borderRadius={9}>
+            Failed to sign in
+          </Box>
+        ),
+      });
     }
   };
   return (

@@ -48,7 +48,6 @@ export default function LoginPage() {
     <>
       {authorized ? (
         <div>
-          {" "}
           <Homepage />
         </div>
       ) : (

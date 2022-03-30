@@ -12,7 +12,6 @@ import { useApi } from "../../hooks/useApi";
 
 const Post = ({ style }) => {
   let { id } = useParams();
-  id = '62422d19fccdf1bf1000efc9'
 
   const { data, loading } = useApi(`/posts/${id}`, {});
 

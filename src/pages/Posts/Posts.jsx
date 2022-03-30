@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./posts.css";
 import Container from "@mui/material/Container";
 import { Search } from "@mui/icons-material";
+import { useSearchItem } from "../../hooks/useSearchItem";
 import {
   Box,
   Button,
@@ -13,6 +14,7 @@ import {
 import PostPreviewComponent from "../../components/postPreviewComponent";
 import { searchItem } from "../../util/searchUtil";
 import { useNavigate } from "react-router-dom";
+
 const posts = [
   {
     title: "yes",
@@ -77,11 +79,8 @@ const Posts = () => {
   }, []);
 
   const navigate = useNavigate();
-  //creating a state for filtered results
-  const [filteredResults, setFilteredResults] = useState(posts);
 
-  //creating a state for search query in searchbar
-  const [searchQuery, setSearchQuery] = useState("");
+  const { filteredResults, searchQuery, setSearchQuery } = useSearchItem(posts);
 
   return (
     <Container maxWidth="md">
@@ -106,23 +105,14 @@ const Posts = () => {
             }
             //when user inputs something into the search bar this calls the searchItem function to filter out the posts
             //based on the input
-            onChange={(e) =>
-              searchItem(
-                e.target.value,
-                posts,
-                setSearchQuery,
-                setFilteredResults
-              )
-            }
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
         </FormControl>
       </Box>
       {searchQuery.length > 0 && (
-        <p>
-          <b>
-            {filteredResults.length} results found based on search query "
-            {searchQuery}"
-          </b>
+        <p className="font-bold">
+          {filteredResults.length} results found based on search query "
+          {searchQuery}"
         </p>
       )}
       {filteredResults &&

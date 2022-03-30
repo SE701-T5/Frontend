@@ -48,7 +48,6 @@ export default function RegisterPage() {
             });
           }
         } catch (error) {
-          console.log("failed to sign up");
           toast({
             position: "bottom-left",
             render: () => (
@@ -59,7 +58,6 @@ export default function RegisterPage() {
           });
         }
       } else {
-        console.log("Your password doesn't match!");
         toast({
           position: "bottom-left",
           render: () => (
@@ -70,7 +68,6 @@ export default function RegisterPage() {
         });
       }
     } else {
-      console.log("This email has been registered!");
       toast({
         position: "bottom-left",
         render: () => (

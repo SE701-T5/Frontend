@@ -23,7 +23,6 @@ export default function LoginPage() {
     };
     try {
       const response = await userLogin(loginDetails);
-      console.log(response);
       localStorage.setItem("id", response.userID);
       localStorage.setItem("email", details.email);
       localStorage.setItem("authToken", response.authToken);

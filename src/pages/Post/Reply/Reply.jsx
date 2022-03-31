@@ -13,8 +13,6 @@ const ReplyComponent = (postId) => {
     console.log("button clicked");
     await createNewComment({
       data: {
-        authorID: "624228c69eca9f5b98790089",
-        username: "newUser",
         bodyText: "vffrfrff defwffwef",
       },
     });

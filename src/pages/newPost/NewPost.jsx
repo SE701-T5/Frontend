@@ -23,9 +23,12 @@ const NewPost = () => {
   const [images, setImages] = useState([]);
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
+
+  //todo need to get a communityID
+  const communityID = "62461115dffd82fb202566de";
   
   const postCreateApiCall = useMutation(
-    '/posts',
+    `/communities/${communityID}/posts`,
     {
       method:"post"
     }
@@ -35,10 +38,8 @@ const NewPost = () => {
     console.log("post click")
     postCreateApiCall({
       data: {
-        userID: "62418471d46c4b40d459ed86",
         title:title,
-        communityID: "SOFTENG 701",
-        text: text,
+        bodyText: text,
       },
     }).then(function(success){
       alert("successfully create a post")

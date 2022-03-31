@@ -44,7 +44,7 @@ export const fetcher = (axiosConfig) => {
     const request = await axios(url, {
       ...axiosConfig,
       headers: {
-        "X-Authorization": "7c2324e11aa0e9ab",
+        "X-Authorization": "1351084ff70eaf0a0fb027bf09cef099",
         "Content-Type": "application/json",
       },
     });

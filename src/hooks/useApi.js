@@ -39,12 +39,15 @@ export const useMutation = (url, options) => {
  * @param { import("axios").AxiosRequestConfig } axiosConfig
  */
 export const fetcher = (axiosConfig) => {
+  const userDetails = localStorage.getItem("userDetails");
+  const userJson = userDetails ? JSON.parse(userDetails) : null;
+  const authToken = userJson.authToken;
   /** @param {string} url */
   return async (url) => {
     const request = await axios(url, {
       ...axiosConfig,
       headers: {
-        "X-Authorization": localStorage.getItem("authToken"),
+        "X-Authorization": authToken,
       },
     });
     return request.data;

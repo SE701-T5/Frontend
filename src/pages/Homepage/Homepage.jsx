@@ -96,8 +96,8 @@ const Homepage = () => {
           <hr className="hpDivider"></hr>
         </div>
         <div className="hpContainer">
-          {postPreviews.map((post) => (
-            <PostPreviewComponent post={post} style={{ margin: "20px 0" }} />
+          {postPreviews.map((post,index) => (
+            <PostPreviewComponent key={index}  post={post} style={{ margin: "20px 0" }} />
           ))}
         </div>
       </Container>

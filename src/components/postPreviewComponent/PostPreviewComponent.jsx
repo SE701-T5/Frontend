@@ -61,9 +61,9 @@ const PostPreviewComponent = ({ post, style }) => {
       </Box>
 
       <Carousel dynamicHeight showThumbs={false} autoPlay infiniteLoop>
-        {images.map((image) => {
+        {images.map((image, index) => {
           return (
-            <Box>
+            <Box key={index}>
               <img alt="uoaimage" src={image} />
             </Box>
           );

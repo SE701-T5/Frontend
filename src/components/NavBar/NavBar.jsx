@@ -146,6 +146,8 @@ function NavBar() {
          userID,
       }
     });
+    localStorage.clear();
+    
   };
   
 

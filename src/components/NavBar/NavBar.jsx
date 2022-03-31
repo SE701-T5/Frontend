@@ -82,6 +82,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 function NavBar() {
   const { logout, authorized } = useContext(AuthContext);
 
+  const userDetails = localStorage.getItem("userDetails");
+  const userJson = userDetails ? JSON.parse(userDetails) : null;
+  const userID = userJson.id;
+
   // Change communitiesMenu to a context variable.
   const communitiesMenu = ["SOFTENG 352", "SOFTENG 125"];
   const pagesMenu = [
@@ -136,12 +140,12 @@ function NavBar() {
 
   async function handleCloseProfileMenu() {
     setAnchorElProfile(null);
-
-    const userId = {body: {
-      userID: ''
-    }};
   
-    await createLogout(userId);
+    await createLogout({
+      body: { 
+         userID,
+      }
+    });
   };
   
 

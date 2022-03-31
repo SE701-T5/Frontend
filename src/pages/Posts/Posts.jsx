@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./posts.css";
 import Container from "@mui/material/Container";
 import { Search } from "@mui/icons-material";
+import { useSearchItem } from "../../hooks/useSearchItem";
 import {
   Box,
   Button,
@@ -11,7 +12,9 @@ import {
   InputAdornment,
 } from "@mui/material";
 import PostPreviewComponent from "../../components/postPreviewComponent";
+import { searchItem } from "../../util/searchUtil";
 import { useNavigate } from "react-router-dom";
+
 const posts = [
   {
     title: "yes",
@@ -76,29 +79,8 @@ const Posts = () => {
   }, []);
 
   const navigate = useNavigate();
-  //creating a state for filtered results
-  const [filteredResults, setFilteredResults] = useState(posts);
 
-  //creating a state for search query in searchbar
-  const [searchQuery, setSearchQuery] = useState("");
-
-  //Function for filtering posts by title, community, text, or upi when user inputs text in the search bar, else all posts will be shown
-  const searchItem = (searchValue) => {
-    setSearchQuery(searchValue);
-    if (searchValue !== "") {
-      const filteredSearch = posts.filter((item) => {
-        return (
-          item.title.toLowerCase().includes(searchValue.toLowerCase()) ||
-          item.community.toLowerCase().includes(searchValue.toLowerCase()) ||
-          item.text.toLowerCase().includes(searchValue.toLowerCase()) ||
-          item.upi.toLowerCase().includes(searchValue.toLowerCase())
-        );
-      });
-      setFilteredResults(filteredSearch);
-    } else {
-      setFilteredResults(posts);
-    }
-  };
+  const { filteredResults, searchQuery, setSearchQuery } = useSearchItem(posts);
 
   return (
     <Container maxWidth="md">
@@ -123,16 +105,14 @@ const Posts = () => {
             }
             //when user inputs something into the search bar this calls the searchItem function to filter out the posts
             //based on the input
-            onChange={(e) => searchItem(e.target.value)}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
         </FormControl>
       </Box>
       {searchQuery.length > 0 && (
-        <p>
-          <b>
-            {filteredResults.length} results found based on search query "
-            {searchQuery}"
-          </b>
+        <p className="font-bold">
+          {filteredResults.length} results found based on search query "
+          {searchQuery}"
         </p>
       )}
       {filteredResults &&

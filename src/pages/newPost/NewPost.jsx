@@ -11,6 +11,7 @@ import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import { Carousel } from "react-responsive-carousel";
 import { Box } from "@mui/system";
 import { useMutation } from "../../hooks/useApi";
+import { useCommunities } from "../../hooks/useCommunities";
 
 const styles = {
   "&.MuiButton-outlined": {
@@ -23,9 +24,12 @@ const NewPost = () => {
   const [images, setImages] = useState([]);
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
+  const [communityID, setCommunityID] = useState("");
 
-  //todo need to get a communityID
-  const communityID = "62461115dffd82fb202566de";
+  // //todo need to get a communityID
+  // const communityID = "62461115dffd82fb202566de";
+
+  const {communities,loading} = useCommunities()
   
   const postCreateApiCall = useMutation(
     `/communities/${communityID}/posts`,
@@ -33,6 +37,8 @@ const NewPost = () => {
       method:"post"
     }
   );
+
+  console.log(communities)
   
   const CreatePostClick = ()=>{
     console.log("post click")
@@ -48,6 +54,10 @@ const NewPost = () => {
     })
   } 
   
+  if(loading){
+    return <>loading</>
+  }
+
   return (
     <div className="npTitleWrapper">
       <h1 className="npTitle">New Post</h1>
@@ -73,13 +83,13 @@ const NewPost = () => {
                 </InputLabel>
                 <Select
                   labelId="npForumSelectionLabel"
-                  // value={forum}
+                  value={communityID}
                   label="Select the forum of your post"
-                  // onChange={handleChange}
+                  onChange={(e)=>setCommunityID(e.target.value)}
                 >
-                  <MenuItem value={"todo"}>SOFTENG 701</MenuItem>
-                  <MenuItem value={"todo"}>SOFTENG 754</MenuItem>
-                  <MenuItem value={"todo"}>COMPSYS 726</MenuItem>
+                  {communities.map((com)=>{
+                    return <MenuItem value={com.id}>{com.name}</MenuItem>
+                  })}
                 </Select>
               </FormControl>
             </div>

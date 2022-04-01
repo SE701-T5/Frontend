@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useApi } from "./useApi";
 
 const HouseContext = createContext({
-  communities: [""],
+  communities: new Array(),
   loading: true,
   error: false,
   refretchCommunities: async () => {},

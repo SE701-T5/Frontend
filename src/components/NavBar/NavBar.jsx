@@ -164,7 +164,7 @@ function NavBar() {
           >
             {communitiesMenu.length > 0 ? (
               communitiesMenu.map((community) => (
-                <MenuItem key={community.id} onClick={handleCloseCommunitiesMenu}>
+                <MenuItem key={community.id} onClick={()=>navigate(`/Community/${community.id}`)}>
                   {community.name}
                 </MenuItem>
               ))

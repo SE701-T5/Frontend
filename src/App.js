@@ -31,7 +31,7 @@ function App() {
           element={<ComponentsTesting />}
         />
         <Route exact path="/NewPost" element={<NewPost />} />
-        <Route exact path="/Community" element={<Community />} />
+        <Route exact path="/Community/:id" element={<Community />} />
         <Route exact path="/NewCommunity" element={<NewCommunity />} />
         <Route exact path="/Communities" element={<Communities />} />
         <Route exact path="/CommunitiesPage" element={<CommunitiesPage />} />

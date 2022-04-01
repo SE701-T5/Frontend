@@ -44,7 +44,7 @@ const Homepage = () => {
           {/* Placeholder for Scrollable Popular Communities components - grid to be replaced*/}
 
           <Grid container spacing={2} justifyContent="center">
-            {popularCommunities.map((community, index) => (
+            {popularCommunities?.map((community, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
                 <PopularCommunity
                   name={community.name}
@@ -61,7 +61,7 @@ const Homepage = () => {
           <hr className="hpDivider"></hr>
         </div>
         <div className="hpContainer">
-          {postPreviews.map((post, index) => {
+          {postPreviews?.map((post, index) => {
             post.communityName = findCommunityName(post.community.id);
             // Todo currently images are mock datas
             post.images = [

@@ -2,14 +2,14 @@ import { DataArrayTwoTone } from "@mui/icons-material";
 import { createContext, useContext, useEffect, useState } from "react";
 import { useApi } from "./useApi";
 
-const CommunityContext = createContext({
+const CommunitiesContext = createContext({
   communities: new Array(),
   loading: true,
   error: false,
   refretchCommunities: async () => {},
 });
 
-export const useCommunities = () => useContext(CommunityContext);
+export const useCommunities = () => useContext(CommunitiesContext);
 
 export const CommunitiesContextProvider = ({ children }) => {
   const {
@@ -20,10 +20,10 @@ export const CommunitiesContextProvider = ({ children }) => {
   } = useApi("/communities", {});
 
   return (
-    <CommunityContext.Provider
+    <CommunitiesContext.Provider
       value={{ communities, error, loading, refretchCommunities: mutate }}
     >
       {children}
-    </CommunityContext.Provider>
+    </CommunitiesContext.Provider>
   );
 };

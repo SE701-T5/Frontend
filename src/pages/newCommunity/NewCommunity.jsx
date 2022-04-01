@@ -7,8 +7,31 @@ import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import { Box } from "@mui/system";
+import { useMutation } from "../../hooks/useApi";
+import { useCommunities } from "../../hooks/useCommunities";
 const NewCommunity = () => {
   const [images, setImages] = useState([]);
+
+  const {refretchCommunities} = useCommunities();
+
+  const createCommunityApiCall = useMutation(
+    '/communities',
+    {
+      method:"post"
+    }
+  );
+
+  const onCreateClick = ()=>{
+    createCommunityApiCall({
+      data:{
+        name:"A good name",
+        description:"fdasfds",
+        img:"https://nz3.architecturemedia.net/site_media/media/cache/52/47/5247e80bab99158eecfb84da220fe7b1.jpg"
+      }
+    }).then((res)=>{
+      refretchCommunities()
+    })
+  }
 
   return (
     <div className="ncContent">
@@ -101,7 +124,7 @@ const NewCommunity = () => {
 
           <Grid item xs={6}>
             <div className="ncSubmitButton">
-              <Button variant="contained">Create</Button>
+              <Button onClick={onCreateClick} variant="contained">Create</Button>
             </div>
           </Grid>
         </Grid>

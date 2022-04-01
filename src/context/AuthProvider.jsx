@@ -31,6 +31,7 @@ export const AuthProvider = ({ children }) => {
   ]);
 
   useEffect(() => {
+    //@ts-ignore
     const storedUsers = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     if (storedUsers) setUserDetails(storedUsers);
   }, []);

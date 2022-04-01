@@ -48,6 +48,7 @@ const Homepage = () => {
               <Grid item xs={12} sm={6} md={4} key={index}>
                 <PopularCommunity
                   name={community.name}
+                  id={community.id}
                   alt="SOFTENG 701"
                   image={require("./SOFTENG701.png")}
                 />

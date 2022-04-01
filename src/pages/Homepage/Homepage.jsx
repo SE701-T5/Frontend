@@ -45,9 +45,8 @@ const Homepage = () => {
 
           <Grid container spacing={2} justifyContent="center">
             {popularCommunities.map((community, index) => (
-              <Grid item xs={12} sm={6} md={4}>
+              <Grid item xs={12} sm={6} md={4} key={index}>
                 <PopularCommunity
-                  key={index}
                   name={community.name}
                   alt="SOFTENG 701"
                   image={require("./SOFTENG701.png")}

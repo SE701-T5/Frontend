@@ -14,7 +14,6 @@ const Post = ({ style }) => {
   const { id } = useParams();
   const { data, loading } = useApi(`/posts/${id}`, {});
   const {data: commentsData, loading: commentsLoading, mutate: refetchComments} = useApi(`/posts/${id}/comments`,{});
-  console.log(id);
 
   let postData = [];
   let postTime = "";
@@ -23,8 +22,6 @@ const Post = ({ style }) => {
   if (!loading && !commentsLoading) {
     postData = data;
     commentsArray = commentsData;
-    console.log(postData,'postData');
-    console.log(commentsArray, 'commentsArray');
     const time = new Date(postData.updatedAt);
     postTime = time.toLocaleTimeString();
     communityName=data.community.name;

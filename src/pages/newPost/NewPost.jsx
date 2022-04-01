@@ -37,8 +37,6 @@ const NewPost = () => {
       method:"post"
     }
   );
-
-  console.log(communities)
   
   const CreatePostClick = ()=>{
     postCreateApiCall({

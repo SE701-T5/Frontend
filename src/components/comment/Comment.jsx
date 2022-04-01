@@ -14,14 +14,13 @@ const Comment = ({ comment }) => {
           />
         </Box>
         <Box className="post-details">
-          <p className="post-commentupi">{comment.commentupi}</p>
-          <p className="post-commenttime">{comment.commenttime}</p>
+          <p className="post-commentupi">{comment.owner.username}</p>
         </Box>
       </Box>
 
       <Box className="post-MiddleRow">
         <Box className="post-comment">
-          <p className="post-text">{comment.comment}</p>
+          <p className="post-text">{comment.bodyText}</p>
         </Box>
       </Box>
 
@@ -37,7 +36,7 @@ const Comment = ({ comment }) => {
           </IconButton>
 
           <p className="post-numofvotes">
-            {comment.commentupvotes - comment.commentdownvotes}
+            {comment.downVotes - comment.upVotes}
           </p>
 
           <IconButton>

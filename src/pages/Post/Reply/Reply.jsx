@@ -1,19 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "./reply.css";
 import { Reply } from "@mui/icons-material";
 import { Box, Button, Avatar, TextField } from "@mui/material";
 import { useMutation } from "../../../hooks/useApi";
 
 const ReplyComponent = (postId) => {
+  const [text, setText] = useState("");
+
   const createNewComment = useMutation(`posts/${postId.postId}/comments`, {
     method: "post",
   });
 
   const handleCommentClick = async () => {
-    console.log("button clicked");
     await createNewComment({
       data: {
-        bodyText: "vffrfrff defwffwef",
+        bodyText: text,
       },
     });
   };
@@ -33,6 +34,7 @@ const ReplyComponent = (postId) => {
         label="Comment..."
         placeholder=""
         multiline
+        onChange={(e)=>setText(e.target.value)}
       />
       <Box className="reply-button">
         <Button

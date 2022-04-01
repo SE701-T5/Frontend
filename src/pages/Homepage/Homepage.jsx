@@ -62,7 +62,7 @@ const Homepage = () => {
         </div>
         <div className="hpContainer">
           {postPreviews.map((post, index) => {
-            post.communityName = findCommunityName(post.community);
+            post.communityName = findCommunityName(post.community.id);
             // Todo currently images are mock datas
             post.images = [
               "https://picsum.photos/400/300",

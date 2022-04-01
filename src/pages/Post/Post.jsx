@@ -13,13 +13,21 @@ import { useApi } from "../../hooks/useApi";
 const Post = ({ style }) => {
   const { id } = useParams();
   const { data, loading } = useApi(`/posts/${id}`, {});
+  const {data: commentsData, loading: commentsLoading, mutate: refetchComments} = useApi(`/posts/${id}/comments`,{});
+  console.log(id);
 
-  let postData = {};
+  let postData = [];
   let postTime = "";
-  if (!loading) {
+  let communityName="";
+  let commentsArray = [];
+  if (!loading && !commentsLoading) {
     postData = data;
+    commentsArray = commentsData;
+    console.log(postData,'postData');
+    console.log(commentsArray, 'commentsArray');
     const time = new Date(postData.updatedAt);
     postTime = time.toLocaleTimeString();
+    communityName=data.community.name;
   }
 
   useEffect(() => {
@@ -32,57 +40,13 @@ const Post = ({ style }) => {
     "https://www.rcp.co.nz/wp-content/uploads/2019/09/LFGX4403E-1024x683.jpg",
   ];
 
-  //cannot get the comments data, as the GET comments enpoint currently only return list of comment ids
-  const commentsArray = [
-    {
-      comment:
-        "I love react and react libraries but I have never used Semantic UI...  I heard from a teammate  that it’s pretty easy to use and has a lot of documentation so hopefully I’ll be fine. Any tips for using this new frontend framework?",
-      commentupvotes: 456,
-      commentdownvotes: 352,
-      commentupi: "shr23456",
-      commenttime: "23:57",
-    },
-    {
-      comment:
-        "I love react and react libraries but I have never used Semantic UI...  I heard from a teammate  that it’s pretty easy to use and has a lot of documentation so hopefully I’ll be fine. Any tips for using this new frontend framework?",
-      commentupvotes: 456,
-      commentdownvotes: 352,
-      commentupi: "shr23456",
-      commenttime: "23:57",
-    },
-    {
-      comment:
-        "I love react and react libraries but I have never used Semantic UI...  I heard from a teammate  that it’s pretty easy to use and has a lot of documentation so hopefully I’ll be fine. Any tips for using this new frontend framework?",
-      commentupvotes: 456,
-      commentdownvotes: 352,
-      commentupi: "shr23456",
-      commenttime: "23:57",
-    },
-    {
-      comment:
-        "I love react and react libraries but I have never used Semantic UI...  I heard from a teammate  that it’s pretty easy to use and has a lot of documentation so hopefully I’ll be fine. Any tips for using this new frontend framework?",
-      commentupvotes: 456,
-      commentdownvotes: 352,
-      commentupi: "shr23456",
-      commenttime: "23:57",
-    },
-    {
-      comment:
-        "I love react and react libraries but I have never used Semantic UI...  I heard from a teammate  that it’s pretty easy to use and has a lot of documentation so hopefully I’ll be fine. Any tips for using this new frontend framework?",
-      commentupvotes: 456,
-      commentdownvotes: 352,
-      commentupi: "shr23456",
-      commenttime: "23:57",
-    },
-  ];
-
   return (
     <Container maxWidth="md">
       <Box className="post-postArea" style={style}>
         <Box>
           <Box className="post-row1">
             <Box>
-              <h5 className="post-course">{postData.community}</h5>
+              <h5 className="post-course">{communityName}</h5>
             </Box>
 
             <Box className="post-right">
@@ -142,7 +106,7 @@ const Post = ({ style }) => {
             <Comment comment={comment} />
           </Box>
         ))}
-        <ReplyComponent postId={id} />
+        <ReplyComponent postId={id} refetchComments={refetchComments} />
       </Box>
     </Container>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./posts.css";
 import Container from "@mui/material/Container";
 import { Search } from "@mui/icons-material";
@@ -12,7 +12,6 @@ import {
   InputAdornment,
 } from "@mui/material";
 import PostPreviewComponent from "../../components/postPreviewComponent";
-import { searchItem } from "../../util/searchUtil";
 import { useNavigate } from "react-router-dom";
 
 const posts = [

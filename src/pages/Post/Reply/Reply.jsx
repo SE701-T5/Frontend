@@ -1,21 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import "./reply.css";
 import { Reply } from "@mui/icons-material";
 import { Box, Button, Avatar, TextField } from "@mui/material";
 import { useMutation } from "../../../hooks/useApi";
 
-const ReplyComponent = (postId) => {
-  const createNewComment = useMutation(`posts/${postId.postId}/comments`, {
+const ReplyComponent = (props) => {
+  const [text, setText] = useState("");
+
+  const createNewComment = useMutation(`posts/${props.postId}/comments`, {
     method: "post",
   });
 
   const handleCommentClick = async () => {
-    console.log("button clicked");
     await createNewComment({
       data: {
-        bodyText: "vffrfrff defwffwef",
+        bodyText: text,
       },
     });
+    setText("");
+    props.refetchComments();
   };
 
   return (
@@ -32,7 +35,9 @@ const ReplyComponent = (postId) => {
         id="outlined-textarea"
         label="Comment..."
         placeholder=""
+        value={text}
         multiline
+        onChange={(e)=>setText(e.target.value)}
       />
       <Box className="reply-button">
         <Button

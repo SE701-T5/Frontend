@@ -13,7 +13,7 @@ import { useApi } from "../../hooks/useApi";
 const Post = ({ style }) => {
   const { id } = useParams();
   const { data, loading } = useApi(`/posts/${id}`, {});
-  const {data: commentsData, loading: commentsLoading} = useApi(`/posts/${id}/comments`,{});
+  const {data: commentsData, loading: commentsLoading, mutate: refetchComments} = useApi(`/posts/${id}/comments`,{});
   console.log(id);
 
   let postData = [];
@@ -106,7 +106,7 @@ const Post = ({ style }) => {
             <Comment comment={comment} />
           </Box>
         ))}
-        <ReplyComponent postId={id} />
+        <ReplyComponent postId={id} refetchComments={refetchComments} />
       </Box>
     </Container>
   );

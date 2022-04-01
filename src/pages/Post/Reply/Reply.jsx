@@ -4,10 +4,10 @@ import { Reply } from "@mui/icons-material";
 import { Box, Button, Avatar, TextField } from "@mui/material";
 import { useMutation } from "../../../hooks/useApi";
 
-const ReplyComponent = (postId) => {
+const ReplyComponent = (props) => {
   const [text, setText] = useState("");
 
-  const createNewComment = useMutation(`posts/${postId.postId}/comments`, {
+  const createNewComment = useMutation(`posts/${props.postId}/comments`, {
     method: "post",
   });
 
@@ -17,6 +17,8 @@ const ReplyComponent = (postId) => {
         bodyText: text,
       },
     });
+    setText("");
+    props.refetchComments();
   };
 
   return (
@@ -33,6 +35,7 @@ const ReplyComponent = (postId) => {
         id="outlined-textarea"
         label="Comment..."
         placeholder=""
+        value={text}
         multiline
         onChange={(e)=>setText(e.target.value)}
       />

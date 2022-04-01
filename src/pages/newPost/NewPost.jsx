@@ -12,6 +12,7 @@ import { Carousel } from "react-responsive-carousel";
 import { Box } from "@mui/system";
 import { useMutation } from "../../hooks/useApi";
 import { useCommunities } from "../../hooks/useCommunities";
+import { useNavigate } from "react-router-dom";
 
 const styles = {
   "&.MuiButton-outlined": {
@@ -27,6 +28,8 @@ const NewPost = () => {
   const [community, setCommunity] = useState('');
 
   const {communities,loading} = useCommunities();
+
+  const navigate = useNavigate()
   
   const postCreateApiCall = useMutation(
     `/communities/${community}/posts`,
@@ -45,6 +48,7 @@ const NewPost = () => {
       },
     }).then(function(success){
       alert("successfully create a post")
+      navigate("/homepage",{replace:true})
     }).catch(function(error){
       alert("fail to create a post")
     })

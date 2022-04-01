@@ -28,23 +28,23 @@ const buttonStyle = {
 };
 
 const CommunityPreviewComponent = ({ communityEntry }) => {
-  const { community, members, description, image } = communityEntry;
+  const { name, memberCount, description, img } = communityEntry;
 
   return (
     <Card style={cardStyle}>
       <Grid container spacing={1}>
         <Grid item xs={4}>
-          <CardMedia component="img" image={image} style={cardStyle.media} />
+          <CardMedia component="img" image={img} style={cardStyle.media} />
         </Grid>
         <Grid item xs={8}>
           <Typography variant="h5">
             <div className="cpc-community">
-              <b>{community}</b>
+              <b>{name}</b>
             </div>
           </Typography>
           <Typography variant="body">
             <div className="cpc-members">
-              <b>Members: {members}</b>
+              <b>Members: {memberCount}</b>
             </div>
           </Typography>
           <br></br>{" "}
@@ -54,7 +54,7 @@ const CommunityPreviewComponent = ({ communityEntry }) => {
           <Typography variant="body">
             <div className="cpc-description">
               {description}
-              <p>Nau mai, haere mai ki {community}!</p>
+              <p>Nau mai, haere mai ki {name}!</p>
             </div>
           </Typography>
           <Button variant="contained" style={buttonStyle}>

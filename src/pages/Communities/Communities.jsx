@@ -12,6 +12,7 @@ import {
 import CommunityPreviewComponent from "../../components/communityPreviewComponent/CommunityPreviewComponent.jsx";
 import { Search } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import { useCommunities } from "../../hooks/useCommunities";
 
 const buttonStyle = {
   backgroundColor: "#059EF4",
@@ -23,32 +24,14 @@ const buttonStyle = {
 };
 
 const Communities = () => {
+
+  const {communities:communityPreviews,loading:loadingForCommunities} = useCommunities()
+  
+
   const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const communityPreviews = [
-    {
-      community: "SOFTENG 701",
-      members: "150",
-      description:
-        "A fun project-driven course emphasising teamwork. This is a very cool course where you can learn lots of things from peers and lecturers.",
-      image: ["https://picsum.photos/400/300"],
-    },
-    {
-      community: "SOFTENG 754",
-      members: "28",
-      description: "Advanced software requirements",
-      image: ["https://picsum.photos/400/300"],
-    },
-    {
-      community: "SOFTENG 750",
-      members: "115",
-      description:
-        "React coding, what else can you want in life? Nothing much.",
-      image: ["https://picsum.photos/400/300"],
-    },
-  ];
 
   //creating a state for filtered results
   const [filteredResults, setFilteredResults] = useState(communityPreviews);
@@ -62,7 +45,7 @@ const Communities = () => {
     if (searchValue !== "") {
       const filteredSearch = communityPreviews.filter((item) => {
         return (
-          item.community.toLowerCase().includes(searchValue.toLowerCase()) ||
+          item.name.toLowerCase().includes(searchValue.toLowerCase()) ||
           item.description.toLowerCase().includes(searchValue.toLowerCase())
         );
       });
@@ -71,6 +54,10 @@ const Communities = () => {
       setFilteredResults(communityPreviews);
     }
   };
+
+if(loadingForCommunities){
+  return <div>loading</div>
+}
 
   return (
     <Container maxWidth="md">
@@ -113,7 +100,7 @@ const Communities = () => {
         )}
         {filteredResults &&
           filteredResults.map((communityEntry) => (
-            <CommunityPreviewComponent communityEntry={communityEntry} />
+            <CommunityPreviewComponent key={communityEntry.id} communityEntry={communityEntry} />
           ))}
       </div>
     </Container>

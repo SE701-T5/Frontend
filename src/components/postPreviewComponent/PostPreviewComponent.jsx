@@ -1,11 +1,6 @@
 import React from "react";
 import "./postPreviewComponent.css";
-import {
-  ArrowUpward,
-  ArrowDownward,
-  AddComment,
-  Link,
-} from "@mui/icons-material";
+import { ArrowUpward, ArrowDownward, AddComment } from "@mui/icons-material";
 import { Box, Button, IconButton } from "@mui/material";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
@@ -28,7 +23,12 @@ const PostPreviewComponent = ({ post, style }) => {
 
   return (
     <Box className="ppc-postArea" style={style}>
-      <Box>
+      <Box
+        className="ppc-postInfo"
+        onClick={() => {
+          navigate(`/post/${postID}`);
+        }}
+      >
         <Box className="ppc-row1">
           <Box>
             <h5 className="ppc-course">{community}</h5>
@@ -36,24 +36,17 @@ const PostPreviewComponent = ({ post, style }) => {
 
           <Box className="ppc-right">
             <Box>
-              <p className="ppc-upi">{upi}</p>
+              <h5 className="ppc-upi">{upi}</h5>
             </Box>
 
             <Box>
-              <p className="ppc-timeposted">{time}</p>
+              <h5 className="ppc-timeposted">{time}</h5>
             </Box>
           </Box>
         </Box>
 
         <Box className="ppc-row2">
-          <h2
-            className="ppc-title"
-            onClick={() => {
-              navigate(`/post/${postID}`);
-            }}
-          >
-            {title} <Link className="ppc-link-icon" />
-          </h2>
+          <h2 className="ppc-title">{title}</h2>
           <Box>
             <p className="ppc-text">{text}</p>
           </Box>

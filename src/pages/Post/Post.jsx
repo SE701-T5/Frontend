@@ -81,11 +81,11 @@ const Post = ({ style }) => {
 
             <Box className="post-right">
               <Box>
-                <p className="post-upi">{upi}</p>
+                <h5 className="post-upi">{upi}</h5>
               </Box>
 
               <Box>
-                <p className="post-timeposted">{time}</p>
+                <h5 className="post-timeposted">{time}</h5>
               </Box>
             </Box>
           </Box>

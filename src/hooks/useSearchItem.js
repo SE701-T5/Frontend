@@ -18,6 +18,8 @@ export const useSearchItem = (posts) => {
             item.bodyText.toLowerCase().includes(searchQuery.toLowerCase())
         )
       );
+    } else {
+      setFilteredResults(posts);
     }
   }, [searchQuery]);
 

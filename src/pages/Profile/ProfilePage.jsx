@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./profilePage.css";
-import {useSearchItem} from "../../hooks/useSearchItem";
+import { useSearchItem } from "../../hooks/useSearchItem";
 import { Container, Modal, Grid } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import {
@@ -88,12 +88,10 @@ const ProfilePage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  
-  const {filteredResults, searchQuery, setSearchQuery} = useSearchItem(posts);
+  const { filteredResults, searchQuery, setSearchQuery } = useSearchItem(posts);
 
   //handle change password/email modal opening
   const [open, setOpen] = useState(false);
-
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -123,8 +121,7 @@ const ProfilePage = () => {
                     }
                     //when user inputs something into the search bar this calls the searchItem function to filter out the posts
                     //based on the input
-                    onChange={(e) => setSearchQuery(e.target.value)
-                    }
+                    onChange={(e) => setSearchQuery(e.target.value)}
                   />
                 </FormControl>
               </Box>
@@ -132,9 +129,9 @@ const ProfilePage = () => {
                 <h1 className="p-title">Post History</h1>
               </Box>
               {searchQuery.length > 0 && (
-                <p className = "font-bold">
-                    {filteredResults.length} results found based on search query
-                    "{searchQuery}"
+                <p className="font-bold">
+                  {filteredResults.length} results found based on search query "
+                  {searchQuery}"
                 </p>
               )}
               {filteredResults &&

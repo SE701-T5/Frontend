@@ -73,6 +73,16 @@ const posts = [
     ],
   },
 ];
+
+const buttonStyle = {
+  backgroundColor: "#4f72aa",
+  display: "inline-block",
+  float: "right",
+  position: "absolute",
+  top: "0",
+  right: "0",
+};
+
 const Posts = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -84,43 +94,50 @@ const Posts = () => {
 
   return (
     <Container maxWidth="md">
-      <Box className="p-toprow">
-        <h1 className="p-title">Posts</h1>
-        <Box className="p-postbutton">
-          <Button variant="contained" onClick={() => navigate("/newpost")}>
-            New Post
-          </Button>
+      <div className="p-titleContainer">
+        <h1 className="com-title">Posts</h1>
+        <Button
+          variant="contained"
+          style={buttonStyle}
+          onClick={() => navigate("/newpost")}
+        >
+          New Post
+        </Button>
+        <div className="p-Divide">
+          <hr className="p-Divider"></hr>
+        </div>
+      </div>
+      <br></br>
+      <div className="p-bodyContainer">
+        <Box className="p-search">
+          <FormControl className="p-searchbar" variant="filled">
+            <InputLabel htmlFor="search">Search Posts</InputLabel>
+            <OutlinedInput
+              id="search"
+              endAdornment={
+                <InputAdornment position="end">
+                  <Search />
+                </InputAdornment>
+              }
+              //when user inputs something into the search bar this calls the searchItem function to filter out the posts
+              //based on the input
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </FormControl>
         </Box>
-      </Box>
-      <hr style={{ border: "3px solid white" }} />
-      <Box className="p-search">
-        <FormControl className="p-searchbar" variant="filled">
-          <InputLabel htmlFor="search">Search Posts</InputLabel>
-          <OutlinedInput
-            id="search"
-            endAdornment={
-              <InputAdornment position="end">
-                <Search />
-              </InputAdornment>
-            }
-            //when user inputs something into the search bar this calls the searchItem function to filter out the posts
-            //based on the input
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </FormControl>
-      </Box>
-      {searchQuery.length > 0 && (
-        <p className="font-bold">
-          {filteredResults.length} results found based on search query "
-          {searchQuery}"
-        </p>
-      )}
-      {filteredResults &&
-        filteredResults.map((post, idx) => (
-          <Box className="p-post" key={idx}>
-            <PostPreviewComponent post={post} />
-          </Box>
-        ))}
+        {searchQuery.length > 0 && (
+          <p className="font-bold">
+            {filteredResults.length} results found based on search query "
+            {searchQuery}"
+          </p>
+        )}
+        {filteredResults &&
+          filteredResults.map((post, idx) => (
+            <Box className="p-post" key={idx}>
+              <PostPreviewComponent post={post} />
+            </Box>
+          ))}
+      </div>
     </Container>
   );
 };

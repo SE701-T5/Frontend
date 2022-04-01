@@ -16,7 +16,6 @@ function Community() {
           >
             <div>
               <p>SOFTENG</p>
-              <Button variant="filled">Join</Button>
             </div>
           </div>
           <div className="info">

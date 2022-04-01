@@ -1,21 +1,37 @@
-.p-toprow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 50px;
-}
 .p-title {
-  margin-top: 0;
-  margin-bottom: 0;
   color: #19467b;
 }
+
+.p-titleContainer {
+  position: relative;
+  margin-top: 5%;
+}
+
+.p-Divide {
+  margin-top: -2%;
+  padding-bottom: 2%;
+}
+
+.p-Divider {
+  border-top: 4px solid #e7e7e7;
+}
+
 .p-searchbar {
   width: 100%;
   background-color: white;
   border-radius: 6px;
 }
 
+.p-search {
+  margin-top: -4%;
+  padding-bottom: 3%;
+}
+
 .p-post {
   margin-top: 30px;
   margin-bottom: 30px;
+}
+
+.p-bodyContainer {
+  margin-bottom: 80px;
 }

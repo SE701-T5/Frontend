@@ -14,7 +14,7 @@ import { Search } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
 const buttonStyle = {
-  backgroundColor: "#059EF4",
+  backgroundColor: "#4f72aa",
   display: "inline-block",
   float: "right",
   position: "absolute",
@@ -75,7 +75,7 @@ const Communities = () => {
   return (
     <Container maxWidth="md">
       <div className="com-titleContainer">
-        <h1 className="com-Title">Communities</h1>
+        <h1 className="com-title">Communities</h1>
         <Button
           variant="contained"
           style={buttonStyle}
@@ -91,7 +91,7 @@ const Communities = () => {
       <div className="com-bodyContainer">
         <Box className="com-search">
           <FormControl className="com-searchbar" variant="filled">
-            <InputLabel htmlFor="search">Search Posts</InputLabel>
+            <InputLabel htmlFor="search">Search Communities</InputLabel>
             <OutlinedInput
               id="search"
               endAdornment={

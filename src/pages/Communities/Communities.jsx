@@ -78,7 +78,7 @@ const Communities = () => {
         <h1 className="com-Title">Communities</h1>
         <Button
           variant="contained"
-          style={buttonStyle}
+          sx={buttonStyle}
           onClick={() => navigate("/NewCommunity")}
         >
           New Community

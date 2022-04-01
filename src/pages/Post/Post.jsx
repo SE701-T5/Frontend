@@ -99,7 +99,7 @@ const Post = ({ style }) => {
         </Box>
 
         <Carousel
-          dynamicHeight
+          dynamicHeight={false}
           showThumbs={false}
           showStatus={false}
           autoPlay

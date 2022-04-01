@@ -21,7 +21,11 @@ const ReplyComponent = () => {
         multiline
       />
       <Box className="reply-button">
-        <Button variant="outlined" startIcon={<Reply />}>
+        <Button
+          variant="outlined"
+          startIcon={<Reply />}
+          sx={{ color: "#4f72aa" }}
+        >
           Comment
         </Button>
       </Box>

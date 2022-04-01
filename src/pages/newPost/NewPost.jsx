@@ -72,7 +72,7 @@ const NewPost = () => {
           <Grid item xs={12}>
             <div className="npCarouselWrapper">
               <Carousel
-                dynamicHeight
+                dynamicHeight={false}
                 showThumbs={false}
                 showStatus={false}
                 autoPlay

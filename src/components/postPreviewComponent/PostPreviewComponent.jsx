@@ -54,7 +54,7 @@ const PostPreviewComponent = ({ post, style }) => {
       </Box>
 
       <Carousel
-        dynamicHeight
+        dynamicHeight={false}
         showThumbs={false}
         showStatus={false}
         autoPlay
@@ -99,6 +99,7 @@ const PostPreviewComponent = ({ post, style }) => {
             onClick={() => {
               navigate(`/post/${postID}`);
             }}
+            sx={{ color: "#4f72aa" }}
           >
             Comment
           </Button>

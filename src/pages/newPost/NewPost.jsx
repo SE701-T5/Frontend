@@ -24,7 +24,7 @@ const NewPost = () => {
     <div className="npTitleWrapper">
       <h1 className="npTitle">New Post</h1>
       <div className="npFormContainer">
-        <Grid container spacing={2} justify="space-around" md>
+        <Grid container spacing={2} justify="space-around">
           <Grid item xs={12}>
             <div className="npTableElementTitleForum">
               <TextField
@@ -71,7 +71,13 @@ const NewPost = () => {
           </Grid>
           <Grid item xs={12}>
             <div className="npCarouselWrapper">
-              <Carousel dynamicHeight showThumbs={false} autoPlay infiniteLoop>
+              <Carousel
+                dynamicHeight
+                showThumbs={false}
+                showStatus={false}
+                autoPlay
+                infiniteLoop
+              >
                 {images.map((image) => {
                   return (
                     <Box>

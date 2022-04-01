@@ -98,10 +98,16 @@ const Post = ({ style }) => {
           </Box>
         </Box>
 
-        <Carousel dynamicHeight showThumbs={false} autoPlay infiniteLoop>
-          {images.map((image) => {
+        <Carousel
+          dynamicHeight
+          showThumbs={false}
+          showStatus={false}
+          autoPlay
+          infiniteLoop
+        >
+          {images.map((image, idx) => {
             return (
-              <Box>
+              <Box key={idx}>
                 <img alt="uoaimage" src={image} />
               </Box>
             );
@@ -135,8 +141,8 @@ const Post = ({ style }) => {
 
       <Box className="post-commentArea">
         <h3 className="post-comment">Comments</h3>
-        {commentsArray.map((comment) => (
-          <Box className="comment">
+        {commentsArray.map((comment, idx) => (
+          <Box className="comment" key={idx}>
             <Comment comment={comment} />
           </Box>
         ))}

@@ -60,7 +60,13 @@ const PostPreviewComponent = ({ post, style }) => {
         </Box>
       </Box>
 
-      <Carousel dynamicHeight showThumbs={false} autoPlay infiniteLoop>
+      <Carousel
+        dynamicHeight
+        showThumbs={false}
+        showStatus={false}
+        autoPlay
+        infiniteLoop
+      >
         {images.map((image, idx) => {
           return (
             <Box key={idx}>

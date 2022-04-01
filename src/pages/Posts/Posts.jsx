@@ -136,8 +136,8 @@ const Posts = () => {
         </p>
       )}
       {filteredResults &&
-        filteredResults.map((post) => (
-          <Box className="p-post">
+        filteredResults.map((post, idx) => (
+          <Box className="p-post" key={idx}>
             <PostPreviewComponent post={post} />
           </Box>
         ))}

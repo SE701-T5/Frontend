@@ -5,12 +5,13 @@ import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+import Select, {SelectChangeEvent} from "@mui/material/Select";
 import Button from "@mui/material/Button";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import { Carousel } from "react-responsive-carousel";
 import { Box } from "@mui/system";
 import { useMutation } from "../../hooks/useApi";
+import { useCommunities } from "../../hooks/useCommunities";
 
 const styles = {
   "&.MuiButton-outlined": {
@@ -23,19 +24,18 @@ const NewPost = () => {
   const [images, setImages] = useState([]);
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
+  const [community, setCommunity] = useState('');
 
-  //todo need to get a communityID
-  const communityID = "62461115dffd82fb202566de";
+  const {communities,loading} = useCommunities();
   
   const postCreateApiCall = useMutation(
-    `/communities/${communityID}/posts`,
+    `/communities/${community}/posts`,
     {
       method:"post"
     }
   );
   
   const CreatePostClick = ()=>{
-    console.log("post click")
     postCreateApiCall({
       data: {
         title:title,
@@ -46,7 +46,11 @@ const NewPost = () => {
     }).catch(function(error){
       alert("fail to create a post")
     })
-  } 
+  }
+
+  const handleChange=(event: SelectChangeEvent)=>{
+    setCommunity(event.target.value);
+  }
   
   return (
     <div className="npTitleWrapper">
@@ -73,13 +77,11 @@ const NewPost = () => {
                 </InputLabel>
                 <Select
                   labelId="npForumSelectionLabel"
-                  // value={forum}
+                  value={community}
                   label="Select the forum of your post"
-                  // onChange={handleChange}
+                  onChange={handleChange}
                 >
-                  <MenuItem value={"todo"}>SOFTENG 701</MenuItem>
-                  <MenuItem value={"todo"}>SOFTENG 754</MenuItem>
-                  <MenuItem value={"todo"}>COMPSYS 726</MenuItem>
+                  {!loading? communities.map((community,index)=>(<MenuItem key={index} value={community.id}>{community.name}</MenuItem>)) : <div></div>}
                 </Select>
               </FormControl>
             </div>

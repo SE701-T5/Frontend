@@ -46,6 +46,7 @@ export default function RegisterPage() {
               </Box>
             ),
           });
+          navigate("/login");
         } catch (error) {
           toast({
             position: "bottom-left",

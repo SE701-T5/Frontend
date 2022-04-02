@@ -29,24 +29,23 @@ export default function RegisterPage() {
         try {
           const response = await userSignUp(signUpDetails);
           const data = await response.userData;
-          if (data.status === 201) {
-            setUserDetails((preuserDetails) => [
-              ...preuserDetails,
-              {
-                email: details.email,
-                username: details.username,
-                password: details.password1,
-              },
-            ]);
-            toast({
-              position: "bottom-left",
-              render: () => (
-                <Box color="white" p={9} bg="#19467bf7" borderRadius={9}>
-                  We've created your account for you
-                </Box>
-              ),
-            });
-          }
+
+          setUserDetails((preuserDetails) => [
+            ...preuserDetails,
+            {
+              email: details.email,
+              username: details.username,
+              password: details.password1,
+            },
+          ]);
+          toast({
+            position: "bottom-left",
+            render: () => (
+              <Box color="white" p={9} bg="#19467bf7" borderRadius={9}>
+                We've created your account for you
+              </Box>
+            ),
+          });
         } catch (error) {
           toast({
             position: "bottom-left",

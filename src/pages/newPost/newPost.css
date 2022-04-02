@@ -37,3 +37,8 @@
   border-radius: 4px;
   overflow: hidden;
 }
+
+.carousel .carousel.carousel-slider .control-arrow {
+  opacity: 1;
+  padding: 0.8rem;
+}

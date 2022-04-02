@@ -99,6 +99,7 @@ const Post = ({ style }) => {
         </Box>
 
         <Carousel
+          className="carousel"
           dynamicHeight={false}
           showThumbs={false}
           showStatus={false}

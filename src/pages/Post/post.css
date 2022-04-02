@@ -57,3 +57,8 @@
   margin-left: 10px;
   margin-right: 10px;
 }
+
+.carousel .carousel.carousel-slider .control-arrow {
+  opacity: 1;
+  padding: 0.8rem;
+}

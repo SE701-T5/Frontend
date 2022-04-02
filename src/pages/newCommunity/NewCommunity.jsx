@@ -44,6 +44,7 @@ const NewCommunity = () => {
           <Grid item xs={12}>
             <div className="ncCarouselWrapper">
               <Carousel
+                className="carousel"
                 dynamicHeight
                 showThumbs={false}
                 showStatus={false}

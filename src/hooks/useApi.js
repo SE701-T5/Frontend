@@ -41,7 +41,7 @@ export const useMutation = (url, options) => {
 export const fetcher = (axiosConfig) => {
   const userDetails = localStorage.getItem("userDetails");
   const userJson = userDetails ? JSON.parse(userDetails) : null;
-  const authToken = userJson.authToken;
+  const authToken = userJson?.authToken;
   /** @param {string} url */
   return async (url) => {
     const request = await axios(url, {

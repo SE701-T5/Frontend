@@ -23,6 +23,11 @@ function Community() {
     return <>loading</>;
   }
 
+  const getDateString = (UTCDateString) => {
+    const time = new Date(UTCDateString);
+    return time.toLocaleTimeString();
+  };
+
   return (
     <div>
       <div className="container detail-container">
@@ -47,8 +52,10 @@ function Community() {
                 justifyContent: "space-between",
               }}
             >
-              <span>Members: 169</span>
-              <span style={{ fontSize: "14px" }}>2022-03-17 14:27:00</span>
+              <span>Members: {community.memberCount}</span>
+              <span style={{ fontSize: "14px" }}>
+                {getDateString(community.updatedAt)}
+              </span>
             </div>
             <p>{community?.description}</p>
             <p>Naua mai, haere mai kei SOFTENG 7011</p>

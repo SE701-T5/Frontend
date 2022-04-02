@@ -19,23 +19,21 @@ const Post = ({ style }) => {
   let postTime = "";
   let communityName="";
   let commentsArray = [];
+  let images = [];
+
   if (!loading && !commentsLoading) {
     postData = data;
     commentsArray = commentsData;
     const time = new Date(postData.updatedAt);
     postTime = time.toLocaleTimeString();
     communityName=data.community.name;
+    images = postData.attachments
   }
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  let images = [
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXsGYUdnO7UWSuZV_wMfyq-ChTkvfHjMMUcA&usqp=CAU",
-    "https://nz3.architecturemedia.net/site_media/media/cache/52/47/5247e80bab99158eecfb84da220fe7b1.jpg",
-    "https://www.rcp.co.nz/wp-content/uploads/2019/09/LFGX4403E-1024x683.jpg",
-  ];
 
   return (
     <Container maxWidth="md">
@@ -62,7 +60,7 @@ const Post = ({ style }) => {
         </Box>
 
         <Carousel dynamicHeight showThumbs={false} autoPlay infiniteLoop>
-          {images.map((image, index) => (
+          {images?.map((image, index) => (
             <Box key={index}>
               <img alt="uoaimage" src={image} />
             </Box>

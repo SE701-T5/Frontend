@@ -84,7 +84,7 @@ function NavBar() {
 
   const userDetails = localStorage.getItem("userDetails");
   const userJson = userDetails ? JSON.parse(userDetails) : null;
-  const userID = userJson.id;
+  const userID = userJson?.id;
 
   // Change communitiesMenu to a context variable.
   const communitiesMenu = ["SOFTENG 352", "SOFTENG 125"];
@@ -112,11 +112,10 @@ function NavBar() {
     console.log("searchValue", searchValue);
   }, [searchValue]);
 
-   //call the endpoint
-   const createLogout = useMutation('/logout', {
-    method: 'post',
+  //call the endpoint
+  const createLogout = useMutation("/logout", {
+    method: "post",
   });
-
 
   const handleOpenCommunitiesMenu = (event) => {
     setAnchorElCommunities(event.currentTarget);
@@ -140,16 +139,14 @@ function NavBar() {
 
   async function handleCloseProfileMenu() {
     setAnchorElProfile(null);
-  
+
     await createLogout({
-      body: { 
-         userID,
-      }
+      body: {
+        userID,
+      },
     });
     localStorage.clear();
-    
-  };
-  
+  }
 
   return (
     <AppBar position="static" sx={styles.appBar} elevation={0}>
@@ -278,7 +275,7 @@ function NavBar() {
                 key={index}
                 onClick={() => {
                   handleCloseProfileMenu();
-            
+
                   link === "/logout" ? logout() : navigate(link);
                 }}
               >

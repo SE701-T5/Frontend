@@ -21,6 +21,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthProvider";
 import logo from "../../assets/logo.svg";
 import { useCommunities } from "../../hooks/useCommunities";
+import { useMutation } from "../../hooks/useApi";
 
 const HeaderButton = styled(Button)(({ theme }) => ({
   display: "flex",
@@ -83,6 +84,11 @@ function NavBar() {
   const { logout, authorized } = useContext(AuthContext);
   const {communities:communitiesMenu,loading:loadingForCommunities} = useCommunities()
   // // Change communitiesMenu to a context variable.
+
+  const userDetails = localStorage.getItem("userDetails");
+  const userJson = userDetails ? JSON.parse(userDetails) : null;
+  const userID = userJson?.id;
+
   const pagesMenu = [
     { label: "Home", link: "/" },
     { label: "Posts", link: "/posts" },
@@ -107,6 +113,11 @@ function NavBar() {
     console.log("searchValue", searchValue);
   }, [searchValue]);
 
+  //call the endpoint
+  const createLogout = useMutation("/users/logout", {
+    method: "post",
+  });
+
   const handleOpenCommunitiesMenu = (event) => {
     setAnchorElCommunities(event.currentTarget);
   };
@@ -127,9 +138,16 @@ function NavBar() {
     setAnchorElProfile(event.currentTarget);
   };
 
-  const handleCloseProfileMenu = () => {
+  async function handleCloseProfileMenu() {
     setAnchorElProfile(null);
-  };
+
+    await createLogout({
+      data: {
+        userID,
+      },
+    });
+    localStorage.clear();
+  }
 
   
   if(loadingForCommunities){
@@ -262,6 +280,7 @@ function NavBar() {
                 key={index}
                 onClick={() => {
                   handleCloseProfileMenu();
+
                   link === "/logout" ? logout() : navigate(link);
                 }}
               >

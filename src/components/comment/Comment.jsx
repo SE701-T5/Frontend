@@ -36,7 +36,7 @@ const Comment = ({ comment }) => {
           </IconButton>
 
           <p className="post-numofvotes">
-            {comment.downVotes - comment.upVotes}
+            {comment.upVotes - comment.downVotes}
           </p>
 
           <IconButton>

@@ -14,12 +14,12 @@ import { useNavigate } from "react-router-dom";
 const PostPreviewComponent = ({ post, style }) => {
   const {
     title,
-    communityName,
+    community,
     updatedAt,
     bodyText,
     upVotes,
     downVotes,
-    images,//todo still need work
+    attachments,//todo still need work
     id,
   } = post;
 
@@ -35,7 +35,7 @@ const PostPreviewComponent = ({ post, style }) => {
       <Box>
         <Box className="ppc-row1">
           <Box>
-            <h5 className="ppc-course">{communityName}</h5>
+            <h5 className="ppc-course">{community.name}</h5>
           </Box>
 
           <Box className="ppc-right">
@@ -61,7 +61,7 @@ const PostPreviewComponent = ({ post, style }) => {
       </Box>
 
       <Carousel dynamicHeight showThumbs={false} autoPlay infiniteLoop>
-        {images.map((image, index) => {
+        {attachments.map((image, index) => {
           return (
             <Box key={index}>
               <img alt="uoaimage" src={image} />

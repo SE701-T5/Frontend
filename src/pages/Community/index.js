@@ -57,21 +57,7 @@ function Community() {
         {posts?.map((p, index) => {
           return (
             <div style={{ margin: "20px 0" }} key={index}>
-              <PostPreview
-                post={{
-                  id: p.id,
-                  title: p.title,
-                  updatedAt: p.updatedAt,
-                  communityName: community.name,
-                  bodyText: p.bodyText,
-                  upVotes: 10,
-                  downVotes: 9,
-                  images: [
-                    "https://img1.baidu.com/it/u=1407750889,3441968730&fm=253&fmt=auto&app=120&f=JPEG?w=1200&h=799",
-                  ],
-                }}
-                style={{}}
-              ></PostPreview>
+              <PostPreview post={p} style={{}}></PostPreview>
             </div>
           );
         })}

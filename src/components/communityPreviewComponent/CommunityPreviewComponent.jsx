@@ -20,7 +20,7 @@ const cardStyle = {
 };
 
 const buttonStyle = {
-  backgroundColor: "#0080A7",
+  backgroundColor: "#4f72aa",
   float: "right",
   position: "absolute",
   bottom: "5%",

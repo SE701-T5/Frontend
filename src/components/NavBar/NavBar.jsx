@@ -113,7 +113,7 @@ function NavBar() {
   }, [searchValue]);
 
   //call the endpoint
-  const createLogout = useMutation("/logout", {
+  const createLogout = useMutation("/users/logout", {
     method: "post",
   });
 

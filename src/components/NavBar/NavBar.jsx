@@ -20,6 +20,7 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthProvider";
 import logo from "../../assets/logo.svg";
+import { useMutation } from "../../hooks/useApi";
 
 const HeaderButton = styled(Button)(({ theme }) => ({
   display: "flex",
@@ -81,6 +82,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 function NavBar() {
   const { logout, authorized } = useContext(AuthContext);
 
+  const userDetails = localStorage.getItem("userDetails");
+  const userJson = userDetails ? JSON.parse(userDetails) : null;
+  const userID = userJson?.id;
+
   // Change communitiesMenu to a context variable.
   const communitiesMenu = ["SOFTENG 352", "SOFTENG 125"];
   const pagesMenu = [
@@ -107,6 +112,11 @@ function NavBar() {
     console.log("searchValue", searchValue);
   }, [searchValue]);
 
+  //call the endpoint
+  const createLogout = useMutation("/users/logout", {
+    method: "post",
+  });
+
   const handleOpenCommunitiesMenu = (event) => {
     setAnchorElCommunities(event.currentTarget);
   };
@@ -127,9 +137,16 @@ function NavBar() {
     setAnchorElProfile(event.currentTarget);
   };
 
-  const handleCloseProfileMenu = () => {
+  async function handleCloseProfileMenu() {
     setAnchorElProfile(null);
-  };
+
+    await createLogout({
+      body: {
+        userID,
+      },
+    });
+    localStorage.clear();
+  }
 
   return (
     <AppBar position="static" sx={styles.appBar} elevation={0}>
@@ -258,6 +275,7 @@ function NavBar() {
                 key={index}
                 onClick={() => {
                   handleCloseProfileMenu();
+
                   link === "/logout" ? logout() : navigate(link);
                 }}
               >

@@ -50,7 +50,7 @@ const Posts = () => {
               style={{ backgroundColor: "#4f72aa" }}
               onClick={() => navigate("/newpost")}
             >
-              New Community
+              New Post
             </Button>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./post.css";
 import Container from "@mui/material/Container";
 import { ArrowUpward, ArrowDownward } from "@mui/icons-material";
@@ -7,6 +7,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import ReplyComponent from "./Reply";
 import Comment from "../../components/comment/Comment";
+import { useParams } from "react-router";
 
 const Post = ({ style }) => {
   useEffect(() => {
@@ -70,6 +71,13 @@ const Post = ({ style }) => {
     },
   ];
 
+  let { id } = useParams();
+  const [vote, setVote] = useState(localStorage.getItem(`${id}-vote`) || "");
+  const handleVote = (vote) => {
+    localStorage.setItem(`${id}-vote`, vote);
+    setVote(vote);
+  };
+
   return (
     <Container maxWidth="md">
       <Box className="post-postArea" style={style}>
@@ -117,10 +125,14 @@ const Post = ({ style }) => {
 
         <Box className="post-row3">
           <Box className="post-votes">
-            <IconButton>
+            <IconButton
+              onClick={() => {
+                handleVote("up");
+              }}
+            >
               <ArrowUpward
                 sx={{
-                  color: "rgba(0,128,167,0.35)",
+                  color: vote === "up" ? "#0080a7" : "rgba(0,128,167,0.35)",
                   "&:hover": { color: "#0080A7" },
                 }}
               />
@@ -128,10 +140,14 @@ const Post = ({ style }) => {
 
             <p className="post-numofvotes">{upvotes - downvotes}</p>
 
-            <IconButton>
+            <IconButton
+              onClick={() => {
+                handleVote("down");
+              }}
+            >
               <ArrowDownward
                 sx={{
-                  color: "rgba(0,128,167,0.35)",
+                  color: vote === "down" ? "#0080a7" : "rgba(0,128,167,0.35)",
                   "&:hover": { color: "#0080A7" },
                 }}
               />

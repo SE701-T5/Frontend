@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./postPreviewComponent.css";
 import { ArrowUpward, ArrowDownward, AddComment } from "@mui/icons-material";
 import { Box, Button, IconButton } from "@mui/material";
@@ -20,6 +20,14 @@ const PostPreviewComponent = ({ post, style }) => {
   } = post;
 
   const navigate = useNavigate();
+
+  const [vote, setVote] = useState(
+    localStorage.getItem(`${postID}-vote`) || ""
+  );
+  const handleVote = (vote) => {
+    localStorage.setItem(`${postID}-vote`, vote);
+    setVote(vote);
+  };
 
   return (
     <Box className="ppc-postArea" style={style}>
@@ -54,9 +62,8 @@ const PostPreviewComponent = ({ post, style }) => {
       </Box>
 
       <Carousel
-        className="carousel"
         dynamicHeight={false}
-        showThumbs={false}
+        showThumbs={true}
         showStatus={false}
         autoPlay
         infiniteLoop
@@ -72,10 +79,14 @@ const PostPreviewComponent = ({ post, style }) => {
 
       <Box className="ppc-row3">
         <Box className="ppc-votes">
-          <IconButton>
+          <IconButton
+            onClick={() => {
+              handleVote("up");
+            }}
+          >
             <ArrowUpward
               sx={{
-                color: "rgba(0,128,167,0.35)",
+                color: vote === "up" ? "#0080a7" : "rgba(0,128,167,0.35)",
                 "&:hover": { color: "#0080A7" },
               }}
             />
@@ -83,10 +94,14 @@ const PostPreviewComponent = ({ post, style }) => {
 
           <p className="ppc-numofvotes">{upvotes - downvotes}</p>
 
-          <IconButton>
+          <IconButton
+            onClick={() => {
+              handleVote("down");
+            }}
+          >
             <ArrowDownward
               sx={{
-                color: "rgba(0,128,167,0.35)",
+                color: vote === "down" ? "#0080a7" : "rgba(0,128,167,0.35)",
                 "&:hover": { color: "#0080A7" },
               }}
             />

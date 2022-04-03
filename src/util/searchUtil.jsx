@@ -9,10 +9,10 @@ export function searchItem(
   if (searchValue !== "") {
     const filteredSearch = posts.filter((item) => {
       return (
-        item.title.toLowerCase().includes(searchValue.toLowerCase()) ||
-        item.community.toLowerCase().includes(searchValue.toLowerCase()) ||
-        item.text.toLowerCase().includes(searchValue.toLowerCase()) ||
-        item.upi.toLowerCase().includes(searchValue.toLowerCase())
+        item?.title?.toLowerCase().includes(searchValue?.toLowerCase()) ||
+        item?.community?.toLowerCase().includes(searchValue?.toLowerCase()) ||
+        item?.text?.toLowerCase().includes(searchValue?.toLowerCase()) ||
+        item?.upi?.toLowerCase().includes(searchValue?.toLowerCase())
       );
     });
     setFilteredResults(filteredSearch);

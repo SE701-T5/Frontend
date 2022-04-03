@@ -5,6 +5,7 @@ import { Button } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
+import { useNavigate } from "react-router";
 
 const cardStyle = {
   display: "block",
@@ -28,10 +29,16 @@ const buttonStyle = {
 };
 
 const CommunityPreviewComponent = ({ communityEntry }) => {
-  const { name, memberCount, description, img } = communityEntry;
+  const { name, memberCount, description, img, id } = communityEntry;
+
+  const navigate = useNavigate();
 
   return (
-    <Card style={cardStyle}>
+    <Card
+      onClick={() => navigate("/Community/" + id)}
+      style={cardStyle}
+      className="cursor-pointer"
+    >
       <Grid container spacing={1}>
         <Grid item xs={4}>
           <CardMedia component="img" image={img} style={cardStyle.media} />
@@ -57,7 +64,11 @@ const CommunityPreviewComponent = ({ communityEntry }) => {
               <p>Nau mai, haere mai ki {name}!</p>
             </div>
           </Typography>
-          <Button variant="contained" style={buttonStyle}>
+          <Button
+            variant="contained"
+            style={buttonStyle}
+            onClick={(e) => e.stopPropagation()}
+          >
             Join
           </Button>
         </Grid>

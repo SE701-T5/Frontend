@@ -24,9 +24,8 @@ const buttonStyle = {
 };
 
 const Communities = () => {
-
-  const {communities:communityPreviews,loading:loadingForCommunities} = useCommunities()
-  
+  const { communities: communityPreviews, loading: loadingForCommunities } =
+    useCommunities();
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -55,9 +54,9 @@ const Communities = () => {
     }
   };
 
-if(loadingForCommunities){
-  return <div>loading</div>
-}
+  if (loadingForCommunities) {
+    return <div>loading</div>;
+  }
 
   return (
     <Container maxWidth="md">
@@ -78,7 +77,7 @@ if(loadingForCommunities){
       <div className="com-bodyContainer">
         <Box className="com-search">
           <FormControl className="com-searchbar" variant="filled">
-            <InputLabel htmlFor="search">Search Posts</InputLabel>
+            <InputLabel htmlFor="search">Search Communities</InputLabel>
             <OutlinedInput
               id="search"
               endAdornment={
@@ -100,7 +99,10 @@ if(loadingForCommunities){
         )}
         {filteredResults &&
           filteredResults.map((communityEntry) => (
-            <CommunityPreviewComponent key={communityEntry.id} communityEntry={communityEntry} />
+            <CommunityPreviewComponent
+              key={communityEntry.id}
+              communityEntry={communityEntry}
+            />
           ))}
       </div>
     </Container>

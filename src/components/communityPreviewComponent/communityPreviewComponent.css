@@ -1,19 +1,8 @@
 .cpc-community {
-  color: #000000;
-  margin-top: 3%;
-  margin-left: 1%;
-  float: left;
+    color: #000000;
 }
 
 .cpc-members {
-  color: #848484;
-  float: right;
-  margin-right: 3%;
-  margin-top: 2%;
-  font-size: 2vh;
-}
-
-.cpc-description {
-  float: left;
-  margin-left: 1%;
+    color: #848484;
+    font-size: 2vh;
 }

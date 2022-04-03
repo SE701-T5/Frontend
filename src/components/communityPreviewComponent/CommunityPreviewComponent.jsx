@@ -10,8 +10,8 @@ const cardStyle = {
   display: "block",
   width: "100%",
   transitionDuration: "0.3s",
-  height: "12vw",
   media: {
+    minheight: "210px",
     height: "100%",
     width: "100%",
   },
@@ -33,35 +33,47 @@ const CommunityPreviewComponent = ({ communityEntry }) => {
   return (
     <Card style={cardStyle}>
       <Grid container spacing={1}>
-        <Grid item xs={4}>
+        <Grid item xs={0} md={4} display={{ xs: "none", md: "block" }}>
           <CardMedia component="img" image={image} style={cardStyle.media} />
         </Grid>
-        <Grid item xs={8}>
-          <Typography variant="h5">
-            <div className="cpc-community">
-              <b>{community}</b>
+        <Grid item xs={12} md={8}>
+          <div
+            style={{
+              display: "flex",
+              height: "100%",
+              flexDirection: "column",
+              padding: "12px",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                width: "100%",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <div className="cpc-community">
+                <Typography variant="h5">
+                  <b>{community}</b>
+                </Typography>
+              </div>
+              <div className="cpc-members">
+                <b>Members: {members}</b>
+              </div>
             </div>
-          </Typography>
-          <Typography variant="body">
-            <div className="cpc-members">
-              <b>Members: {members}</b>
-            </div>
-          </Typography>
-          <br></br>{" "}
-          {/* 3 br tags are currently the only way I can find to format this correctly */}
-          <br></br>
-          <br></br>
-          <Typography variant="body">
-            <div className="cpc-description">
-              {description}
-              <p>Nau mai, haere mai ki {community}!</p>
-            </div>
-          </Typography>
-          <Button variant="contained" style={buttonStyle}>
-            Join
-          </Button>
+            <Typography variant="body">
+              <div>
+                {description}
+                <p>Nau mai, haere mai ki {community}!</p>
+              </div>
+            </Typography>
+            <Button variant="contained" style={buttonStyle}>
+              Join
+            </Button>
+          </div>
         </Grid>
-        <Grid item></Grid>
       </Grid>
     </Card>
   );

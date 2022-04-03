@@ -91,7 +91,7 @@ const Communities = () => {
       <div className="com-bodyContainer">
         <Box className="com-search">
           <FormControl className="com-searchbar" variant="filled">
-            <InputLabel htmlFor="search">Search Communities</InputLabel>
+            <InputLabel htmlFor="search">Search Posts</InputLabel>
             <OutlinedInput
               id="search"
               endAdornment={

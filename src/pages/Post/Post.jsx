@@ -13,27 +13,30 @@ import { useApi } from "../../hooks/useApi";
 const Post = ({ style }) => {
   const { id } = useParams();
   const { data, loading } = useApi(`/posts/${id}`, {});
-  const {data: commentsData, loading: commentsLoading, mutate: refetchComments} = useApi(`/posts/${id}/comments`,{});
+  const {
+    data: commentsData,
+    loading: commentsLoading,
+    mutate: refetchComments,
+  } = useApi(`/posts/${id}/comments`, {});
 
   let postData = [];
   let postTime = "";
-  let communityName="";
+  let communityName = "";
   let commentsArray = [];
   let images = [];
 
   if (!loading && !commentsLoading) {
     postData = data;
     commentsArray = commentsData;
-    const time = new Date(postData.updatedAt);
+    const time = new Date(postData?.updatedAt);
     postTime = time.toLocaleTimeString();
-    communityName=data.community.name;
-    images = postData.attachments
+    communityName = data?.community?.name;
+    images = postData?.attachments;
   }
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
 
   return (
     <Container maxWidth="md">
@@ -52,9 +55,9 @@ const Post = ({ style }) => {
           </Box>
 
           <Box className="post-row2">
-            <h2 className="post-title">{postData.title}</h2>
+            <h2 className="post-title">{postData?.title}</h2>
             <Box>
-              <p className="post-text">{postData.bodyText}</p>
+              <p className="post-text">{postData?.bodyText}</p>
             </Box>
           </Box>
         </Box>
@@ -79,7 +82,7 @@ const Post = ({ style }) => {
             </IconButton>
 
             <p className="post-numofvotes">
-              {postData.upVotes - postData.downVotes}
+              {postData?.upVotes - postData?.downVotes}
             </p>
 
             <IconButton>
@@ -96,7 +99,7 @@ const Post = ({ style }) => {
 
       <Box className="post-commentArea">
         <h3 className="post-comment">Comments</h3>
-        {commentsArray.map((comment, index) => (
+        {commentsArray?.map((comment, index) => (
           <Box key={index} className="comment">
             <Comment comment={comment} />
           </Box>

@@ -147,8 +147,9 @@ function NavBar() {
 
     await createLogout({});
 
+    logout();
     localStorage.clear();
-  }, [createLogout, setAnchorElProfile]);
+  }, [createLogout, setAnchorElProfile, logout]);
 
   const handleCloseMenu = useCallback(() => {
     setAnchorElProfile(null);
@@ -286,9 +287,12 @@ function NavBar() {
               <MenuItem
                 key={index}
                 onClick={() => {
-                  handleLogoutClick();
-
-                  link === "/logout" ? logout() : navigate(link);
+                  link === "/logout"
+                    ? handleLogoutClick()
+                    : (() => {
+                        handleCloseMenu();
+                        navigate(link);
+                      })();
                 }}
               >
                 {label}

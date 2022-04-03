@@ -3,10 +3,13 @@ import "./profilePage.css";
 import { Modal } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { useMutation } from "../../hooks/useApi";
 
 const ChangeEmailForm = () => {
-  const EMAILSUCCESS = "Submission Sucessful";
-  const EMAILNOTMATCH = "Email mismatch! Please try again.";
+  const patchUser = useMutation("/users/current", { method: "put" });
+
+  const EMAIL_SUCCESS = "Submission Sucessful";
+  const EMAIL_NOT_MATCH = "Email mismatch! Please try again.";
 
   const [changeEmail, setChangeEmail] = useState({
     oldEmail: "",
@@ -20,11 +23,18 @@ const ChangeEmailForm = () => {
     setChangeEmail({ ...changeEmail, [event.target.name]: event.target.value });
   };
 
-  const handleSubmitChangeEmail = (event) => {
+  const handleSubmitChangeEmail = async (event) => {
     event.preventDefault();
     if (changeEmail.confirmEmail !== changeEmail.newEmail)
-      setchangeEmailMsg(EMAILNOTMATCH);
-    else setchangeEmailMsg(EMAILSUCCESS);
+      setchangeEmailMsg(EMAIL_NOT_MATCH);
+    else {
+      await patchUser({
+        data: {
+          email: changeEmail.newEmail,
+        },
+      });
+      setchangeEmailMsg(EMAIL_SUCCESS);
+    }
   };
 
   return (
@@ -59,7 +69,9 @@ const ChangeEmailForm = () => {
       <div
         className={
           "flex flex-row justify-center text-xs  " +
-          (changeEmailMsg === EMAILNOTMATCH ? "text-red-500" : "text-gray-500")
+          (changeEmailMsg === EMAIL_NOT_MATCH
+            ? "text-red-500"
+            : "text-gray-500")
         }
       >
         {changeEmailMsg}
@@ -69,8 +81,12 @@ const ChangeEmailForm = () => {
 };
 
 const ChangePasswordForm = () => {
-  const PASSWORDSUCCESS = "Submission Sucessful";
-  const PASSWORDNOTMATCH = "Password mismatch! Please try again.";
+  const patchUser = useMutation("/users/current", { method: "put" });
+
+  const PASSWORD_SUCCESS = "Submission Sucessful";
+  const PASSWORD_NOT_MATCH = "Password mismatch! Please try again.";
+  const PASSWORD_PATTERN_NOT_MATCH =
+    "New password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters.";
 
   const [changePassword, setChangePassword] = useState({
     oldPassword: "",
@@ -87,11 +103,21 @@ const ChangePasswordForm = () => {
     });
   };
 
-  const handleSubmitChangePassword = (event) => {
+  const handleSubmitChangePassword = async (event) => {
     event.preventDefault();
+    const pattern = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
     if (changePassword.confirmPassword !== changePassword.newPassword)
-      setchangePasswordMsg(PASSWORDNOTMATCH);
-    else setchangePasswordMsg(PASSWORDSUCCESS);
+      setchangePasswordMsg(PASSWORD_NOT_MATCH);
+    else if (!pattern.test(changePassword.newPassword)) {
+      setchangePasswordMsg(PASSWORD_PATTERN_NOT_MATCH);
+    } else {
+      await patchUser({
+        data: {
+          plaintextPassword: changePassword.newPassword,
+        },
+      });
+      setchangePasswordMsg(PASSWORD_SUCCESS);
+    }
   };
 
   const [showOldPass, setShowOldPass] = useState(false);
@@ -176,7 +202,8 @@ const ChangePasswordForm = () => {
       <div
         className={
           "flex flex-row justify-center text-xs  " +
-          (changePasswordMsg === PASSWORDNOTMATCH
+          (changePasswordMsg === PASSWORD_NOT_MATCH ||
+          changePasswordMsg === PASSWORD_PATTERN_NOT_MATCH
             ? "text-red-500"
             : "text-gray-500")
         }

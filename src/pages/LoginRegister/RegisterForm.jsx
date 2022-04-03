@@ -30,11 +30,7 @@ export default function RegisterForm({ Register }) {
       <div className="LoginRegister_container" id="LoginRegister_container">
         <div className="LoginRegisterForm_container sign-up-container">
           <form className="LoginRegisterForm_form" onSubmit={handleSubmit}>
-            <h2 className="h1 text-center mb-4">Create Account</h2>
-
-            <span className="LoginRegisterForm_span">
-              use your email for registration
-            </span>
+            <h2 className="mb-4 text-center h1">Create Account</h2>
             <input
               className="LoginRegisterForm_input"
               type="email"
@@ -76,7 +72,7 @@ export default function RegisterForm({ Register }) {
               required
             />
             <a className="LoginRegisterForm_a" href="/homepage">
-              <button className="LoginRegisterForm_button" type="submit">
+              <button className="LoginRegisterForm_button LoginRegisterForm_Bluebutton" type="submit">
                 Sign Up
               </button>
             </a>
@@ -92,7 +88,7 @@ export default function RegisterForm({ Register }) {
                 us
               </p>
               <button
-                className="LoginRegisterForm_button ghost"
+                className="LoginRegisterForm_button LoginRegisterForm_Whitepbutton"
                 id="login"
                 onClick={() => {
                   navigate("/login");

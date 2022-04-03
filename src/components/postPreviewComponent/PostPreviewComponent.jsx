@@ -19,16 +19,16 @@ const PostPreviewComponent = ({ post, style }) => {
     bodyText,
     upVotes,
     downVotes,
-    attachments,//todo still need work
+    attachments, //todo still need work
     id,
   } = post;
 
   const navigate = useNavigate();
 
-  const getDateString =(UTCDateString)=>{
+  const getDateString = (UTCDateString) => {
     const time = new Date(UTCDateString);
     return time.toLocaleTimeString();
-  }
+  };
 
   return (
     <Box className="ppc-postArea" style={style}>
@@ -61,7 +61,7 @@ const PostPreviewComponent = ({ post, style }) => {
       </Box>
 
       <Carousel dynamicHeight showThumbs={false} autoPlay infiniteLoop>
-        {attachments.map((image, index) => {
+        {attachments?.map((image, index) => {
           return (
             <Box key={index}>
               <img alt="uoaimage" src={image} />

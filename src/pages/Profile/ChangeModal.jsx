@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./profilePage.css";
 import { Modal } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useMutation } from "../../hooks/useApi";
+import { useNavigate } from "react-router";
+import AuthContext from "../../context/AuthProvider";
 
 const ChangeEmailForm = () => {
   const patchUser = useMutation("/users/current", { method: "put" });
@@ -82,8 +84,10 @@ const ChangeEmailForm = () => {
 
 const ChangePasswordForm = () => {
   const patchUser = useMutation("/users/current", { method: "put" });
+  const { logout } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const PASSWORD_SUCCESS = "Submission Sucessful";
+  const PASSWORD_SUCCESS = "Submission Sucessful! Automatically logout";
   const PASSWORD_NOT_MATCH = "Password mismatch! Please try again.";
   const PASSWORD_PATTERN_NOT_MATCH =
     "New password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters.";
@@ -106,6 +110,7 @@ const ChangePasswordForm = () => {
   const handleSubmitChangePassword = async (event) => {
     event.preventDefault();
     const pattern = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+
     if (changePassword.confirmPassword !== changePassword.newPassword)
       setchangePasswordMsg(PASSWORD_NOT_MATCH);
     else if (!pattern.test(changePassword.newPassword)) {
@@ -117,6 +122,11 @@ const ChangePasswordForm = () => {
         },
       });
       setchangePasswordMsg(PASSWORD_SUCCESS);
+      localStorage.clear();
+      logout();
+      setTimeout(function () {
+        navigate("/login");
+      }, 2000);
     }
   };
 

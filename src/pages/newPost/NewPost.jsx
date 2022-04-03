@@ -62,7 +62,10 @@ const NewPost = () => {
   return (
     <div className="npTitleWrapper">
       <h1 className="npTitle pb-2">New Post</h1>
-      <div className="npFormContainer">
+      <div className="hpDivide">
+        <div className="hpDivider"></div>
+      </div>
+      <div className="npFormContainer p-4 pr-6">
         <Grid container spacing={2} justify="space-around">
           <Grid item xs={12}>
             <div className="npTableElementTitleForum">

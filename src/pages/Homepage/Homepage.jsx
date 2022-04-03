@@ -36,15 +36,15 @@ const Homepage = () => {
   return (
     <div className="hpHomePage">
       <Container maxWidth="md">
-        <h1 className="hpTitle">Popular Communities</h1>
+        <h1 className="hpTitle pb-2">Popular Communities</h1>
         <div className="hpDivide">
-          <hr className="hpDivider"></hr>
+          <div className="hpDivider"></div>
         </div>
         <div className="hpContainer">
           {/* Placeholder for Scrollable Popular Communities components - grid to be replaced*/}
 
           <Grid container spacing={2} justifyContent="center">
-            {popularCommunities?.map((community, index) => (
+            {popularCommunities?.slice(0, 3).map((community, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
                 <PopularCommunity
                   name={community.name}
@@ -57,9 +57,9 @@ const Homepage = () => {
           </Grid>
         </div>
         <br></br>
-        <h1 className="hpTitle">Popular Posts</h1>
+        <h1 className="hpTitle pb-2">Popular Posts</h1>
         <div className="hpDivide">
-          <hr className="hpDivider"></hr>
+          <div className="hpDivider"></div>
         </div>
         <div className="hpContainer">
           {postPreviews?.map((post, index) => {

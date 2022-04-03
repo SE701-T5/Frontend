@@ -52,12 +52,20 @@ const ProfilePage = () => {
               <h1 className="p-title pb-2 font-semibold text-lg">
                 Post Search
               </h1>
-              <input
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="p-2 w-full rounded-lg outline-none focus:outline-blue-600 transition-all"
-                placeholder="Search Posts..."
-              />
+
+              <FormControl className="p-searchbar" variant="filled">
+                <InputLabel htmlFor="search">Search Posts</InputLabel>
+                <OutlinedInput
+                  id="search"
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <Search />
+                    </InputAdornment>
+                  }
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+              </FormControl>
               <h1 className="p-title font-semibold text-lg pt-8">
                 Post History
               </h1>

@@ -15,6 +15,15 @@ import PostPreviewComponent from "../../components/postPreviewComponent";
 import { useNavigate } from "react-router-dom";
 import { useApi } from "../../hooks/useApi";
 
+const buttonStyle = {
+  backgroundColor: "#4f72aa",
+  display: "inline-block",
+  float: "right",
+  position: "absolute",
+  top: "0",
+  right: "0",
+};
+
 const Posts = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -33,17 +42,21 @@ const Posts = () => {
   return (
     <Container maxWidth="md">
       <div className="p-titleContainer">
-        <h1 className="com-title">Posts</h1>
-        <Button
-          variant="contained"
-          // todo fix this button style
-          // style={buttonStyle}
-          onClick={() => navigate("/newpost")}
-        >
-          New Post
-        </Button>
+        <div className="flex justify-between items-end pb-2">
+          <h1 className="com-title">Posts</h1>
+          <div className="mb-5">
+            <Button
+              variant="contained"
+              style={{ backgroundColor: "#4f72aa" }}
+              onClick={() => navigate("/newpost")}
+            >
+              New Community
+            </Button>
+          </div>
+        </div>
+
         <div className="p-Divide">
-          <hr className="p-Divider"></hr>
+          <div className="p-Divider"></div>
         </div>
       </div>
       <br></br>

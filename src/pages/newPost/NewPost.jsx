@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select, {SelectChangeEvent} from "@mui/material/Select";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Button from "@mui/material/Button";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import { Carousel } from "react-responsive-carousel";
@@ -25,44 +25,43 @@ const NewPost = () => {
   const [images, setImages] = useState([]);
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
-  const [community, setCommunity] = useState('');
+  const [community, setCommunity] = useState("");
 
-  const {communities,loading} = useCommunities();
+  const { communities, loading } = useCommunities();
 
-  const navigate = useNavigate()
-  
-  const postCreateApiCall = useMutation(
-    `/communities/${community}/posts`,
-    {
-      method:"post"
-    }
-  );
-  
-  const CreatePostClick = ()=>{
+  const navigate = useNavigate();
+
+  const postCreateApiCall = useMutation(`/communities/${community}/posts`, {
+    method: "post",
+  });
+
+  const CreatePostClick = () => {
     postCreateApiCall({
       data: {
-        title:title,
+        title: title,
         bodyText: text,
       },
-    }).then(function(success){
-      alert("successfully create a post")
-      navigate("/homepage",{replace:true})
-    }).catch(function(error){
-      alert("fail to create a post")
     })
-  }
+      .then(function (success) {
+        alert("successfully create a post");
+        navigate("/homepage", { replace: true });
+      })
+      .catch(function (error) {
+        alert("fail to create a post");
+      });
+  };
 
-  const handleChange=(event: SelectChangeEvent)=>{
+  const handleChange = (event: SelectChangeEvent) => {
     setCommunity(event.target.value);
-  }
-  
-  if(loading){
-    return <>loading</>
+  };
+
+  if (loading) {
+    return <>loading</>;
   }
 
   return (
     <div className="npTitleWrapper">
-      <h1 className="npTitle">New Post</h1>
+      <h1 className="npTitle pb-2">New Post</h1>
       <div className="npFormContainer">
         <Grid container spacing={2} justify="space-around">
           <Grid item xs={12}>
@@ -73,7 +72,7 @@ const NewPost = () => {
                 id="outlined-basic"
                 label="Title"
                 variant="outlined"
-                onChange={(e)=>setTitle(e.target.value)}
+                onChange={(e) => setTitle(e.target.value)}
               />
             </div>
           </Grid>
@@ -89,7 +88,15 @@ const NewPost = () => {
                   label="Select the forum of your post"
                   onChange={handleChange}
                 >
-                  {!loading? communities.map((community,index)=>(<MenuItem key={index} value={community.id}>{community.name}</MenuItem>)) : <div></div>}
+                  {!loading ? (
+                    communities.map((community, index) => (
+                      <MenuItem key={index} value={community.id}>
+                        {community.name}
+                      </MenuItem>
+                    ))
+                  ) : (
+                    <div></div>
+                  )}
                 </Select>
               </FormControl>
             </div>
@@ -105,7 +112,7 @@ const NewPost = () => {
                 minRows={12}
                 maxRows={12}
                 fullWidth
-                onChange={(e)=>setText(e.target.value)}
+                onChange={(e) => setText(e.target.value)}
               />
             </div>
           </Grid>
@@ -176,7 +183,12 @@ const NewPost = () => {
           </Grid>
           <Grid item xs={6}>
             <div className="npSubmitButton">
-              <Button sx={styles} label="Post" variant="outlined" onClick={CreatePostClick}>
+              <Button
+                sx={styles}
+                label="Post"
+                variant="outlined"
+                onClick={CreatePostClick}
+              >
                 Post
               </Button>
             </div>

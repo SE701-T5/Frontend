@@ -14,15 +14,6 @@ import { Search } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { useCommunities } from "../../hooks/useCommunities";
 
-const buttonStyle = {
-  backgroundColor: "#4f72aa",
-  display: "inline-block",
-  float: "right",
-  position: "absolute",
-  top: "0",
-  right: "0",
-};
-
 const Communities = () => {
   const { communities: communityPreviews, loading: loadingForCommunities } =
     useCommunities();
@@ -61,16 +52,20 @@ const Communities = () => {
   return (
     <Container maxWidth="md">
       <div className="com-titleContainer">
-        <h1 className="com-title">Communities</h1>
-        <Button
-          variant="contained"
-          sx={buttonStyle}
-          onClick={() => navigate("/NewCommunity")}
-        >
-          New Community
-        </Button>
-        <div className="com-Divide">
-          <hr className="com-Divider"></hr>
+        <div className="flex justify-between items-end pb-2">
+          <h1 className="com-title">Communities</h1>
+          <div className="mb-5">
+            <Button
+              variant="contained"
+              style={{ backgroundColor: "#4f72aa" }}
+              onClick={() => navigate("/NewCommunity")}
+            >
+              New Community
+            </Button>
+          </div>
+        </div>
+        <div className="p-Divide">
+          <div className="p-Divider"></div>
         </div>
       </div>
       <br></br>

@@ -7,8 +7,41 @@ import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import { Box } from "@mui/system";
+import { useMutation } from "../../hooks/useApi";
+import { useCommunities } from "../../hooks/useCommunities";
+import { ContactlessOutlined } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 const NewCommunity = () => {
   const [images, setImages] = useState([]);
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+
+  const navigate = useNavigate();
+
+  const {refretchCommunities} = useCommunities();
+
+  const createCommunityApiCall = useMutation(
+    '/communities',
+    {
+      method:"post"
+    }
+  );
+
+  const onCreateClick = ()=>{
+    createCommunityApiCall({
+      data:{
+        name:name,
+        description:description,
+        img:"https://nz3.architecturemedia.net/site_media/media/cache/52/47/5247e80bab99158eecfb84da220fe7b1.jpg"
+      }
+    }).then((res)=>{
+      alert("successfully create community")
+      refretchCommunities()
+      navigate("/homepage",{replace:true})
+    }).catch((error)=>{
+      alert(error.response.data.error)
+    })
+  }
 
   return (
     <div className="ncContent">
@@ -23,6 +56,7 @@ const NewCommunity = () => {
                 id="outlined-basic"
                 label="Community Name"
                 variant="outlined"
+                onChange={(e)=>setName(e.target.value)}
               />
             </div>
           </Grid>
@@ -38,6 +72,7 @@ const NewCommunity = () => {
                 id="outlined-basic"
                 label="Community Description"
                 variant="outlined"
+                onChange={(e)=>setDescription(e.target.value)}
               />
             </div>
           </Grid>
@@ -101,7 +136,7 @@ const NewCommunity = () => {
 
           <Grid item xs={6}>
             <div className="ncSubmitButton">
-              <Button variant="contained">Create</Button>
+              <Button onClick={onCreateClick} variant="contained">Create</Button>
             </div>
           </Grid>
         </Grid>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./post.css";
 import Container from "@mui/material/Container";
 import { ArrowUpward, ArrowDownward } from "@mui/icons-material";
@@ -38,6 +38,12 @@ const Post = ({ style }) => {
     window.scrollTo(0, 0);
   }, []);
 
+  const [vote, setVote] = useState(localStorage.getItem(`${id}-vote`) || "");
+  const handleVote = (vote) => {
+    localStorage.setItem(`${id}-vote`, vote);
+    setVote(vote);
+  };
+
   return (
     <Container maxWidth="md">
       <Box className="post-postArea" style={style}>
@@ -49,7 +55,11 @@ const Post = ({ style }) => {
 
             <Box className="post-right">
               <Box>
-                <p className="post-timeposted">{postTime}</p>
+                <h5 className="post-upi">{id}</h5>
+              </Box>
+
+              <Box>
+                <h5 className="post-timeposted">{postTime}</h5>
               </Box>
             </Box>
           </Box>
@@ -62,7 +72,14 @@ const Post = ({ style }) => {
           </Box>
         </Box>
 
-        <Carousel dynamicHeight showThumbs={false} autoPlay infiniteLoop>
+        <Carousel
+          className="carousel"
+          dynamicHeight={false}
+          showThumbs={false}
+          showStatus={false}
+          autoPlay
+          infiniteLoop
+        >
           {images?.map((image, index) => (
             <Box key={index}>
               <img alt="uoaimage" src={image} />
@@ -72,10 +89,14 @@ const Post = ({ style }) => {
 
         <Box className="post-row3">
           <Box className="post-votes">
-            <IconButton>
+            <IconButton
+              onClick={() => {
+                handleVote("up");
+              }}
+            >
               <ArrowUpward
                 sx={{
-                  color: "rgba(0,128,167,0.35)",
+                  color: vote === "up" ? "#0080a7" : "rgba(0,128,167,0.35)",
                   "&:hover": { color: "#0080A7" },
                 }}
               />
@@ -85,10 +106,14 @@ const Post = ({ style }) => {
               {postData?.upVotes - postData?.downVotes}
             </p>
 
-            <IconButton>
+            <IconButton
+              onClick={() => {
+                handleVote("down");
+              }}
+            >
               <ArrowDownward
                 sx={{
-                  color: "rgba(0,128,167,0.35)",
+                  color: vote === "down" ? "#0080a7" : "rgba(0,128,167,0.35)",
                   "&:hover": { color: "#0080A7" },
                 }}
               />

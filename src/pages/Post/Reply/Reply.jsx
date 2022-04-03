@@ -43,6 +43,7 @@ const ReplyComponent = (props) => {
         <Button
           variant="outlined"
           startIcon={<Reply />}
+          sx={{ color: "#4f72aa" }}
           onClick={handleCommentClick}
         >
           Comment

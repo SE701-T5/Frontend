@@ -49,25 +49,29 @@ const ProfilePage = () => {
           <main className="flex flex-col h-full max-w-2xl mx-10">
             <ChangeModal open={open} handleClose={() => setOpen(false)} />
             <div className="w-full flex-col mt-12">
-              <h1 className="p-title pb-2 font-semibold text-lg">
-                Post Search
-              </h1>
-              <input
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="p-2 w-full rounded-lg outline-none focus:outline-blue-600 transition-all"
-                placeholder="Search Posts..."
-              />
-              <h1 className="p-title font-semibold text-lg pt-8">
-                Post History
-              </h1>
+              <h1 className="p-title pt-8 pb-4">Post History</h1>
+              <div className="hpDivide">
+                <div className="hpDivider"></div>
+              </div>
+              <FormControl className="p-searchbar" variant="filled">
+                <InputLabel htmlFor="search">Search Posts</InputLabel>
+                <OutlinedInput
+                  id="search"
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <Search />
+                    </InputAdornment>
+                  }
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+              </FormControl>
               {searchQuery.length > 0 && (
                 <p className="font-bold">
                   {filteredResults.length} results found based on search query "
                   {searchQuery}"
                 </p>
               )}
-
               {filteredResults?.map((post) => (
                 <Box className="p-post w-full">
                   <PostPreviewComponent post={post} />

@@ -11,21 +11,18 @@ const cardStyle = {
   display: "block",
   width: "100%",
   transitionDuration: "0.3s",
-  height: "12vw",
   media: {
+    minheight: "210px",
     height: "100%",
     width: "100%",
   },
   margin: "20px 0",
   position: "relative",
+  cursor: "pointer",
 };
 
 const buttonStyle = {
-  backgroundColor: "#0080A7",
-  float: "right",
-  position: "absolute",
-  bottom: "5%",
-  right: "1%",
+  backgroundColor: "#4f72aa",
 };
 
 const CommunityPreviewComponent = ({ communityEntry }) => {
@@ -37,42 +34,64 @@ const CommunityPreviewComponent = ({ communityEntry }) => {
     <Card
       onClick={() => navigate("/Community/" + id)}
       style={cardStyle}
-      className="cursor-pointer"
+      className=""
     >
       <Grid container spacing={1}>
-        <Grid item xs={4}>
+        <Grid item xs={0} md={4} display={{ xs: "none", md: "block" }}>
           <CardMedia component="img" image={img} style={cardStyle.media} />
         </Grid>
-        <Grid item xs={8}>
-          <Typography variant="h5">
-            <div className="cpc-community">
-              <b>{name}</b>
-            </div>
-          </Typography>
-          <Typography variant="body">
-            <div className="cpc-members">
-              <b>Members: {memberCount}</b>
-            </div>
-          </Typography>
-          <br></br>{" "}
-          {/* 3 br tags are currently the only way I can find to format this correctly */}
-          <br></br>
-          <br></br>
-          <Typography variant="body">
-            <div className="cpc-description">
-              {description}
-              <p>Nau mai, haere mai ki {name}!</p>
-            </div>
-          </Typography>
-          <Button
-            variant="contained"
-            style={buttonStyle}
-            onClick={(e) => e.stopPropagation()}
+        <Grid item xs={12} md={8}>
+          <div
+            style={{
+              display: "flex",
+              height: "100%",
+              flexDirection: "column",
+              padding: "12px",
+            }}
           >
-            Join
-          </Button>
+            <div
+              style={{
+                display: "flex",
+                width: "100%",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <div className="cpc-community">
+                <Typography variant="h5">
+                  <b>{name}</b>
+                </Typography>
+              </div>
+              <div className="cpc-members">
+                <b>Members: {memberCount}</b>
+              </div>
+            </div>
+            <Typography variant="body">
+              <div>
+                {description}
+                <p>Nau mai, haere mai ki {name}!</p>
+              </div>
+            </Typography>
+            <div
+              style={{
+                display: "flex",
+                width: "100%",
+                flexDirection: "row",
+                justifyContent: "end",
+                alignItems: "center",
+              }}
+            >
+              <Button
+                onClick={(e) => e.stopPropagation()}
+                variant="contained"
+                style={buttonStyle}
+              >
+                Join
+              </Button>
+            </div>
+          </div>
         </Grid>
-        <Grid item></Grid>
       </Grid>
     </Card>
   );

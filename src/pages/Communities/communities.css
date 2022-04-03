@@ -1,4 +1,4 @@
-.com-Title {
+.com-title {
   color: #19467b;
 }
 
@@ -13,7 +13,7 @@
 }
 
 .com-Divider {
-  border: 3px solid #ffffff;
+  background-color: #e7e7e7;
 }
 
 .com-search {

@@ -13,17 +13,16 @@
   justify-content: space-between;
 }
 .post-course {
-  color: #0080a7;
   margin-top: 0;
 }
 .post-upi {
-  color: #0080a7;
   margin-right: 50px;
   margin-top: 0;
+  font-weight: normal;
 }
 .post-timeposted {
-  color: #0080a7;
   margin-top: 0;
+  font-weight: normal;
 }
 
 .post-title {
@@ -57,4 +56,9 @@
   margin-bottom: 0;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.carousel .carousel.carousel-slider .control-arrow {
+  opacity: 1;
+  padding: 0.8rem;
 }

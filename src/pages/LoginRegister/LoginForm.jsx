@@ -27,12 +27,10 @@ export default function LoginForm({ LoginFormDetail }) {
         <div className="LoginRegisterForm_container sign-in-container">
           <form className="LoginRegisterForm_form" onSubmit={handleSubmit}>
             <h2 className="LoginRegisterForm_h2">Log in</h2>
-
-            <span className="LoginRegisterForm_span">use your account</span>
             <input
               className="LoginRegisterForm_input"
               type="email"
-              placeholder="Email"
+              placeholder="Email address or phone number"
               name="email"
               value={email}
               onChange={handleChange}
@@ -58,8 +56,8 @@ export default function LoginForm({ LoginFormDetail }) {
               Forgot your password?
             </Link>
 
-            <button className="LoginRegisterForm_button" type="submit">
-              Sign In
+            <button className="LoginRegisterForm_button LoginRegisterForm_Bluebutton" type="submit">
+              Log In
             </button>
           </form>
         </div>
@@ -70,10 +68,10 @@ export default function LoginForm({ LoginFormDetail }) {
               <h1 className="LoginRegisterForm_h1">Hello, Friend!</h1>
 
               <p className="LoginRegisterForm_p">
-                Enter your personal details and start journey with us
+                New to UniForm? Sign up to start your journey!
               </p>
               <button
-                className="LoginRegisterForm_button ghost"
+                className="LoginRegisterForm_button LoginRegisterForm_Whitepbutton"
                 id="signUp"
                 onClick={() => {
                   navigate("/register");

@@ -12,30 +12,27 @@
   justify-content: space-between;
 }
 .ppc-course {
-  color: #0080a7;
   margin-top: 0;
 }
 .ppc-upi {
-  color: #0080a7;
   margin-right: 50px;
   margin-top: 0;
+  font-weight: normal;
 }
 .ppc-timeposted {
-  color: #0080a7;
   margin-top: 0;
+  font-weight: normal;
 }
 
 .ppc-title {
   margin-top: 0;
   margin-bottom: 0;
-  cursor: pointer;
   display: flex;
   align-items: center;
 }
 
-.ppc-title:hover {
-  color: #0080a7;
-  text-decoration: underline;
+.ppc-postInfo:hover {
+  cursor: pointer;
 }
 
 .ppc-link-icon {
@@ -59,18 +56,21 @@
   justify-content: space-between;
   margin-top: 15px;
 }
+
 .ppc-votes {
   color: #0080a7;
   display: flex;
   text-align: center;
   align-items: center;
 }
+
 .ppc-numofvotes {
   margin-top: 0;
   margin-bottom: 0;
   margin-left: 10px;
   margin-right: 10px;
 }
+
 .ppc-comment {
   color: #0080a7;
   margin-top: 0;

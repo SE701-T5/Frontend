@@ -78,10 +78,17 @@ const NewCommunity = () => {
           </Grid>
           <Grid item xs={12}>
             <div className="ncCarouselWrapper">
-              <Carousel dynamicHeight showThumbs={false} autoPlay infiniteLoop>
-                {images.map((image) => {
+              <Carousel
+                className="carousel"
+                dynamicHeight
+                showThumbs={false}
+                showStatus={false}
+                autoPlay
+                infiniteLoop
+              >
+                {images.map((image, idx) => {
                   return (
-                    <Box>
+                    <Box key={idx}>
                       <img alt="uoaimage" src={image} />
                       <Button
                         className="legend"

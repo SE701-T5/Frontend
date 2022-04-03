@@ -68,7 +68,7 @@ const ChangeEmailForm = () => {
   );
 };
 
-const ChangePassworldForm = () => {
+const ChangePasswordForm = () => {
   const PASSWORDSUCCESS = "Submission Sucessful";
   const PASSWORDNOTMATCH = "Password mismatch! Please try again.";
 
@@ -101,7 +101,7 @@ const ChangePassworldForm = () => {
   return (
     <div className="flex flex-col gap-2 px-1 mx-8">
       <div className="flex flex-row justify-center pb-2 text-lg font-bold text-primary-blue">
-        Change Login Email
+        Change Password
       </div>
       <div>
         <div className="relative flex flex-row justify-end ">
@@ -197,7 +197,7 @@ export default function ChangeModal({ open, handleClose }) {
               <ChangeEmailForm />
             </div>
             <div className="py-5">
-              <ChangePassworldForm />
+              <ChangePasswordForm />
             </div>
           </div>
           <div className="flex flex-row justify-center">

@@ -24,11 +24,10 @@ const Posts = () => {
 
   const navigate = useNavigate();
 
-
   const { filteredResults, searchQuery, setSearchQuery } = useSearchItem(posts);
 
-  if(loadingForPosts){
-    return <>loading</>
+  if (loadingForPosts) {
+    return <>loading</>;
   }
 
   return (
@@ -65,7 +64,7 @@ const Posts = () => {
         </p>
       )}
       {filteredResults &&
-        filteredResults.map((post,index) => (
+        filteredResults.map((post, index) => (
           <Box className="p-post" key={index}>
             <PostPreviewComponent post={post} />
           </Box>

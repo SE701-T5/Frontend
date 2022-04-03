@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import "./postPreviewComponent.css";
 import {
   ArrowUpward,
@@ -25,10 +25,16 @@ const PostPreviewComponent = ({ post, style }) => {
 
   const navigate = useNavigate();
 
-  const getDateString = (UTCDateString) => {
-    const time = new Date(UTCDateString);
-    return time.toLocaleTimeString();
-  };
+  const getDateString = useCallback((UTCDateString) => {
+    var difference = new Date(UTCDateString).getTime() - new Date().getTime();
+    var days = Math.ceil(difference / (1000 * 3600 * 24));
+
+    return new Intl.RelativeTimeFormat("en", {
+      style: "long",
+      localeMatcher: "lookup",
+      numeric: "auto",
+    }).format(days, "day");
+  }, []);
 
   return (
     <Box className="ppc-postArea" style={style}>

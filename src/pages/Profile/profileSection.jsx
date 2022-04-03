@@ -7,22 +7,34 @@ import {
   TextField,
 } from "@mui/material";
 import React, { useState } from "react";
+import { useMutation } from "../../hooks/useApi";
 import "./profilePage.css";
 
-const ProfileSection = ({ setOpen, username, name, image }) => {
+const ProfileSection = ({ setOpen, username, name, image, update }) => {
   const [editProfileClicked, setEditProfileClicked] = useState(false);
-  const [nameForm, setNameForm] = useState("");
-  const [usernameForm, setUserNameForm] = useState("");
+  const [nameForm, setNameForm] = useState(name);
+  const [usernameForm, setUserNameForm] = useState(username);
+
   const editProfileHandler = () => {
     setEditProfileClicked(!editProfileClicked);
+    update();
   };
 
   const handleChange = (e) => {
     setNameForm(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const patchUser = useMutation("/users/current", { method: "put" });
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    await patchUser({
+      data: {
+        username: usernameForm,
+        displayName: nameForm,
+      },
+    });
+    editProfileHandler();
   };
 
   return (
@@ -55,13 +67,14 @@ const ProfileSection = ({ setOpen, username, name, image }) => {
                   <input
                     className="block w-full h-8 px-4 py-3 mb-2 leading-tight text-gray-700 bg-white border shadow-sm rounded-xl"
                     placeholder="Name"
-                    defaultValue={name}
+                    value={nameForm}
                     onChange={handleChange}
                   />
                   <input
                     className="block w-full h-8 px-4 py-3 mb-2 leading-tight text-gray-700 bg-white border shadow-sm rounded-xl"
                     placeholder="Username"
-                    defaultValue={username}
+                    value={usernameForm}
+                    onChange={(e) => setUserNameForm(e.target.value)}
                   />
                 </div>
 

@@ -12,11 +12,14 @@ export const useSearchItem = (posts) => {
         posts.filter(
           (item) =>
             item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            item.community.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            item.text.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            item.upi.toLowerCase().includes(searchQuery.toLowerCase())
+            item.community.name
+              .toLowerCase()
+              .includes(searchQuery.toLowerCase()) ||
+            item.bodyText.toLowerCase().includes(searchQuery.toLowerCase())
         )
       );
+    } else {
+      setFilteredResults(posts);
     }
   }, [searchQuery]);
 

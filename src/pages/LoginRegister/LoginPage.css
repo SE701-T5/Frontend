@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
-
 * {
   box-sizing: border-box;
 }
@@ -40,20 +39,29 @@
   color: #333;
   font-size: 14px;
   text-decoration: none;
-  margin: 15px 0;
+  margin: 10px 0;
+  margin-bottom: 15px;
 }
 
 .LoginRegisterForm_button {
   border-radius: 20px;
-  border: 1px solid rgba(25, 70, 123, 0.97);
-  background-color: rgba(25, 70, 123, 0.97);
-  color: #ffffff;
   font-size: 12px;
   font-weight: bold;
   padding: 12px 45px;
   letter-spacing: 1px;
-  text-transform: uppercase;
   cursor: pointer;
+}
+
+.LoginRegisterForm_Loginbutton {
+  border: 1px solid rgba(25, 70, 123, 0.97);
+  background-color: rgba(25, 70, 123, 0.97);
+  color: #ffffff;
+}
+
+.LoginRegisterForm_Signupbutton {
+  border: 1px solid #ffffff;
+  background-color: #ffffff;
+  color: rgba(25, 70, 123, 0.97);
 }
 
 .LoginRegisterForm_button:active {
@@ -88,6 +96,13 @@
   width: 100%;
 }
 
+.LoginRegisterForm_input,
+.LoginRegisterForm_input:focus,
+.LoginRegisterForm_input:focus,
+.LoginRegisterForm_input:focus {
+  outline: none;
+}
+
 .LoginRegister_container {
   background-color: #fff;
   border-radius: 10px;
@@ -106,7 +121,7 @@
 }
 
 .sign-in-container {
-  left: 0;
+  right: 0;
   width: 50%;
   z-index: 2;
 }
@@ -123,7 +138,6 @@
     opacity: 0;
     z-index: 1;
   }
-
   50%,
   100% {
     opacity: 1;
@@ -134,17 +148,14 @@
 .LoginRegisterForm_overlay-container {
   position: absolute;
   top: 0;
-  left: 50%;
+  left: 0;
   width: 50%;
   height: 100%;
-  overflow: hidden;
-
   z-index: 100;
 }
 
 .LoginRegisterForm_overlay {
   background: rgba(25, 70, 123, 0.97);
-
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
@@ -163,7 +174,6 @@
   width: 50%;
   height: 100%;
   overflow: hidden;
-
   z-index: 100;
 }
 
@@ -190,6 +200,7 @@
   height: 100%;
   width: 50%;
 }
+
 .LoginRegisterForm_overlay-right {
   right: 0;
   transform: translateX(0);

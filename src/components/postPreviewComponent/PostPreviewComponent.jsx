@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./postPreviewComponent.css";
 import { ArrowUpward, ArrowDownward, AddComment } from "@mui/icons-material";
-import { Box, Button, IconButton } from "@mui/material";
+import { Box, Button, IconButton, Link } from "@mui/material";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { useNavigate } from "react-router-dom";
@@ -10,23 +10,25 @@ const PostPreviewComponent = ({ post, style }) => {
   const {
     title,
     community,
-    upi,
-    time,
-    text,
-    upvotes,
-    downvotes,
-    images,
-    postID,
+    updatedAt,
+    bodyText,
+    upVotes,
+    downVotes,
+    attachments, //todo still need work
+    id,
   } = post;
 
   const navigate = useNavigate();
 
-  const [vote, setVote] = useState(
-    localStorage.getItem(`${postID}-vote`) || ""
-  );
+  const [vote, setVote] = useState(localStorage.getItem(`${id}-vote`) || "");
   const handleVote = (vote) => {
-    localStorage.setItem(`${postID}-vote`, vote);
+    localStorage.setItem(`${id}-vote`, vote);
     setVote(vote);
+  };
+
+  const getDateString = (UTCDateString) => {
+    const time = new Date(UTCDateString);
+    return time.toLocaleTimeString();
   };
 
   return (
@@ -34,29 +36,32 @@ const PostPreviewComponent = ({ post, style }) => {
       <Box
         className="ppc-postInfo"
         onClick={() => {
-          navigate(`/post/${postID}`);
+          navigate(`/post/${id}`);
         }}
       >
         <Box className="ppc-row1">
           <Box>
-            <h5 className="ppc-course">{community}</h5>
+            <h5 className="ppc-course">{community.name}</h5>
           </Box>
 
           <Box className="ppc-right">
             <Box>
-              <h5 className="ppc-upi">{upi}</h5>
-            </Box>
-
-            <Box>
-              <h5 className="ppc-timeposted">{time}</h5>
+              <p className="ppc-timeposted">{getDateString(updatedAt)}</p>
             </Box>
           </Box>
         </Box>
 
         <Box className="ppc-row2">
-          <h2 className="ppc-title">{title}</h2>
+          <h2
+            className="ppc-title"
+            onClick={() => {
+              navigate(`/post/${id}`);
+            }}
+          >
+            {title} <Link className="ppc-link-icon" />
+          </h2>
           <Box>
-            <p className="ppc-text">{text}</p>
+            <p className="ppc-text">{bodyText}</p>
           </Box>
         </Box>
       </Box>
@@ -68,9 +73,9 @@ const PostPreviewComponent = ({ post, style }) => {
         autoPlay
         infiniteLoop
       >
-        {images.map((image, idx) => {
+        {attachments?.map((image, index) => {
           return (
-            <Box key={idx}>
+            <Box key={index}>
               <img alt="uoaimage" src={image} />
             </Box>
           );
@@ -92,7 +97,7 @@ const PostPreviewComponent = ({ post, style }) => {
             />
           </IconButton>
 
-          <p className="ppc-numofvotes">{upvotes - downvotes}</p>
+          <p className="ppc-numofvotes">{upVotes - downVotes}</p>
 
           <IconButton
             onClick={() => {
@@ -113,7 +118,7 @@ const PostPreviewComponent = ({ post, style }) => {
             variant="outlined"
             startIcon={<AddComment />}
             onClick={() => {
-              navigate(`/post/${postID}`);
+              navigate(`/post/${id}`);
             }}
             sx={{ color: "#4f72aa" }}
           >

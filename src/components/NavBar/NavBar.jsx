@@ -16,10 +16,11 @@ import PersonIcon from "@mui/icons-material/Person";
 import PeopleIcon from "@mui/icons-material/People";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import styles from "./NavBar-styles";
-import React, { useContext } from "react";
+import React, { useCallback, useContext, useMemo, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthProvider";
 import logo from "../../assets/logo.svg";
+import { useCommunities } from "../../hooks/useCommunities";
 import { useMutation } from "../../hooks/useApi";
 
 const HeaderButton = styled(Button)(({ theme }) => ({
@@ -81,25 +82,29 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 function NavBar() {
   const { logout, authorized } = useContext(AuthContext);
+  const { communities: communitiesMenu, loading: loadingForCommunities } =
+    useCommunities();
 
-  const userDetails = localStorage.getItem("userDetails");
-  const userJson = userDetails ? JSON.parse(userDetails) : null;
-  const userID = userJson?.id;
+  const pagesMenu = useMemo(
+    () => [
+      { label: "Home", link: "/" },
+      { label: "Posts", link: "/posts" },
+      { label: "Communities", link: "/communities" },
+    ],
+    []
+  );
 
-  // Change communitiesMenu to a context variable.
-  const communitiesMenu = ["SOFTENG 352", "SOFTENG 125"];
-  const pagesMenu = [
-    { label: "Home", link: "/" },
-    { label: "Posts", link: "/posts" },
-    { label: "Communities", link: "/communities" },
-  ];
-  const profileMenu = authorized
-    ? [
-        { label: "Profile", link: "/profile" },
-        { label: "Settings", link: "/settings" },
-        { label: "Logout", link: "/logout" },
-      ]
-    : [{ label: "Login / Create Account", link: "/login" }];
+  const profileMenu = useMemo(
+    () =>
+      authorized
+        ? [
+            { label: "Profile", link: "/profile" },
+            { label: "Settings", link: "/settings" },
+            { label: "Logout", link: "/logout" },
+          ]
+        : [{ label: "Login / Create Account", link: "/login" }],
+    [authorized]
+  );
 
   const [anchorElCommunities, setAnchorElCommunities] = React.useState(null);
   const [anchorElPages, setAnchorElPages] = React.useState(null);
@@ -108,7 +113,7 @@ function NavBar() {
 
   const navigate = useNavigate();
 
-  React.useEffect(() => {
+  useEffect(() => {
     console.log("searchValue", searchValue);
   }, [searchValue]);
 
@@ -137,17 +142,21 @@ function NavBar() {
     setAnchorElProfile(event.currentTarget);
   };
 
-  async function handleCloseProfileMenu() {
+  const handleLogoutClick = useCallback(async () => {
     setAnchorElProfile(null);
 
-    await createLogout({
-      body: {
-        userID,
-      },
-    });
-    localStorage.clear();
-  }
+    await createLogout({});
 
+    localStorage.clear();
+  }, [createLogout, setAnchorElProfile]);
+
+  const handleCloseMenu = useCallback(() => {
+    setAnchorElProfile(null);
+  }, [setAnchorElProfile]);
+
+  if (loadingForCommunities) {
+    return <div>Loading</div>;
+  }
   return (
     <AppBar position="static" sx={styles.appBar} elevation={0}>
       <Toolbar sx={styles.headerContainer}>
@@ -177,8 +186,11 @@ function NavBar() {
           >
             {communitiesMenu.length > 0 ? (
               communitiesMenu.map((community) => (
-                <MenuItem key={community} onClick={handleCloseCommunitiesMenu}>
-                  {community}
+                <MenuItem
+                  key={community.id}
+                  onClick={() => navigate(`/Community/${community.id}`)}
+                >
+                  {community.name}
                 </MenuItem>
               ))
             ) : (
@@ -268,13 +280,13 @@ function NavBar() {
               horizontal: "left",
             }}
             open={Boolean(anchorElProfile)}
-            onClose={handleCloseProfileMenu}
+            onClose={handleCloseMenu}
           >
             {profileMenu.map(({ label, link }, index) => (
               <MenuItem
                 key={index}
                 onClick={() => {
-                  handleCloseProfileMenu();
+                  handleLogoutClick();
 
                   link === "/logout" ? logout() : navigate(link);
                 }}

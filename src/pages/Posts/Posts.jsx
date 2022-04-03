@@ -47,24 +47,6 @@ const Posts = () => {
         </div>
       </div>
       <br></br>
-      <div className="p-bodyContainer">
-        <Box className="p-search">
-          <FormControl className="p-searchbar" variant="filled">
-            <InputLabel htmlFor="search">Search Posts</InputLabel>
-            <OutlinedInput
-              id="search"
-              endAdornment={
-                <InputAdornment position="end">
-                  <Search />
-                </InputAdornment>
-              }
-              //when user inputs something into the search bar this calls the searchItem function to filter out the posts
-              //based on the input
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </FormControl>
-        </Box>
-      </div>
       <hr style={{ border: "3px solid white" }} />
       <Box className="p-search">
         <FormControl className="p-searchbar" variant="filled">

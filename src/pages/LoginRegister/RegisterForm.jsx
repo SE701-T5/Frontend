@@ -33,7 +33,6 @@ export default function RegisterForm({ Register }) {
             <h2 className="h1 text-center mb-4">Create Account</h2>
 
             <span className="LoginRegisterForm_span">
-              {" "}
               use your email for registration
             </span>
             <input

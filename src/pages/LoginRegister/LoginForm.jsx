@@ -56,7 +56,7 @@ export default function LoginForm({ LoginFormDetail }) {
               Forgot your password?
             </Link>
 
-            <button className="LoginRegisterForm_button LoginRegisterForm_Loginbutton" type="submit">
+            <button className="LoginRegisterForm_button LoginRegisterForm_Bluebutton" type="submit">
               Log In
             </button>
           </form>
@@ -71,7 +71,7 @@ export default function LoginForm({ LoginFormDetail }) {
                 New to UniForm? Sign up to start your journey!
               </p>
               <button
-                className="LoginRegisterForm_button LoginRegisterForm_Signupbutton"
+                className="LoginRegisterForm_button LoginRegisterForm_Whitepbutton"
                 id="signUp"
                 onClick={() => {
                   navigate("/register");

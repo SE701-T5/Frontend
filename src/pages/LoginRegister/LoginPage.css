@@ -52,13 +52,13 @@
     cursor: pointer;
 }
 
-.LoginRegisterForm_Loginbutton {
+.LoginRegisterForm_Bluebutton {
     border: 1px solid rgba(25, 70, 123, 0.97);
     background-color: rgba(25, 70, 123, 0.97);
     color: #ffffff;
 }
 
-.LoginRegisterForm_Signupbutton {
+.LoginRegisterForm_Whitepbutton {
     border: 1px solid #ffffff;
     background-color: #ffffff;
     color: rgba(25, 70, 123, 0.97);

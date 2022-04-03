@@ -5,6 +5,7 @@ import ComponentsTesting from "./pages/componentsTesting/ComponentsTesting";
 import Homepage from "./pages/Homepage";
 import NewPost from "./pages/newPost/NewPost.jsx";
 import ForgotPasswordPage from "./pages/LoginRegister/ForgotPasswordPage";
+import ProfilePage from "./pages/Profile/ProfilePage";
 import LoginPage from "./pages/LoginRegister/LoginPage";
 import RegisterPage from "./pages/LoginRegister/RegisterPage";
 import Communities from "./pages/Communities/Communities";
@@ -12,7 +13,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Post from "./pages/Post";
 import CommunitiesPage from "./pages/Communities/CommunitiesPage";
 import Posts from "./pages/Posts/Posts";
-import Community from './pages/Community'
+import Community from "./pages/Community";
 import NewCommunity from "./pages/newCommunity/NewCommunity.jsx";
 function App() {
   return (
@@ -30,11 +31,12 @@ function App() {
           element={<ComponentsTesting />}
         />
         <Route exact path="/NewPost" element={<NewPost />} />
-        <Route exact path="/Community" element={<Community />} />
+        <Route exact path="/Community/:id" element={<Community />} />
         <Route exact path="/NewCommunity" element={<NewCommunity />} />
         <Route exact path="/Communities" element={<Communities />} />
         <Route exact path="/CommunitiesPage" element={<CommunitiesPage />} />
         <Route exact path="/Posts" element={<Posts />} />
+        <Route exact path="/Profile" element={<ProfilePage />} />
         <Route exact path="/post/:id" element={<Post />} />
       </Routes>
     </>

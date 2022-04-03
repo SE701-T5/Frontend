@@ -1,55 +1,34 @@
 import React from "react";
 import { createContext, useState, useEffect } from "react";
-const LOCAL_STORAGE_KEY = "authUsers";
+const LOCAL_STORAGE_KEY = "userDetails";
 
 const AuthContext = createContext({
-  userDetails: [
-    {
-      email: "",
-      username: "",
-      password: "",
-    },
-  ],
-  setUserDetails: (newUserDetails) => {},
   login: () => {},
   logout: () => {},
   authorized: false,
 });
 export const AuthProvider = ({ children }) => {
   const [authorized, setAuthorized] = useState(false);
-  const [userDetails, setUserDetails] = useState([
-    {
-      email: "admin@123",
-      username: "admin",
-      password: "12ABqwer",
-    },
-    {
-      email: "aa@123",
-      username: "scsf",
-      password: "12ABqwer",
-    },
-  ]);
 
-  useEffect(() => {
-    //@ts-ignore
-    const storedUsers = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    if (storedUsers) setUserDetails(storedUsers);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(userDetails));
-  }, [userDetails]);
   const login = () => {
     setAuthorized(true);
   };
+
   const logout = () => {
     setAuthorized(false);
   };
 
+  useEffect(() => {
+    const { email, authToken } = JSON.parse(
+      localStorage.getItem(LOCAL_STORAGE_KEY) ?? "{}"
+    );
+    if (email && authToken) {
+      setAuthorized(true);
+    }
+  }, []);
+
   return (
-    <AuthContext.Provider
-      value={{ userDetails, setUserDetails, login, logout, authorized }}
-    >
+    <AuthContext.Provider value={{ login, logout, authorized }}>
       {children}
     </AuthContext.Provider>
   );

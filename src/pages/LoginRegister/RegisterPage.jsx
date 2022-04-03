@@ -10,59 +10,38 @@ export default function RegisterPage() {
   const navigate = useNavigate();
   const toast = useToast();
 
-  const { userDetails, setUserDetails } = useContext(AuthContext);
   const userSignUp = useMutation("/users", {
     method: "post",
   });
 
   const Register = async (details) => {
-    if (!userDetails.find((user) => user.email === details.email)) {
-      if (details.password1 === details.password2) {
-        const signUpDetails = {
-          data: {
-            username: details.username,
-            displayName: details.username,
-            email: details.email,
-            plaintextPassword: details.password1,
-          },
-        };
-        try {
-          const response = await userSignUp(signUpDetails);
-          const data = await response.userData;
+    if (details.password1 === details.password2) {
+      const signUpDetails = {
+        data: {
+          username: details.username,
+          displayName: details.username,
+          email: details.email,
+          plaintextPassword: details.password1,
+        },
+      };
+      try {
+        await userSignUp(signUpDetails);
 
-          setUserDetails((preuserDetails) => [
-            ...preuserDetails,
-            {
-              email: details.email,
-              username: details.username,
-              password: details.password1,
-            },
-          ]);
-          toast({
-            position: "bottom-left",
-            render: () => (
-              <Box color="white" p={9} bg="#19467bf7" borderRadius={9}>
-                We've created your account for you
-              </Box>
-            ),
-          });
-          navigate("/login");
-        } catch (error) {
-          toast({
-            position: "bottom-left",
-            render: () => (
-              <Box color="white" p={9} bg="#19467bf7" borderRadius={9}>
-                Failed to sign up
-              </Box>
-            ),
-          });
-        }
-      } else {
         toast({
           position: "bottom-left",
           render: () => (
             <Box color="white" p={9} bg="#19467bf7" borderRadius={9}>
-              Your password doesn't match
+              We've created your account for you
+            </Box>
+          ),
+        });
+        navigate("/login");
+      } catch (error) {
+        toast({
+          position: "bottom-left",
+          render: () => (
+            <Box color="white" p={9} bg="#19467bf7" borderRadius={9}>
+              Failed to sign up. This email may already be in use.
             </Box>
           ),
         });
@@ -72,7 +51,7 @@ export default function RegisterPage() {
         position: "bottom-left",
         render: () => (
           <Box color="white" p={9} bg="#19467bf7" borderRadius={9}>
-            This email has been registered
+            Your password doesn't match
           </Box>
         ),
       });

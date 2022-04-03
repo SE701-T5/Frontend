@@ -12,7 +12,7 @@ export default function LoginPage() {
   const userLogin = useMutation("/users/login", {
     method: "post",
   });
-  const { userDetails, login, authorized } = useContext(AuthContext);
+  const { login, authorized } = useContext(AuthContext);
 
   const LoginFormDetail = async ({ email, password: plaintextPassword }) => {
     const loginDetails = {

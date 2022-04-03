@@ -21,10 +21,6 @@ const cardStyle = {
 
 const buttonStyle = {
   backgroundColor: "#4f72aa",
-  float: "right",
-  position: "absolute",
-  bottom: "5%",
-  right: "1%",
 };
 
 const CommunityPreviewComponent = ({ communityEntry }) => {
@@ -69,9 +65,19 @@ const CommunityPreviewComponent = ({ communityEntry }) => {
                 <p>Nau mai, haere mai ki {community}!</p>
               </div>
             </Typography>
-            <Button variant="contained" style={buttonStyle}>
-              Join
-            </Button>
+            <div
+              style={{
+                display: "flex",
+                width: "100%",
+                flexDirection: "row",
+                justifyContent: "end",
+                alignItems: "center",
+              }}
+            >
+              <Button variant="contained" style={buttonStyle}>
+                Join
+              </Button>
+            </div>
           </div>
         </Grid>
       </Grid>

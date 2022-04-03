@@ -233,25 +233,7 @@ function NavBar() {
               </MenuItem>
             ))}
           </Menu>
-
-          <HeaderButton>
-            <HeaderButtonLabel>Filter</HeaderButtonLabel>
-            <FilterAltIcon sx={styles.headerElementIcon} />
-          </HeaderButton>
         </div>
-
-        <SearchContainer>
-          <StyledInputBase
-            fullWidth
-            placeholder="Search…"
-            inputProps={{ "aria-label": "search" }}
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-          />
-          <SearchIconWrapper>
-            <SearchIcon />
-          </SearchIconWrapper>
-        </SearchContainer>
 
         <div style={styles.headerSection}>
           <HeaderButton

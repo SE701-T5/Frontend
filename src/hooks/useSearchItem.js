@@ -11,7 +11,7 @@ export const useSearchItem = (posts) => {
       setFilteredResults(() =>
         posts.filter(
           (item) =>
-            item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            item?.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
             item.community.name
               .toLowerCase()
               .includes(searchQuery.toLowerCase()) ||
@@ -21,7 +21,7 @@ export const useSearchItem = (posts) => {
     } else {
       setFilteredResults(posts);
     }
-  }, [searchQuery]);
+  }, [posts, searchQuery]);
 
   return { filteredResults, searchQuery, setSearchQuery };
 };

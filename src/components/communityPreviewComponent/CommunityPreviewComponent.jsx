@@ -5,6 +5,7 @@ import { Button } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
+import { useNavigate } from "react-router";
 
 const cardStyle = {
   display: "block",
@@ -17,6 +18,7 @@ const cardStyle = {
   },
   margin: "20px 0",
   position: "relative",
+  cursor: "pointer",
 };
 
 const buttonStyle = {
@@ -24,10 +26,16 @@ const buttonStyle = {
 };
 
 const CommunityPreviewComponent = ({ communityEntry }) => {
-  const { name, memberCount, description, img } = communityEntry;
+  const { name, memberCount, description, img, id } = communityEntry;
+
+  const navigate = useNavigate();
 
   return (
-    <Card style={cardStyle}>
+    <Card
+      onClick={() => navigate("/Community/" + id)}
+      style={cardStyle}
+      className=""
+    >
       <Grid container spacing={1}>
         <Grid item xs={0} md={4} display={{ xs: "none", md: "block" }}>
           <CardMedia component="img" image={img} style={cardStyle.media} />
@@ -74,7 +82,11 @@ const CommunityPreviewComponent = ({ communityEntry }) => {
                 alignItems: "center",
               }}
             >
-              <Button variant="contained" style={buttonStyle}>
+              <Button
+                onClick={(e) => e.stopPropagation()}
+                variant="contained"
+                style={buttonStyle}
+              >
                 Join
               </Button>
             </div>

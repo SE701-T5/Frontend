@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import "./postPreviewComponent.css";
 import { ArrowUpward, ArrowDownward, AddComment } from "@mui/icons-material";
 import { Box, Button, IconButton, Link } from "@mui/material";
@@ -26,10 +26,16 @@ const PostPreviewComponent = ({ post, style }) => {
     setVote(vote);
   };
 
-  const getDateString = (UTCDateString) => {
-    const time = new Date(UTCDateString);
-    return time.toLocaleTimeString();
-  };
+  const getDateString = useCallback((UTCDateString) => {
+    var difference = new Date(UTCDateString).getTime() - new Date().getTime();
+    var days = Math.ceil(difference / (1000 * 3600 * 24));
+
+    return new Intl.RelativeTimeFormat("en", {
+      style: "long",
+      localeMatcher: "lookup",
+      numeric: "auto",
+    }).format(days, "day");
+  }, []);
 
   return (
     <Box className="ppc-postArea" style={style}>
